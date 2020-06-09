@@ -34,6 +34,7 @@ export function signupUser(token, user) {
         })
 
         const userObj = await res.json()
+        console.log(userObj)
         if (userObj.errors) {
             dispatch({ type: USER_ERRORS, payload: userObj.errors })
         } else {
@@ -64,6 +65,7 @@ export function loginUser(user) {
             credentials: 'include'
         })
         const userObj = await res.json()
+        console.log(userObj)
         if (userObj.errors) {
             dispatch({ type: USER_ERRORS, payload: userObj.errors })
         } else {

@@ -1,23 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import logo from './logo.svg';
 import './stylesheets/App.css';
-import './stylesheets/responsive.css';
 
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route
-// } from 'react-router-dom';
-
-class App extends Component() {
-
-  render() {
-    return (
-      <div className="App">
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
         <h1>Store Spender</h1>
-      </div>
-    );
-  }
+      </header>
+    </div>
+  );
 }
 
 export default App;

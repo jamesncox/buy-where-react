@@ -1,8 +1,13 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
 import './stylesheets/App.css';
+import { connect } from 'react-redux';
+import { getToken } from './actions/sessions'
 
-function App() {
+function App(props) {
+  useEffect(() => {
+    getToken()
+  }, [])
+
   return (
     <div className="App">
       <header className="App-header">
@@ -12,4 +17,4 @@ function App() {
   );
 }
 
-export default App;
+export default connect(null, getToken)(App);

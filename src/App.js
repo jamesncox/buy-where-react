@@ -3,11 +3,11 @@ import logo from './logo.svg';
 import './stylesheets/App.css';
 import './stylesheets/responsive.css';
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from 'react-router-dom';
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route
+// } from 'react-router-dom';
 
 class App extends Component() {
 

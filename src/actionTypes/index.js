@@ -1,5 +1,13 @@
 const SET_TOKEN = 'SET_TOKEN'
+const SET_USER = 'SET_USER'
+const CLEAR_USER = 'CLEAR_USER'
+const USER_ERRORS = 'USER_ERRORS'
+const CLEAR_ERRORS = 'CLEAR_ERRORS'
 
 export {
-    SET_TOKEN
+    SET_TOKEN,
+    SET_USER,
+    CLEAR_USER,
+    USER_ERRORS,
+    CLEAR_ERRORS
 }

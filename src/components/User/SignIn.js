@@ -129,9 +129,25 @@ function SignIn() {
     const classes = useStyles();
 
     const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
 
-    const handleChange = (e) => {
+    const handleUsername = (e) => {
+        setUsername(e.target.value)
+    }
 
+    const handlePassword = (e) => {
+        setPassword(e.target.value)
+    }
+
+    const handleLogin = e => {
+        e.preventDefault()
+        const user = {
+            username: username,
+            password: password
+        }
+        loginUser(user)
+        setUsername('')
+        setPassword('')
     }
 
     return (
@@ -146,17 +162,22 @@ function SignIn() {
                     <Typography component="h1" variant="h5">
                         Have an account? Sign in below
           </Typography>
-                    <form className={classes.form} noValidate>
+                    <form
+                        className={classes.form}
+                        noValidate
+                        onSubmit={e => handleLogin(e)}
+                    >
                         <TextField
                             variant="outlined"
                             margin="normal"
                             required
                             fullWidth
-                            id="email"
+                            id="username"
                             label="Username"
                             name="username"
                             autoComplete="username"
-                            onChange={handleChange}
+                            onChange={handleUsername}
+                            value={username}
                             autoFocus
                         />
                         <TextField
@@ -168,6 +189,8 @@ function SignIn() {
                             label="Password"
                             type="password"
                             id="password"
+                            onChange={handlePassword}
+                            value={password}
                             autoComplete="current-password"
                         />
                         <FormControlLabel

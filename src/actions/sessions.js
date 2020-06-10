@@ -2,7 +2,6 @@ import { SET_TOKEN } from '../actionTypes'
 
 const setToken = (token) => {
     return dispatch => {
-        console.log(token)
         dispatch({ type: SET_TOKEN, payload: token })
     }
 }

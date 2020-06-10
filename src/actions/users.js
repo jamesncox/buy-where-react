@@ -52,6 +52,8 @@ export function loginUser(user) {
             }
         }
 
+        console.log(formData)
+
         const state = getState()
         const token = state.sessions.token
 

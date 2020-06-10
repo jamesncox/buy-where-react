@@ -15,7 +15,7 @@ export default (state = { user: {}, errors: [], loggedIn: false }, action) => {
             return { ...state, errors: action.payload }
 
         case CLEAR_USER:
-            return { ...state, user: null, loggedIn: false }
+            return { ...state, user: {}, loggedIn: false }
 
         case CLEAR_ERRORS:
             return { ...state, errors: [] }

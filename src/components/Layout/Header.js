@@ -1,4 +1,8 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { clearCurrentUser } from '../../actions/users'
+import { getToken } from '../../actions/sessions'
+
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -12,15 +16,21 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     menuButton: {
-        marginRight: theme.spacing(2),
+        marginRight: theme.spacing(22),
     },
     title: {
-        flexGrow: 1,
+        flexGrow: 1
     },
 }));
 
 function Header(props) {
     const classes = useStyles();
+
+    const handleLogout = () => {
+        props.clearCurrentUser()
+        props.getToken()
+    }
+
     return (
         <AppBar position="static">
             <Toolbar>
@@ -32,9 +42,10 @@ function Header(props) {
                 </Typography>
                 <Button color="inherit">Login</Button>
                 <Button color="inherit">Sign up</Button>
+                <Button onClick={handleLogout} color="inherit">Log out</Button>
             </Toolbar>
         </AppBar>
     )
 }
 
-export default Header
+export default connect(null, { clearCurrentUser, getToken })(Header)

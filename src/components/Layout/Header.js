@@ -42,9 +42,28 @@ function Header(props) {
                 <Typography variant="h6" className={classes.title}>
                     Store Spender
                 </Typography>
-                <Button color="inherit" component={RouterLink} to="/Login">Login</Button>
-                <Button color="inherit" component={RouterLink} to="/Signup">Sign up</Button>
-                <Button onClick={handleLogout} color="inherit">Log out</Button>
+                <Button
+                    color="inherit"
+                    component={RouterLink}
+                    to="/SignIn"
+                >
+                    Sign In
+                    </Button>
+                <Button
+                    color="inherit"
+                    component={RouterLink}
+                    to="/SignUp"
+                >
+                    Sign Up
+                    </Button>
+                <Button
+                    onClick={handleLogout}
+                    color="inherit"
+                    component={RouterLink}
+                    to="/LogOut"
+                >
+                    Log out
+                </Button>
             </Toolbar>
         </AppBar>
     )

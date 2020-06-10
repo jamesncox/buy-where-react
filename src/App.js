@@ -10,8 +10,9 @@ import { getToken } from './actions/sessions'
 
 import Header from './components/Layout/Header'
 import Home from './components/Layout/Home'
-import Login from './components/User/Login'
-import Signup from './components/User/Signup'
+import SignIn from './components/User/SignIn'
+import SignUp from './components/User/SignUp'
+import LogOut from './components/User/LogOut'
 
 class App extends Component {
 
@@ -28,11 +29,14 @@ class App extends Component {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route exact path="/signup">
-              <Signup />
+            <Route exact path="/SignUp">
+              <SignUp />
             </Route>
-            <Route exact path="/login">
-              <Login />
+            <Route exact path="/SignIn">
+              <SignIn />
+            </Route>
+            <Route exact path="/LogOut">
+              <LogOut />
             </Route>
           </Switch>
         </div>

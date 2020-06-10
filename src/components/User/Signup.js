@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { signupUser } from '../../actions/users'
 
-class Signup extends Component {
+class SignUp extends Component {
 
     state = {
         username: '',
@@ -70,4 +70,4 @@ const mapStateToProps = state => ({
     loggedIn: state.users.loggedIn
 })
 
-export default connect(mapStateToProps, { signupUser })(Signup)
+export default connect(mapStateToProps, { signupUser })(SignUp)

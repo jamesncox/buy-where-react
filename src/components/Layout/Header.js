@@ -1,5 +1,7 @@
 import React from 'react'
+// import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+
 import { clearCurrentUser } from '../../actions/users'
 import { getToken } from '../../actions/sessions'
 
@@ -10,6 +12,9 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+
+import { MemoryRouter as Router } from 'react-router';
+import { Link as RouterLink } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -40,8 +45,8 @@ function Header(props) {
                 <Typography variant="h6" className={classes.title}>
                     Store Spender
                 </Typography>
-                <Button color="inherit">Login</Button>
-                <Button color="inherit">Sign up</Button>
+                <Button color="inherit" component={RouterLink} to="/Login">Login</Button>
+                <Button color="inherit" component={RouterLink} to="/Signup">Sign up</Button>
                 <Button onClick={handleLogout} color="inherit">Log out</Button>
             </Toolbar>
         </AppBar>

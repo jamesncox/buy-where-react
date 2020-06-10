@@ -1,73 +1,263 @@
-import React, { Component } from 'react'
+// import React, { Component } from 'react'
+// import { connect } from 'react-redux'
+// import { signupUser } from '../../actions/users'
+
+// class SignUp extends Component {
+
+//     state = {
+//         username: '',
+//         password: '',
+//         password_confirmation: '',
+//         shouldRedirect: false
+//     }
+
+//     handleChange = e => {
+//         this.setState({
+//             [e.target.name]: e.target.value
+//         })
+//     }
+
+//     handleSignup = e => {
+//         e.preventDefault()
+//         this.props.signupUser(this.props.token, this.state)
+//         this.setState({
+//             username: '',
+//             password: '',
+//             password_confirmation: ''
+//         })
+//     }
+
+//     render() {
+//         return (
+//             <>
+//                 <h1>Sign up</h1>
+//                 <form onSubmit={this.handleSignup.bind(this)}>
+//                     <input
+//                         type="text"
+//                         placeholder="Username"
+//                         name="username"
+//                         value={this.state.username}
+//                         onChange={e => this.handleChange(e)}
+//                     />
+//                     <input
+//                         type="password"
+//                         placeholder="Password"
+//                         name="password"
+//                         value={this.state.password}
+//                         onChange={e => this.handleChange(e)}
+//                     />
+//                     <input
+//                         type="password"
+//                         placeholder="Password confirmation"
+//                         name="password_confirmation"
+//                         value={this.state.password_confirmation}
+//                         onChange={e => this.handleChange(e)}
+//                     />
+//                     <input type="submit" value="Sign up" />
+//                 </form>
+//             </>
+
+//         )
+//     }
+
+// }
+
+
+// const mapStateToProps = state => ({
+//     user: state.users.user,
+//     errors: state.users.errors,
+//     token: state.sessions.token,
+//     loggedIn: state.users.loggedIn
+// })
+
+// export default connect(mapStateToProps, { signupUser })(SignUp)
+
+import React, { useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { signupUser } from '../../actions/users'
 
-class SignUp extends Component {
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Link from '@material-ui/core/Link';
+import Paper from '@material-ui/core/Paper';
+import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
 
-    state = {
-        username: '',
-        password: '',
-        password_confirmation: '',
-        shouldRedirect: false
-    }
-
-    handleChange = e => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
-    }
-
-    handleSignup = e => {
-        e.preventDefault()
-        this.props.signupUser(this.props.token, this.state)
-        this.setState({
-            username: '',
-            password: '',
-            password_confirmation: ''
-        })
-    }
-
-    render() {
-        return (
-            <>
-                <h1>Sign up</h1>
-                <form onSubmit={this.handleSignup.bind(this)}>
-                    <input
-                        type="text"
-                        placeholder="Username"
-                        name="username"
-                        value={this.state.username}
-                        onChange={e => this.handleChange(e)}
-                    />
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        name="password"
-                        value={this.state.password}
-                        onChange={e => this.handleChange(e)}
-                    />
-                    <input
-                        type="password"
-                        placeholder="Password confirmation"
-                        name="password_confirmation"
-                        value={this.state.password_confirmation}
-                        onChange={e => this.handleChange(e)}
-                    />
-                    <input type="submit" value="Sign up" />
-                </form>
-            </>
-
-        )
-    }
-
+function Copyright() {
+    return (
+        <Typography variant="body2" color="textSecondary" align="center">
+            {'Copyright © '}
+            <Link color="inherit" href="localhost:3001/">
+                Store Spender
+      </Link>{' '}
+            {new Date().getFullYear()}
+            {'.'}
+        </Typography>
+    );
 }
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+        height: '100vh',
+    },
+    image: {
+        backgroundImage: 'url(https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80)',
+        backgroundRepeat: 'no-repeat',
+        backgroundColor:
+            theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+    },
+    paper: {
+        margin: theme.spacing(8, 4),
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    avatar: {
+        margin: theme.spacing(1),
+        backgroundColor: theme.palette.secondary.main,
+    },
+    form: {
+        width: '100%', // Fix IE 11 issue.
+        marginTop: theme.spacing(1),
+    },
+    submit: {
+        margin: theme.spacing(3, 0, 2),
+    },
+}));
+
+function SignUp(props) {
+    const classes = useStyles();
+
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const [passwordConfirmation, setPasswordConfirmation] = useState('')
+
+    const handleUsername = (e) => {
+        setUsername(e.target.value)
+    }
+
+    const handlePassword = (e) => {
+        setPassword(e.target.value)
+    }
+
+    const handlePasswordConfirmation = (e) => {
+        setPasswordConfirmation(e.target.value)
+    }
+
+    const handleLogin = e => {
+        e.preventDefault()
+        const user = {
+            username: username,
+            password: password,
+            password_confirmation: passwordConfirmation
+        }
+        signupUser(props.token, user)
+        setUsername('')
+        setPassword('')
+        setPasswordConfirmation('')
+    }
+
+    return (
+        <Grid container component="main" className={classes.root}>
+            <CssBaseline />
+            <Grid item xs={false} sm={4} md={7} className={classes.image} />
+            <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+                <div className={classes.paper}>
+                    <Avatar className={classes.avatar}>
+                        <LockOutlinedIcon />
+                    </Avatar>
+                    <Typography component="h1" variant="h5">
+                        Create an account
+                    </Typography>
+                    <form
+                        className={classes.form}
+                        noValidate
+                        onSubmit={e => handleLogin(e)}
+                    >
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="username"
+                            label="Username"
+                            name="username"
+                            autoComplete="username"
+                            onChange={handleUsername}
+                            value={username}
+                            autoFocus
+                        />
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            name="password"
+                            label="Password"
+                            type="password"
+                            id="password"
+                            onChange={handlePassword}
+                            value={password}
+                            autoComplete="current-password"
+                        />
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            name="passwordConfirmation"
+                            label="Confirm Password"
+                            type="password"
+                            id="passwordConfirmation"
+                            onChange={handlePasswordConfirmation}
+                            value={passwordConfirmation}
+                            autoComplete="current-password"
+                        />
+                        <FormControlLabel
+                            control={<Checkbox value="remember" color="primary" />}
+                            label="Remember me"
+                        />
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                            className={classes.submit}
+                        >
+                            Sign Up
+                        </Button>
+                        <Grid container>
+                            <Grid item xs>
+                                <Link component={RouterLink} to="/Login">
+                                    {"Already have an account? Login"}
+                                </Link>
+                            </Grid>
+                        </Grid>
+                        <Box mt={5}>
+                            <Copyright />
+                        </Box>
+                    </form>
+                </div>
+            </Grid>
+        </Grid>
+    );
+}
 
 const mapStateToProps = state => ({
     user: state.users.user,
     errors: state.users.errors,
-    token: state.sessions.token,
-    loggedIn: state.users.loggedIn
+    loggedIn: state.users.loggedIn,
+    token: state.sessions.token
 })
 
 export default connect(mapStateToProps, { signupUser })(SignUp)

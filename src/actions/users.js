@@ -14,6 +14,7 @@ export const clearErrors = () => {
 }
 
 export function signupUser(token, user) {
+    console.log(user)
     return async (dispatch) => {
         const formData = {
             user: {

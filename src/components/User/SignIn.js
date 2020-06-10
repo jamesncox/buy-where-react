@@ -64,6 +64,8 @@
 
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import { connect } from 'react-redux'
+import { loginUser } from '../../actions/users'
 
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -83,7 +85,7 @@ function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
-            <Link color="inherit" href="https://localhost:3001/">
+            <Link color="inherit" href="localhost:3001/">
                 Store Spender
       </Link>{' '}
             {new Date().getFullYear()}
@@ -97,7 +99,7 @@ const useStyles = makeStyles((theme) => ({
         height: '100vh',
     },
     image: {
-        backgroundImage: 'url(https://source.unsplash.com/random)',
+        backgroundImage: 'url(https://images.unsplash.com/photo-1557677514-666eb39d6d23?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1934&q=80)',
         backgroundRepeat: 'no-repeat',
         backgroundColor:
             theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
@@ -123,7 +125,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function SignIn() {
+function SignIn() {
     const classes = useStyles();
 
     return (
@@ -145,9 +147,9 @@ export default function SignIn() {
                             required
                             fullWidth
                             id="email"
-                            label="Email Address"
-                            name="email"
-                            autoComplete="email"
+                            label="Username"
+                            name="username"
+                            autoComplete="username"
                             autoFocus
                         />
                         <TextField
@@ -190,3 +192,11 @@ export default function SignIn() {
         </Grid>
     );
 }
+
+const mapStateToProps = state => ({
+    user: state.users.user,
+    errors: state.users.errors,
+    loggedIn: state.users.loggedIn
+})
+
+export default connect(mapStateToProps, { loginUser })(SignIn)

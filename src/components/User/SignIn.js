@@ -62,7 +62,7 @@
 
 // export default connect(mapStateToProps, { loginUser })(Login)
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { loginUser } from '../../actions/users'
@@ -128,6 +128,12 @@ const useStyles = makeStyles((theme) => ({
 function SignIn() {
     const classes = useStyles();
 
+    const [username, setUsername] = useState('')
+
+    const handleChange = (e) => {
+
+    }
+
     return (
         <Grid container component="main" className={classes.root}>
             <CssBaseline />
@@ -150,6 +156,7 @@ function SignIn() {
                             label="Username"
                             name="username"
                             autoComplete="username"
+                            onChange={handleChange}
                             autoFocus
                         />
                         <TextField

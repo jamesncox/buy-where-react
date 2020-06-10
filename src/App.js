@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './stylesheets/App.css';
 import { connect } from 'react-redux';
 import { getToken } from './actions/sessions'
+
+import Header from './components/Layout/Header'
 import Login from './components/User/Login'
 import Signup from './components/User/Signup'
 
@@ -14,11 +16,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1>Store Spender</h1>
-          <Signup />
-          <Login />
-        </header>
+
+        <Header />
+        <Signup />
+        <Login />
+
       </div>
     )
   }

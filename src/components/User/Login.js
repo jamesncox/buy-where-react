@@ -63,6 +63,8 @@
 // export default connect(mapStateToProps, { loginUser })(Login)
 
 import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
+
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -174,12 +176,7 @@ export default function Login() {
             </Button>
                         <Grid container>
                             <Grid item xs>
-                                <Link href="#" variant="body2">
-                                    Forgot password?
-                </Link>
-                            </Grid>
-                            <Grid item>
-                                <Link href="#" variant="body2">
+                                <Link component={RouterLink} to="/Signup">
                                     {"Don't have an account? Sign Up"}
                                 </Link>
                             </Grid>

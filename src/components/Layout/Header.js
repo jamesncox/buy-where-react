@@ -1,7 +1,7 @@
 import React from 'react'
-// import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
 
+import { connect } from 'react-redux'
+import { Link as RouterLink } from 'react-router-dom';
 import { clearCurrentUser } from '../../actions/users'
 import { getToken } from '../../actions/sessions'
 
@@ -12,9 +12,6 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-
-import { MemoryRouter as Router } from 'react-router';
-import { Link as RouterLink } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     root: {

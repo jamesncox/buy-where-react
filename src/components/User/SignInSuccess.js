@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -24,31 +25,33 @@ function SignInSuccess(props) {
 
     if (props.user) {
         return (
-            <Card className={classes.root}>
-                <CardActionArea>
-                    <CardMedia
-                        className={classes.media}
-                        image="https://images.unsplash.com/photo-1533745848184-3db07256e163?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80"
-                        title="Rainbow welcome sign"
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
-                            Hi, {props.user.username}
+            <Grid className={classes.grid} item xs={3}>
+                <Card className={classes.root}>
+                    <CardActionArea>
+                        <CardMedia
+                            className={classes.media}
+                            image="https://images.unsplash.com/photo-1533745848184-3db07256e163?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80"
+                            title="Rainbow welcome sign"
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="h2">
+                                Hi, {props.user.username}
+                            </Typography>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                                Click profile to see all your lists or click new to create a new store list
                         </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                            Click profile to see all your lists or click new to create a new store list
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-                <CardActions>
-                    <Button size="small" color="primary">
-                        Profile
+                        </CardContent>
+                    </CardActionArea>
+                    <CardActions>
+                        <Button size="small" color="primary">
+                            Profile
                     </Button>
-                    <Button size="small" color="primary">
-                        New
+                        <Button size="small" color="primary">
+                            New
                     </Button>
-                </CardActions>
-            </Card>
+                    </CardActions>
+                </Card>
+            </Grid>
         );
     }
 }

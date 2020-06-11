@@ -93,90 +93,107 @@ function SignUp(props) {
         setPasswordConfirmation('')
     }
 
-    return (
-        <Grid container component="main" className={classes.root}>
-            <CssBaseline />
-            <Grid item xs={false} sm={4} md={7} className={classes.image} />
-            <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-                <div className={classes.paper}>
-                    <Avatar className={classes.avatar}>
-                        <LockOutlinedIcon />
-                    </Avatar>
-                    <Typography component="h1" variant="h5">
-                        Create an account
+    const renderSuccessMessage = () => {
+        if (props.user) {
+            return (
+                <p>Welcome, {props.user.username}! Let's do great things!</p>
+            )
+        }
+    }
+
+    if (props.loggedIn === true) {
+        return (
+            <div>
+                {renderSuccessMessage()}
+            </div>
+        )
+    } else {
+
+        return (
+            <Grid container component="main" className={classes.root}>
+                <CssBaseline />
+                <Grid item xs={false} sm={4} md={7} className={classes.image} />
+                <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+                    <div className={classes.paper}>
+                        <Avatar className={classes.avatar}>
+                            <LockOutlinedIcon />
+                        </Avatar>
+                        <Typography component="h1" variant="h5">
+                            Create an account
                     </Typography>
-                    <form
-                        className={classes.form}
-                        noValidate
-                        onSubmit={e => handleLogin(e)}
-                    >
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="username"
-                            label="Username"
-                            name="username"
-                            autoComplete="username"
-                            onChange={handleUsername}
-                            value={username}
-                            autoFocus
-                        />
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="password"
-                            label="Password"
-                            type="password"
-                            id="password"
-                            onChange={handlePassword}
-                            value={password}
-                            autoComplete="current-password"
-                        />
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="passwordConfirmation"
-                            label="Confirm Password"
-                            type="password"
-                            id="passwordConfirmation"
-                            onChange={handlePasswordConfirmation}
-                            value={passwordConfirmation}
-                            autoComplete="current-password"
-                        />
-                        <FormControlLabel
-                            control={<Checkbox value="remember" color="primary" />}
-                            label="Remember me"
-                        />
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            color="primary"
-                            className={classes.submit}
+                        <form
+                            className={classes.form}
+                            noValidate
+                            onSubmit={e => handleLogin(e)}
                         >
-                            Sign Up
+                            <TextField
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="username"
+                                label="Username"
+                                name="username"
+                                autoComplete="username"
+                                onChange={handleUsername}
+                                value={username}
+                                autoFocus
+                            />
+                            <TextField
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                fullWidth
+                                name="password"
+                                label="Password"
+                                type="password"
+                                id="password"
+                                onChange={handlePassword}
+                                value={password}
+                                autoComplete="current-password"
+                            />
+                            <TextField
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                fullWidth
+                                name="passwordConfirmation"
+                                label="Confirm Password"
+                                type="password"
+                                id="passwordConfirmation"
+                                onChange={handlePasswordConfirmation}
+                                value={passwordConfirmation}
+                                autoComplete="current-password"
+                            />
+                            <FormControlLabel
+                                control={<Checkbox value="remember" color="primary" />}
+                                label="Remember me"
+                            />
+                            <Button
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                color="primary"
+                                className={classes.submit}
+                            >
+                                Sign Up
                         </Button>
-                        <Grid container>
-                            <Grid item xs>
-                                <Link component={RouterLink} to="/Login">
-                                    {"Already have an account? Login"}
-                                </Link>
+                            <Grid container>
+                                <Grid item xs>
+                                    <Link component={RouterLink} to="/Login">
+                                        {"Already have an account? Login"}
+                                    </Link>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                        <Box mt={5}>
-                            <Copyright />
-                        </Box>
-                    </form>
-                </div>
+                            <Box mt={5}>
+                                <Copyright />
+                            </Box>
+                        </form>
+                    </div>
+                </Grid>
             </Grid>
-        </Grid>
-    );
+        )
+    }
 }
 
 const mapStateToProps = state => ({

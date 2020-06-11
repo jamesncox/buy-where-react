@@ -86,6 +86,21 @@ function SignIn(props) {
         setPassword('')
     }
 
+    const renderSuccessMessage = () => {
+        if (props.user) {
+            return (
+                <p>Welcome back, {props.user.username}! Let's keep doing great things!</p>
+            )
+        }
+    }
+
+    if (props.loggedIn === true) {
+        return (
+            <div>
+                {renderSuccessMessage()}
+            </div>
+        )
+    } else {
     return (
         <Grid container component="main" className={classes.root}>
             <CssBaseline />
@@ -97,7 +112,7 @@ function SignIn(props) {
                     </Avatar>
                     <Typography component="h1" variant="h5">
                         Have an account? Sign in below
-          </Typography>
+        </Typography>
                     <form
                         className={classes.form}
                         noValidate
@@ -141,7 +156,7 @@ function SignIn(props) {
                             className={classes.submit}
                         >
                             Sign In
-            </Button>
+                        </Button>
                         <Grid container>
                             <Grid item xs>
                                 <Link component={RouterLink} to="/Signup">
@@ -156,7 +171,8 @@ function SignIn(props) {
                 </div>
             </Grid>
         </Grid>
-    );
+        )
+    }
 }
 
 const mapStateToProps = state => ({

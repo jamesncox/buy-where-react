@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { signupUser } from '../../actions/users'
+import SignInSuccess from './SignInSuccess'
 
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -94,11 +95,9 @@ function SignUp(props) {
     }
 
     const renderSuccessMessage = () => {
-        if (props.user) {
-            return (
-                <p>Welcome, {props.user.username}! Let's do great things!</p>
-            )
-        }
+        return (
+            <SignInSuccess />
+        )
     }
 
     if (props.loggedIn === true) {

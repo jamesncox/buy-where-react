@@ -161,7 +161,7 @@ function SignUp(props) {
             password: password,
             password_confirmation: passwordConfirmation
         }
-        signupUser(props.token, user)
+        props.signupUser(props.token, user)
         setUsername('')
         setPassword('')
         setPasswordConfirmation('')

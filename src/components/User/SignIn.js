@@ -125,7 +125,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function SignIn() {
+function SignIn(props) {
     const classes = useStyles();
 
     const [username, setUsername] = useState('')
@@ -145,7 +145,7 @@ function SignIn() {
             username: username,
             password: password
         }
-        loginUser(user)
+        props.loginUser(user)
         setUsername('')
         setPassword('')
     }

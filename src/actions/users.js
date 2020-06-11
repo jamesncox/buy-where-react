@@ -52,8 +52,6 @@ export function loginUser(user) {
             }
         }
 
-        console.log(formData)
-
         const state = getState()
         const token = state.sessions.token
 
@@ -67,7 +65,7 @@ export function loginUser(user) {
             credentials: 'include'
         })
         const userObj = await res.json()
-        console.log(userObj)
+        // console.log(userObj)
         if (userObj.errors) {
             dispatch({ type: USER_ERRORS, payload: userObj.errors })
         } else {
@@ -76,6 +74,7 @@ export function loginUser(user) {
     }
 }
 
+// getting unexpected end of json input error in setCurrentUser
 export function setCurrentUser() {
     return async (dispatch) => {
         try {
@@ -86,6 +85,7 @@ export function setCurrentUser() {
                 throw res
             }
             const userObj = await res.json()
+            console.log("inside setCurrentUser", userObj)
             dispatch({ type: SET_USER, payload: userObj })
         } catch (err) {
             console.log(err)

@@ -45,10 +45,10 @@ function SignInSuccess(props) {
                     <CardActions>
                         <Button size="small" color="primary">
                             Profile
-                    </Button>
+                        </Button>
                         <Button size="small" color="primary">
                             New
-                    </Button>
+                        </Button>
                     </CardActions>
                 </Card>
             </Grid>

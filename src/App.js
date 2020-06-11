@@ -7,6 +7,7 @@ import {
 import './stylesheets/App.css';
 import { connect } from 'react-redux';
 import { getToken } from './actions/sessions'
+import { setCurrentUser } from './actions/users'
 
 import Header from './components/Layout/Header'
 import Home from './components/Layout/Home'
@@ -18,6 +19,7 @@ class App extends Component {
 
   componentDidMount() {
     this.props.getToken()
+    this.props.setCurrentUser()
   }
 
   render() {
@@ -45,4 +47,4 @@ class App extends Component {
   }
 }
 
-export default connect(null, { getToken })(App);
+export default connect(null, { getToken, setCurrentUser })(App);

@@ -24,7 +24,7 @@ function Copyright() {
             {'Copyright © '}
             <Link color="inherit" href="localhost:3001/">
                 Store Spender
-      </Link>{' '}
+            </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
         </Typography>

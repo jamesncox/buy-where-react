@@ -20,15 +20,15 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     media: {
-        height: 500,
+        height: 475,
         width: "100",
         [theme.breakpoints.down('sm')]: {
-            height: 400,
+            height: 350,
         }
     },
     grid: {
         marginTop: "5rem",
-        marginLeft: "20%",
+        marginLeft: "18%",
         [theme.breakpoints.down('sm')]: {
             marginLeft: "5%",
         }
@@ -45,7 +45,7 @@ function LogOut(props) {
                     <CardActionArea>
                         <CardMedia
                             className={classes.media}
-                            image="https://images.unsplash.com/photo-1591635025101-9a66487172ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
+                            image="https://images.pexels.com/photos/883466/pexels-photo-883466.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
                             title="The best is yet to come"
                         />
                         <CardContent>

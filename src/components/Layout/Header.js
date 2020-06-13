@@ -18,10 +18,19 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     menuButton: {
-        marginRight: theme.spacing(22),
+        display: "none",
+        [theme.breakpoints.down('sm')]: {
+            display: "block",
+        }
     },
     title: {
-        flexGrow: 1
+        flexGrow: 1,
+    },
+    userActions: {
+        display: "block",
+        [theme.breakpoints.down('sm')]: {
+            display: "none",
+        }
     },
 }));
 
@@ -43,6 +52,7 @@ function Header(props) {
                     Store Spender
                 </Typography>
                 <Button
+                    className={classes.userActions}
                     color="inherit"
                     component={RouterLink}
                     to="/SignIn"
@@ -50,6 +60,7 @@ function Header(props) {
                     Sign In
                     </Button>
                 <Button
+                    className={classes.userActions}
                     color="inherit"
                     component={RouterLink}
                     to="/SignUp"
@@ -57,6 +68,7 @@ function Header(props) {
                     Sign Up
                     </Button>
                 <Button
+                    className={classes.userActions}
                     onClick={handleLogout}
                     color="inherit"
                     component={RouterLink}

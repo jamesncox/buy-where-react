@@ -11,21 +11,35 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     root: {
-        maxWidth: 345,
+        width: "80%",
+        [theme.breakpoints.down('sm')]: {
+            width: "95%",
+        }
     },
     media: {
-        height: 140,
+        height: 350,
+        width: "100",
+        [theme.breakpoints.down('sm')]: {
+            height: 200,
+        }
     },
-});
+    grid: {
+        marginTop: "5rem",
+        marginLeft: "20%",
+        [theme.breakpoints.down('sm')]: {
+            marginLeft: "5%",
+        }
+    },
+}));
 
 function SignInSuccess(props) {
     const classes = useStyles();
 
     if (props.user) {
         return (
-            <Grid className={classes.grid} item xs={3}>
+            <Grid className={classes.grid} item s={3}>
                 <Card className={classes.root}>
                     <CardActionArea>
                         <CardMedia

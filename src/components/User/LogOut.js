@@ -36,7 +36,7 @@ function LogOut(props) {
         return (
             <Grid className={classes.grid} item s={3}>
                 <Card className={classes.root}>
-                    <CardActionArea>
+                    <CardActionArea component={RouterLink} to="/SignIn">
                         <CardMedia
                             classes={wideCardMediaStyles}
                             image="https://images.pexels.com/photos/883466/pexels-photo-883466.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"

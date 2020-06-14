@@ -34,7 +34,7 @@ function SignInSuccess(props) {
         return (
             <Grid className={classes.grid} item s={3}>
                 <Card className={classes.root}>
-                    <CardActionArea>
+                    <CardActionArea component={RouterLink} to="/">
                         <CardMedia
                             classes={wideCardMediaStyles}
                             image="https://images.unsplash.com/photo-1533745848184-3db07256e163?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80"

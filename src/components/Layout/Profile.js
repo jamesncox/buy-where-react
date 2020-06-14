@@ -8,21 +8,15 @@ function Profile(props) {
         props.getStores()
     })
 
-    const mapStores = () => {
-        return console.log(props.stores)
-    }
-
     return (
         <p>
             Hi, {props.user.username}. Create a list.
-            {mapStores()}
         </p>
     )
 }
 
 const mapStateToProps = state => ({
-    user: state.users.user,
-    stores: state.stores.stores
+    user: state.users.user
 })
 
 export default connect(mapStateToProps, { getStores })(Profile)

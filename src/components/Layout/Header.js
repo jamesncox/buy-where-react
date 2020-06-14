@@ -60,10 +60,18 @@ function Header(props) {
                     className={classes.userActions}
                     color="inherit"
                     component={RouterLink}
+                    to="/"
+                >
+                    Profile
+                </Button>
+                <Button
+                    className={classes.userActions}
+                    color="inherit"
+                    component={RouterLink}
                     to="/SignIn"
                 >
                     Sign In
-                    </Button>
+                </Button>
                 <Button
                     className={classes.userActions}
                     color="inherit"
@@ -71,7 +79,7 @@ function Header(props) {
                     to="/SignUp"
                 >
                     Sign Up
-                    </Button>
+                </Button>
                 <Button
                     className={classes.userActions}
                     onClick={handleLogout}

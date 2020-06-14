@@ -1,11 +1,23 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import SignInMessage from './SignInMessage'
+import Profile from './Profile'
 
 function Home(props) {
-    return (
-        <p>
-            This is the home page
-        </p>
-    )
+
+    if (props.loggedIn === false) {
+        return (
+            <SignInMessage />
+        )
+    } else {
+        return (
+            <Profile />
+        )
+    }
 }
 
-export default Home
+const mapStateToProps = state => ({
+    loggedIn: state.users.loggedIn
+})
+
+export default connect(mapStateToProps)(Home)

@@ -12,31 +12,25 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+import { useWideCardMediaStyles } from '@mui-treasury/styles/cardMedia/wide';
+
+
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: "80%",
+        width: "40%",
+        margin: 'auto',
         [theme.breakpoints.down('sm')]: {
             width: "95%",
         }
     },
-    media: {
-        height: 475,
-        width: "100",
-        [theme.breakpoints.down('sm')]: {
-            height: 350,
-        }
-    },
     grid: {
         marginTop: "5rem",
-        marginLeft: "18%",
-        [theme.breakpoints.down('sm')]: {
-            marginLeft: "5%",
-        }
     },
 }));
 
 function LogOut(props) {
     const classes = useStyles();
+    const wideCardMediaStyles = useWideCardMediaStyles();
 
     if (props.user) {
         return (
@@ -44,7 +38,7 @@ function LogOut(props) {
                 <Card className={classes.root}>
                     <CardActionArea>
                         <CardMedia
-                            className={classes.media}
+                            classes={wideCardMediaStyles}
                             image="https://images.pexels.com/photos/883466/pexels-photo-883466.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
                             title="The best is yet to come"
                         />

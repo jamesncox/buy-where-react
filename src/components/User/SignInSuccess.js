@@ -11,31 +11,24 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+import { useWideCardMediaStyles } from '@mui-treasury/styles/cardMedia/wide';
+
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: "80%",
+        width: "40%",
+        margin: 'auto',
         [theme.breakpoints.down('sm')]: {
             width: "95%",
         }
     },
-    media: {
-        height: 350,
-        width: "100",
-        [theme.breakpoints.down('sm')]: {
-            height: 200,
-        }
-    },
     grid: {
         marginTop: "5rem",
-        marginLeft: "20%",
-        [theme.breakpoints.down('sm')]: {
-            marginLeft: "5%",
-        }
     },
 }));
 
 function SignInSuccess(props) {
     const classes = useStyles();
+    const wideCardMediaStyles = useWideCardMediaStyles();
 
     if (props.user) {
         return (
@@ -43,7 +36,7 @@ function SignInSuccess(props) {
                 <Card className={classes.root}>
                     <CardActionArea>
                         <CardMedia
-                            className={classes.media}
+                            classes={wideCardMediaStyles}
                             image="https://images.unsplash.com/photo-1533745848184-3db07256e163?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80"
                             title="Rainbow welcome sign"
                         />

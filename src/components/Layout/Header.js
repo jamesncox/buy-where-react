@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
         flexGrow: 1,
-        marginLeft: "15rem",
+        marginLeft: "20rem",
         [theme.breakpoints.down('sm')]: {
             marginLeft: "0rem",
         }
@@ -54,7 +54,7 @@ function Header(props) {
                     <MenuIcon />
                 </IconButton>
                 <Typography variant="h6" className={classes.title}>
-                    Store Spender
+                    BUY / WHERE
                 </Typography>
                 <Button
                     className={classes.userActions}

@@ -10,6 +10,7 @@ export default (state = { stores: [], loading: true }, action) => {
             return { ...state, stores: [...state.stores], loading: true }
 
         case SET_STORES:
+            console.log(action.payload)
             return { ...state, stores: action.payload, loading: false }
 
         default:

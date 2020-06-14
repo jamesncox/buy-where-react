@@ -3,8 +3,8 @@ import {
     LOADING_STORES
 } from '../actionTypes'
 
-const setStores = payload => {
-    return { type: SET_STORES, stores: payload }
+const setStores = stores => {
+    return { type: SET_STORES, payload: stores }
 }
 
 export const getStores = () => {

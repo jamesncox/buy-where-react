@@ -15,18 +15,23 @@ const TAX_RATE = 0.07;
 const useStyles = makeStyles({
     table: {
         width: "100%",
+        // backgroundColor: "rgba(226, 226, 255, 0.1)"
     },
     container: {
-        width: 500,
+        width: "40em",
         margin: 'auto',
         marginTop: '2em'
     },
     title: {
         fontSize: "1.5rem",
         fontWeight: "bold",
+        color: "white"
     },
     units: {
         fontWeight: "bold"
+    },
+    storeType: {
+        color: "white"
     }
 });
 
@@ -61,10 +66,11 @@ function Stores(props) {
                     <TableContainer className={classes.container} component={Paper}>
                         <Table className={classes.table} aria-label="spanning table">
                             <TableHead>
-                                <TableRow key={store.id}>
-                                    <TableCell className={classes.title} align="center" colSpan={4} key={store.id} style={{ color: `${store.color}` }}>
-                                        {store.name}
+                                <TableRow key={store.id} style={{ backgroundColor: `${store.color}` }}>
+                                    <TableCell className={classes.title} align="center" colSpan={3} key={store.id} >
+                                        {(store.name).toUpperCase()}
                                     </TableCell>
+                                    <TableCell key={store.id} align="right" className={classes.storeType}>{(store.store_type).toUpperCase()}</TableCell>
                                 </TableRow>
                                 <TableRow>
                                     <TableCell className={classes.units}>Item</TableCell>

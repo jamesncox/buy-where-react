@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 import { getStores } from '../../actions/stores'
 
 function Profile(props) {
+    // const dispatch = useDispatch();
 
     useEffect(() => {
         props.getStores()

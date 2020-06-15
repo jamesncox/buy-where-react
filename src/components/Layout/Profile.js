@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import { Typography } from '@material-ui/core';
 import { getStores } from '../../actions/stores'
 import Stores from './Stores'
 
@@ -15,10 +16,11 @@ function Profile(props) {
         )
     } else {
         return (
-            <>
-                <h1>Hi, {props.user.username}!</h1>
+            <Typography>
+                <h1>Hello, {props.user.username}.</h1>
+                <p>View your saved shopping records</p>
                 <Stores />
-            </>
+            </Typography>
         )
     }
 }

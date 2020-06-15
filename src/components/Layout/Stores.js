@@ -127,7 +127,6 @@ function Stores(props) {
     } else {
         return (
             <>
-                <h3 id='title'>Stores and Items</h3>
                 {renderStoreTable(props.user.id)}
             </>
         )

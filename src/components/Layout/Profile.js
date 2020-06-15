@@ -1,10 +1,30 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 import { getStores } from '../../actions/stores'
 import Stores from './Stores'
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+    },
+    paper: {
+        padding: theme.spacing(1),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+    },
+    header: {
+        fontSize: "2em",
+        marginTop: theme.spacing(2)
+    }
+}));
+
 function Profile(props) {
+
+    const classes = useStyles();
 
     useEffect(() => {
         props.getStores()
@@ -16,11 +36,18 @@ function Profile(props) {
         )
     } else {
         return (
-            <Typography>
-                <h1>Hello, {props.user.username}.</h1>
-                <p>View your saved shopping records</p>
-                <Stores />
-            </Typography>
+            <div className={classes.root}>
+                {/* The className array example below is not valid, not sure proper syntax */}
+                <Typography className={[classes.header, classes.paper]}>
+                    Hello, {props.user.username}.
+                </Typography>
+                <Typography className={classes.paper}>
+                    View your saved shopping records
+                </Typography>
+                <Grid item xs={12}>
+                    <Stores />
+                </Grid>
+            </div>
         )
     }
 }

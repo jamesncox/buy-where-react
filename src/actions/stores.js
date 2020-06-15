@@ -22,3 +22,5 @@ export const getStores = () => {
         }
     }
 }
+
+export const createStore = () => { }

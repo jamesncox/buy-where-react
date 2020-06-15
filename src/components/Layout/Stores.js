@@ -12,28 +12,40 @@ import Paper from '@material-ui/core/Paper';
 
 const TAX_RATE = 0.07;
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
+    container: {
+        width: "40%",
+        margin: 'auto',
+        marginTop: '2em',
+        [theme.breakpoints.down('md')]: {
+            width: "60%",
+        },
+        [theme.breakpoints.down('sm')]: {
+            width: "80%",
+        },
+        [theme.breakpoints.down('xs')]: {
+            width: "100%",
+        },
+    },
     table: {
         width: "100%",
-        // backgroundColor: "rgba(226, 226, 255, 0.1)"
-    },
-    container: {
-        width: "40em",
-        margin: 'auto',
-        marginTop: '2em'
     },
     title: {
         fontSize: "1.5rem",
         fontWeight: "bold",
-        color: "white"
+        color: "white",
+        textAlign: "center",
+        [theme.breakpoints.down('xs')]: {
+            textAlign: "left",
+        },
     },
     units: {
-        fontWeight: "bold"
+        fontWeight: "bold",
     },
     storeType: {
         color: "white"
     }
-});
+}));
 
 function ccyFormat(num) {
     return `${num.toFixed(2)}`;
@@ -67,7 +79,7 @@ function Stores(props) {
                         <Table className={classes.table} aria-label="spanning table">
                             <TableHead>
                                 <TableRow key={store.id} style={{ backgroundColor: `${store.color}` }}>
-                                    <TableCell className={classes.title} align="center" colSpan={3} key={store.id} >
+                                    <TableCell className={classes.title} colSpan={3} key={store.id} >
                                         {(store.name).toUpperCase()}
                                     </TableCell>
                                     <TableCell key={store.id} align="right" className={classes.storeType}>{(store.store_type).toUpperCase()}</TableCell>

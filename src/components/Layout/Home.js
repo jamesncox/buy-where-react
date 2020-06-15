@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import SignInMessage from './SignInMessage'
+import SignInMessage from '../User/SignInMessage'
 import Profile from './Profile'
 
 function Home(props) {

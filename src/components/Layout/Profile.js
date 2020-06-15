@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { getStores } from '../../actions/stores'
 import Table from './Table'
+import Stores from './Stores'
 
 function Profile(props) {
 
@@ -17,7 +18,7 @@ function Profile(props) {
         return (
             <>
                 <p>Hi, {props.user.username}. Create a list.</p>
-                <Table />
+                <Stores />
             </>
         )
     }

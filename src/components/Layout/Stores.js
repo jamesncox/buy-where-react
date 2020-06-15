@@ -41,18 +41,14 @@ function createRow(item, qty, cost) {
 }
 
 function subtotal(items) {
-    return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
+    return items.map(item => item.price).reduce((sum, i) => sum + i, 0);
 }
 
-const rows = [
-    createRow('Paperclips (Box)', 100, 1.15),
-    createRow('Paper (Case)', 10, 45.99),
-    createRow('Waste Basket', 2, 17.99),
-];
-
-const invoiceSubtotal = subtotal(rows);
-const invoiceTaxes = TAX_RATE * invoiceSubtotal;
-const invoiceTotal = invoiceTaxes + invoiceSubtotal;
+// const rows = [
+//     createRow('Paperclips (Box)', 100, 1.15),
+//     createRow('Paper (Case)', 10, 45.99),
+//     createRow('Waste Basket', 2, 17.99),
+// ];
 
 function Stores(props) {
     const classes = useStyles();
@@ -61,6 +57,9 @@ function Stores(props) {
         const userStores = props.stores.filter(store => store.user_id === id)
         return (
             userStores.map(store => {
+                const invoiceSubtotal = subtotal(store.items);
+                const invoiceTaxes = TAX_RATE * invoiceSubtotal;
+                const invoiceTotal = invoiceTaxes + invoiceSubtotal;
                 return (
                     store.items.map(item => {
                         return (
@@ -71,7 +70,6 @@ function Stores(props) {
                                             <TableCell className={classes.title} align="center" colSpan={4} key={store.id} style={{ color: `${store.color}` }}>
                                                 {store.name}
                                             </TableCell>
-                                            {/* <TableCell align="right">Price</TableCell> */}
                                         </TableRow>
                                         <TableRow>
                                             <TableCell>Item</TableCell>
@@ -81,14 +79,12 @@ function Stores(props) {
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                        {rows.map((row) => (
-                                            <TableRow key={item.id}>
-                                                <TableCell>{item.name}</TableCell>
-                                                <TableCell align="right">{item.quantity}</TableCell>
-                                                <TableCell align="right">{item.price}</TableCell>
-                                                <TableCell align="right">{ccyFormat(row.price)}</TableCell>
-                                            </TableRow>
-                                        ))}
+                                        <TableRow key={item.id}>
+                                            <TableCell>{item.name}</TableCell>
+                                            <TableCell align="right">{item.quantity}</TableCell>
+                                            <TableCell align="right">{item.price}</TableCell>
+                                            <TableCell align="right">{ccyFormat(item.price)}</TableCell>
+                                        </TableRow>
 
                                         <TableRow>
                                             <TableCell rowSpan={3} />
@@ -124,7 +120,7 @@ function Stores(props) {
     } else if (hasStores.length === 0) {
         return (
             <>
-                <p>You have created a store list yet</p>
+                <p>You have not created a store list yet</p>
             </>
         )
     } else {

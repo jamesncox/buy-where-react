@@ -4,17 +4,32 @@ import { connect } from 'react-redux'
 function Table(props) {
 
     const renderStoreTable = (id) => {
-        // debugger
         const userStores = props.stores.filter(store => store.user_id === id)
         return (
-            <>
-                <p style={{ color: `${userStores[0].color}` }}>{userStores[0].name}</p>
-                <tr key={userStores[0].id}>
-                    <td>{userStores[0].items[0].name}</td>
-                    <td>{userStores[0].items[0].price}</td>
-                </tr>
-            </>
+            userStores.map(store => {
+                return (
+                    store.items.map(item => {
+                        return (
+                            <>
+                                <p style={{ color: `${store.color}` }}>{store.name}</p>
+                                <tr key={store.id}>
+                                    <td>{item.name}</td>
+                                    <td>{item.price}</td>
+                                    <td>{item.quantity}</td>
+                                </tr>
+                            </>
+                        )
+                    })
+                )
+            })
         )
+    }
+
+    const renderTableHeader = () => {
+        let header = Object.keys(props.stores[0].items[0])
+        return header.map((key, index) => {
+            return <th key={index}>{key.toUpperCase()}</th>
+        })
     }
 
     const hasStores = props.stores.filter(store => store.user_id === props.user.id)
@@ -31,7 +46,17 @@ function Table(props) {
             </>
         )
     } else {
-        return renderStoreTable(props.user.id)
+        return (
+            <>
+                <h3 id='title'>Stores and Items</h3>
+                <table id='stores'>
+                    <tbody>
+                        <tr>{renderTableHeader()}</tr>
+                        {renderStoreTable(props.user.id)}
+                    </tbody>
+                </table>
+            </>
+        )
     }
 }
 

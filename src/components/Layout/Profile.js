@@ -6,17 +6,24 @@ function Profile(props) {
 
     useEffect(() => {
         props.getStores()
-    })
+    }, [])
 
-    return (
-        <p>
-            Hi, {props.user.username}. Create a list.
-        </p>
-    )
+    if (props.storesLoading === true) {
+        return (
+            <p>Stores Loading...</p>
+        )
+    } else {
+        return (
+            <p>
+                Hi, {props.user.username}. Create a list.
+            </p>
+        )
+    }
 }
 
 const mapStateToProps = state => ({
-    user: state.users.user
+    user: state.users.user,
+    storesLoading: state.stores.loading
 })
 
 export default connect(mapStateToProps, { getStores })(Profile)

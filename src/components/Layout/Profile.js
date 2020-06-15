@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import { connect, useDispatch } from 'react-redux'
+import { connect } from 'react-redux'
 import { getStores } from '../../actions/stores'
+import Table from './Table'
 
 function Profile(props) {
-    // const dispatch = useDispatch();
 
     useEffect(() => {
         props.getStores()
@@ -15,9 +15,10 @@ function Profile(props) {
         )
     } else {
         return (
-            <p>
-                Hi, {props.user.username}. Create a list.
-            </p>
+            <>
+                <p>Hi, {props.user.username}. Create a list.</p>
+                <Table />
+            </>
         )
     }
 }

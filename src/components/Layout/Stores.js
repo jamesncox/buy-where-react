@@ -51,17 +51,17 @@ function ccyFormat(num) {
     return `${num.toFixed(2)}`;
 }
 
-function priceRow(qty, cost) {
-    return qty * cost;
-}
+// function priceRow(qty, cost) {
+//     return qty * cost;
+// }
 
-function createRow(item, qty, cost) {
-    const sum = priceRow(qty, cost);
-    return { item, qty, cost, sum };
-}
+// function createRow(item, qty, cost) {
+//     const sum = priceRow(qty, cost);
+//     return { item, qty, cost, sum };
+// }
 
 function subtotal(items) {
-    return items.map(item => item.price).reduce((sum, i) => sum + i, 0);
+    return items.map(item => item.price * item.quantity).reduce((sum, i) => sum + i, 0);
 }
 
 function Stores(props) {
@@ -97,7 +97,8 @@ function Stores(props) {
                                         <TableCell>{item.name}</TableCell>
                                         <TableCell align="right">{item.quantity}</TableCell>
                                         <TableCell align="right">{item.price}</TableCell>
-                                        <TableCell align="right">{ccyFormat(item.price)}</TableCell>
+                                        {/* need to somehow put the sum below of price * quantity */}
+                                        <TableCell align="right">{ccyFormat(item.price * item.quantity)}</TableCell>
                                     </TableRow>
                                 ))}
 

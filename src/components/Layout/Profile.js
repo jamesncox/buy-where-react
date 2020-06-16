@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import { getStores } from '../../actions/stores'
+import Stores from '../Store/Stores'
+import Copyright from '../Layout/Copyright'
+
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import { getStores } from '../../actions/stores'
-import Stores from '../Store/Stores'
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -46,6 +49,9 @@ function Profile(props) {
                 <Grid item xs={12}>
                     <Stores />
                 </Grid>
+                <Box mt={5}>
+                    <Copyright />
+                </Box>
             </div>
         )
     }

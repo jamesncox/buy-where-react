@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link as RouterLink } from 'react-router-dom';
+import Copyright from '../Layout/Copyright'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -11,6 +12,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 
 import { useWideCardMediaStyles } from '@mui-treasury/styles/cardMedia/wide';
 
@@ -68,6 +70,9 @@ function LogOut(props) {
                         </Button>
                     </CardActions>
                 </Card>
+                <Box mt={5}>
+                    <Copyright />
+                </Box>
             </Grid>
         );
     }

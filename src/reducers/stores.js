@@ -8,7 +8,6 @@ import {
 export default (state = {
     stores: [],
     loading: true,
-    newStore: {},
     errors: null
 }, action) => {
     switch (action.type) {
@@ -20,7 +19,7 @@ export default (state = {
             return { ...state, stores: action.payload, loading: false }
 
         case ADD_STORE:
-            return { ...state, newStore: action.payload }
+            return { ...state, stores: [...state.stores, action.payload] }
 
         case STORE_ERRORS:
             return { ...state, errors: action.payload }

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { getStores } from '../../actions/stores'
 import Stores from '../Store/Stores'
+import InputStore from '../Store/InputStore'
 import Copyright from '../Layout/Copyright'
 
 import { Typography } from '@material-ui/core';
@@ -47,6 +48,7 @@ function Profile(props) {
                     View your saved shopping records
                 </Typography>
                 <Grid item xs={12}>
+                    <InputStore />
                     <Stores />
                 </Grid>
                 <Box mt={5}>

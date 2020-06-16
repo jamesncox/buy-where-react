@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
     },
     units: {
         fontWeight: "bold",
+        color: "rgba(0, 0, 0, 0.65)"
     },
     storeType: {
         color: "white"
@@ -51,14 +52,10 @@ function ccyFormat(num) {
     return `${num.toFixed(2)}`;
 }
 
-// function priceRow(qty, cost) {
-//     return qty * cost;
-// }
-
-// function createRow(item, qty, cost) {
-//     const sum = priceRow(qty, cost);
-//     return { item, qty, cost, sum };
-// }
+function itemFormat(word) {
+    let lowerCased = word.toLowerCase()
+    return lowerCased.toLowerCase()[0].toUpperCase() + lowerCased.slice(1)
+}
 
 function subtotal(items) {
     return items.map(item => item.price * item.quantity).reduce((sum, i) => sum + i, 0);
@@ -94,27 +91,27 @@ function Stores(props) {
                             <TableBody>
                                 {store.items.map((item) => (
                                     <TableRow key={item.id}>
-                                        <TableCell>{item.name}</TableCell>
+                                        <TableCell>{itemFormat(item.name)}</TableCell>
                                         <TableCell align="right">{item.quantity}</TableCell>
-                                        <TableCell align="right">{item.price}</TableCell>
+                                        <TableCell align="right">${item.price}</TableCell>
                                         {/* need to somehow put the sum below of price * quantity */}
-                                        <TableCell align="right">{ccyFormat(item.price * item.quantity)}</TableCell>
+                                        <TableCell align="right">${ccyFormat(item.price * item.quantity)}</TableCell>
                                     </TableRow>
                                 ))}
 
                                 <TableRow>
                                     <TableCell rowSpan={3} />
-                                    <TableCell colSpan={2}>Subtotal</TableCell>
-                                    <TableCell align="right">{ccyFormat(invoiceSubtotal)}</TableCell>
+                                    <TableCell className={classes.units} colSpan={2}>Subtotal</TableCell>
+                                    <TableCell align="right">${ccyFormat(invoiceSubtotal)}</TableCell>
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell>Tax</TableCell>
+                                    <TableCell className={classes.units}>Tax</TableCell>
                                     <TableCell align="right">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
-                                    <TableCell align="right">{ccyFormat(invoiceTaxes)}</TableCell>
+                                    <TableCell align="right">${ccyFormat(invoiceTaxes)}</TableCell>
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell colSpan={2}>Total</TableCell>
-                                    <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
+                                    <TableCell className={classes.units} colSpan={2}>Total</TableCell>
+                                    <TableCell align="right">${ccyFormat(invoiceTotal)}</TableCell>
                                 </TableRow>
                             </TableBody>
                         </Table>

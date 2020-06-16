@@ -15,6 +15,9 @@ const useStyles = makeStyles((theme) => ({
     form: {
         width: '25%',
         marginTop: theme.spacing(1)
+    },
+    colorPicker: {
+        marginTop: theme.spacing(1)
     }
 }))
 
@@ -41,7 +44,6 @@ function InputStore(props) {
     const [color, setColor] = useState("")
 
     const handleName = (e) => {
-        console.log(e.target.value)
         setName(e.target.value)
     }
 
@@ -104,6 +106,7 @@ function InputStore(props) {
                     autoFocus
                 />
                 <ColorPicker
+                    className={classes.colorPicker}
                     defaultValue="Select store header color"
                     // label="Choose color for header"
                     id="color"

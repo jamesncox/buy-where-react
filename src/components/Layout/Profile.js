@@ -21,7 +21,10 @@ const useStyles = makeStyles((theme) => ({
     },
     header: {
         fontSize: "2em",
-        marginTop: theme.spacing(2)
+        marginTop: theme.spacing(2),
+        padding: theme.spacing(1),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
     }
 }));
 
@@ -41,7 +44,7 @@ function Profile(props) {
         return (
             <div className={classes.root}>
                 {/* The className array example below is not valid, not sure proper syntax */}
-                <Typography className={[classes.header, classes.paper]}>
+                <Typography className={classes.header}>
                     Hello, {props.user.username}.
                 </Typography>
                 <Typography className={classes.paper}>

@@ -23,6 +23,9 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         marginTop: theme.spacing(1)
     },
+    submit: {
+        margin: theme.spacing(5, 0, 2),
+    },
 }))
 
 const palette = {
@@ -59,7 +62,6 @@ function InputStore(props) {
     }
 
     const handleColor = (color) => {
-        console.log(color)
         setColor(color)
     }
 
@@ -82,9 +84,9 @@ function InputStore(props) {
     return (
         <Grid container component="main" className={classes.root}>
             <Grid className={classes.root}>
-                <Typography className={classes.paper}>
+                {/* <Typography className={classes.paper}>
                     Create Store
-                </Typography>
+                </Typography> */}
                 <form
                     className={classes.form}
                     noValidate

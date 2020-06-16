@@ -75,14 +75,14 @@ function Stores(props) {
                 const invoiceTaxes = TAX_RATE * invoiceSubtotal;
                 const invoiceTotal = invoiceTaxes + invoiceSubtotal;
                 return (
-                    <TableContainer className={classes.container} component={Paper}>
+                    <TableContainer key={store.id} className={classes.container} component={Paper}>
                         <Table className={classes.table} aria-label="spanning table">
                             <TableHead>
-                                <TableRow key={store.id} style={{ backgroundColor: `${store.color}` }}>
-                                    <TableCell className={classes.title} colSpan={3} key={store.id} >
+                                <TableRow style={{ backgroundColor: `${store.color}` }}>
+                                    <TableCell className={classes.title} colSpan={3}>
                                         {(store.name).toUpperCase()}
                                     </TableCell>
-                                    <TableCell key={store.id} align="right" className={classes.storeType}>{(store.store_type).toUpperCase()}</TableCell>
+                                    <TableCell align="right" className={classes.storeType}>{(store.store_type).toUpperCase()}</TableCell>
                                 </TableRow>
                                 <TableRow>
                                     <TableCell className={classes.units}>Item</TableCell>

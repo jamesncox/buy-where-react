@@ -140,10 +140,9 @@ function SignIn(props) {
                                 fullWidth
                                 variant="contained"
                                 color="primary"
-                                className={classes.submit}
                             >
                                 Sign In
-                        </Button>
+                            </Button>
                             <Grid container>
                                 <Grid item xs>
                                     <Link component={RouterLink} to="/Signup">

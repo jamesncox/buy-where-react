@@ -4,36 +4,43 @@ import { createStore } from '../../actions/stores'
 
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button';
+import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
-import { ColorPicker } from 'material-ui-color';
-// import { ColorPalette } from 'material-ui-color';
+// import { ColorPicker } from 'material-ui-color';
+import { ColorPalette } from 'material-ui-color';
 
 const useStyles = makeStyles((theme) => ({
     root: {
         margin: 'auto',
     },
+    paper: {
+        padding: theme.spacing(1),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+    },
     form: {
-        width: '25%',
+        width: '100%',
         marginTop: theme.spacing(1)
     },
-    colorPicker: {
-        marginTop: theme.spacing(1)
-    }
 }))
 
-// const palette = {
-//     red: '#EF0D02',
-//     dodgerBlue: '#1E90FF',
-//     green: '#00ff00',
-//     cyan: 'cyan',
-//     lime: 'lime',
-//     gray: 'gray',
-//     orange: 'orange',
-//     purple: 'purple',
-//     black: 'black',
-//     pink: 'pink',
-//     darkblue: 'darkblue',
-// };
+const palette = {
+    crimson: 'crimson',
+    maroon: 'maroon',
+    orange: 'orange',
+    darkGoldenRod: 'DarkGoldenRod',
+    green: 'green',
+    forestGreen: 'forestgreen',
+    cyan: 'cyan',
+    dodgerBlue: 'dodgerblue',
+    darkBlue: 'darkblue',
+    indigo: 'indigo',
+    purple: 'purple',
+    deepPink: 'deepPink',
+    gray: 'gray',
+    black: 'black',
+}
 
 function InputStore(props) {
 
@@ -51,9 +58,9 @@ function InputStore(props) {
         setStoreType(e.target.value)
     }
 
-    const handleColor = (e) => {
-        console.log(e.target.value)
-        setColor(e.target.value)
+    const handleColor = (color) => {
+        console.log(color)
+        setColor(color)
     }
 
     const handleSubmit = (e) => {
@@ -73,50 +80,66 @@ function InputStore(props) {
     }
 
     return (
-        <Grid className={classes.root}>
-            <form
-                className={classes.form}
-                noValidate
-                onSubmit={e => handleSubmit(e)}
-            >
-                <TextField
-                    variant="outlined"
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="name"
-                    label="Store Name"
-                    name="name"
-                    autoComplete="name"
-                    onChange={handleName}
-                    value={name}
-                    autoFocus
-                />
-                <TextField
-                    variant="outlined"
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="storeType"
-                    label="Store Type (e.g. grocery)"
-                    name="storeType"
-                    autoComplete="storeType"
-                    onChange={handleStoreType}
-                    value={storeType}
-                    autoFocus
-                />
-                <ColorPicker
-                    className={classes.colorPicker}
-                    defaultValue="Select store header color"
-                    // label="Choose color for header"
-                    id="color"
-                    name="color"
-                    onChange={handleColor}
-                    value={color}
-                    autoFocus
-                />
-                {/* <ColorPalette palette={palette} /> */}
-            </form>
+        <Grid container component="main" className={classes.root}>
+            <Grid className={classes.root}>
+                <Typography className={classes.paper}>
+                    Create Store
+                </Typography>
+                <form
+                    className={classes.form}
+                    noValidate
+                    onSubmit={e => handleSubmit(e)}
+                >
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="name"
+                        label="Store Name"
+                        name="name"
+                        autoComplete="name"
+                        onChange={handleName}
+                        value={name}
+                        autoFocus
+                    />
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="storeType"
+                        label="Store Type (e.g. grocery)"
+                        name="storeType"
+                        autoComplete="storeType"
+                        onChange={handleStoreType}
+                        value={storeType}
+                        autoFocus
+                    />
+                    {/* <ColorPicker
+                        defaultValue="Select store header color"
+                        onClick={e => handleColor(e)}
+                        autoFocus
+                    /> */}
+                    <Typography className={classes.paper}>
+                        Select color for store header
+                    </Typography>
+                    <ColorPalette
+                        palette={palette}
+                        onSelect={e => handleColor(e)}
+                        size={36}
+                    />
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        className={classes.submit}
+                    >
+                        Create Store
+                    </Button>
+                </form>
+            </Grid>
         </Grid>
     )
 

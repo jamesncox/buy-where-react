@@ -5,6 +5,8 @@ import { createStore } from '../../actions/stores'
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
 import { makeStyles } from '@material-ui/core/styles'
+import { ColorPicker } from 'material-ui-color';
+// import { ColorPalette } from 'material-ui-color';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -16,6 +18,20 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
+// const palette = {
+//     red: '#EF0D02',
+//     dodgerBlue: '#1E90FF',
+//     green: '#00ff00',
+//     cyan: 'cyan',
+//     lime: 'lime',
+//     gray: 'gray',
+//     orange: 'orange',
+//     purple: 'purple',
+//     black: 'black',
+//     pink: 'pink',
+//     darkblue: 'darkblue',
+// };
+
 function InputStore(props) {
 
     const classes = useStyles()
@@ -25,6 +41,7 @@ function InputStore(props) {
     const [color, setColor] = useState("")
 
     const handleName = (e) => {
+        console.log(e.target.value)
         setName(e.target.value)
     }
 
@@ -33,6 +50,7 @@ function InputStore(props) {
     }
 
     const handleColor = (e) => {
+        console.log(e.target.value)
         setColor(e.target.value)
     }
 
@@ -85,6 +103,16 @@ function InputStore(props) {
                     value={storeType}
                     autoFocus
                 />
+                <ColorPicker
+                    defaultValue="Select store header color"
+                    // label="Choose color for header"
+                    id="color"
+                    name="color"
+                    onChange={handleColor}
+                    value={color}
+                    autoFocus
+                />
+                {/* <ColorPalette palette={palette} /> */}
             </form>
         </Grid>
     )

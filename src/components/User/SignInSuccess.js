@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import Copyright from '../Layout/Copyright'
 
 import { makeStyles } from '@material-ui/core/styles';
 import { Link as RouterLink } from 'react-router-dom';
@@ -12,6 +13,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { useWideCardMediaStyles } from '@mui-treasury/styles/cardMedia/wide';
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -62,6 +64,9 @@ function SignInSuccess(props) {
                         </Button>
                     </CardActions>
                 </Card>
+                <Box mt={5}>
+                    <Copyright />
+                </Box>
             </Grid>
         );
     }

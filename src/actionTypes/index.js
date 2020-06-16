@@ -1,19 +1,27 @@
+// User
 const SET_TOKEN = 'SET_TOKEN'
 const SET_USER = 'SET_USER'
 const CLEAR_USER = 'CLEAR_USER'
 const USER_ERRORS = 'USER_ERRORS'
 const CLEAR_ERRORS = 'CLEAR_ERRORS'
 
+// Store
 const SET_STORES = 'SET_STORES'
 const LOADING_STORES = 'LOADING_STORES'
+const ADD_STORE = 'ADD_STORE'
+const STORE_ERRORS = 'STORE_ERRORS'
 
 export {
+    // User
     SET_TOKEN,
     SET_USER,
     CLEAR_USER,
     USER_ERRORS,
     CLEAR_ERRORS,
 
+    // Store
     SET_STORES,
-    LOADING_STORES
+    LOADING_STORES,
+    ADD_STORE,
+    STORE_ERRORS
 }

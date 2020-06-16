@@ -1,6 +1,8 @@
 import {
     SET_STORES,
-    LOADING_STORES
+    LOADING_STORES,
+    STORE_ERRORS,
+    ADD_STORE
 } from '../actionTypes'
 
 const setStores = stores => {
@@ -23,4 +25,32 @@ export const getStores = () => {
     }
 }
 
-export const createStore = () => { }
+export const createStore = (store) => {
+    return async (dispatch) => {
+
+        const formData = {
+            name: store.name,
+            store_type: store.store_type,
+            color: store.color,
+            user_id: store.userId
+        }
+
+        const res = await fetch("http://localhost:3000/api/v1/stores", {
+            method: "POST",
+            header: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(formData),
+            credentials: 'include'
+        })
+
+        const storeObj = await res.json()
+
+        if (storeObj.errors) {
+            dispatch({ type: STORE_ERRORS, payload: storeObj.errors })
+        } else {
+            dispatch({ type: ADD_STORE, payload: storeObj })
+        }
+    }
+}

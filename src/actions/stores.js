@@ -38,7 +38,7 @@ export const createStore = (store) => {
 
         const res = await fetch("http://localhost:3000/api/v1/stores", {
             method: "POST",
-            header: {
+            headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },

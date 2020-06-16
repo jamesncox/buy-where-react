@@ -30,7 +30,7 @@ export const createStore = (store) => {
 
         const formData = {
             name: store.name,
-            store_type: store.store_type,
+            store_type: store.storeType,
             color: store.color,
             user_id: store.userId
         }

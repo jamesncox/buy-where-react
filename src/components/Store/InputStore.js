@@ -2,7 +2,23 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { createStore } from '../../actions/stores'
 
+import Grid from '@material-ui/core/Grid'
+import TextField from '@material-ui/core/TextField'
+import { makeStyles } from '@material-ui/core/styles'
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        margin: 'auto',
+    },
+    form: {
+        width: '25%',
+        marginTop: theme.spacing(1)
+    }
+}))
+
 function InputStore(props) {
+
+    const classes = useStyles()
 
     const [name, setName] = useState("")
     const [storeType, setStoreType] = useState("")
@@ -37,7 +53,40 @@ function InputStore(props) {
     }
 
     return (
-        <div>Input store form</div>
+        <Grid className={classes.root}>
+            <form
+                className={classes.form}
+                noValidate
+                onSubmit={e => handleSubmit(e)}
+            >
+                <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="name"
+                    label="Store Name"
+                    name="name"
+                    autoComplete="name"
+                    onChange={handleName}
+                    value={name}
+                    autoFocus
+                />
+                <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="storeType"
+                    label="Store Type (e.g. grocery)"
+                    name="storeType"
+                    autoComplete="storeType"
+                    onChange={handleStoreType}
+                    value={storeType}
+                    autoFocus
+                />
+            </form>
+        </Grid>
     )
 
 }

@@ -9,6 +9,7 @@ import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -51,6 +52,7 @@ function Profile(props) {
                     View your saved shopping records
                 </Typography>
                 <Grid item xs={12}>
+                    <Button variant="contained">New Store</Button>
                     <InputStore />
                     <Stores />
                 </Grid>

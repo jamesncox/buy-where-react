@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
 import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -9,6 +10,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import AddBoxIcon from '@material-ui/icons/AddBox';
 
 const TAX_RATE = 0.07;
 
@@ -45,6 +47,10 @@ const useStyles = makeStyles((theme) => ({
     },
     storeType: {
         color: "white"
+    },
+    addIcon: {
+        color: "rgba(70, 70, 70, 0.4)",
+        float: "left",
     }
 }));
 
@@ -63,6 +69,8 @@ function subtotal(items) {
 
 function Stores(props) {
     const classes = useStyles();
+
+    const [showNewItem, setShowNewItem] = useState(false)
 
     const renderStoreTable = (id) => {
         const userStores = props.stores.filter(store => store.user_id === id)
@@ -97,7 +105,7 @@ function Stores(props) {
                                         <TableCell align="right">${ccyFormat(item.price * item.quantity)}</TableCell>
                                     </TableRow>
                                 ))}
-
+                                <AddBoxIcon className={classes.addIcon} fontSize="large" />
                                 <TableRow>
                                     <TableCell rowSpan={3} />
                                     <TableCell className={classes.units} colSpan={2}>Subtotal</TableCell>

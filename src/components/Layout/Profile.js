@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { getStores } from '../../actions/stores'
 import Stores from '../Store/Stores'
@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(1),
         textAlign: 'center',
         color: theme.palette.text.secondary,
+        marginBottom: "-1em"
     },
     header: {
         fontSize: "2em",
@@ -28,13 +29,22 @@ const useStyles = makeStyles((theme) => ({
         color: theme.palette.text.secondary,
     },
     button: {
-        marginTop: theme.spacing(2)
+        marginTop: theme.spacing(2),
+        marginBottom: theme.spacing(2)
     }
 }));
 
 function Profile(props) {
-
     const classes = useStyles();
+    const [showNewStore, setShowNewStore] = useState(false)
+
+    const handleShow = () => {
+        if (!showNewStore) {
+            setShowNewStore(true)
+        } else {
+            setShowNewStore(false)
+        }
+    }
 
     useEffect(() => {
         props.getStores()
@@ -51,12 +61,12 @@ function Profile(props) {
                 <Typography className={classes.header}>
                     Hello, {props.user.username}.
                 </Typography>
-                <Typography className={classes.paper}>
-                    View your saved shopping records
-                </Typography>
                 <Grid item xs={12}>
-                    <Button className={classes.button} variant="contained">New Store</Button>
-                    <InputStore />
+                    <Button className={classes.button} variant="contained" onClick={handleShow}>New Store</Button>
+                    {showNewStore ? <InputStore /> : null}
+                    <Typography className={classes.paper}>
+                        Your saved shopping records
+                    </Typography>
                     <Stores />
                 </Grid>
                 <Box mt={5}>

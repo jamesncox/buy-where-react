@@ -46,14 +46,13 @@ function NewItem(props) {
     }
 
     const handleSubmit = (e) => {
-        debugger
         e.preventDefault()
 
         const item = {
             name: name,
-            price: price,
-            quantity: quantity,
-            // storeId: props.storeId
+            price: parseInt(price),
+            quantity: parseInt(quantity),
+            storeId: props.storeId
         }
 
         props.createItem(item)
@@ -93,6 +92,7 @@ function NewItem(props) {
                         margin="normal"
                         required
                         fullWidth
+                        type="number"
                         id="quantity"
                         label="Item quantity"
                         name="quantity"
@@ -108,6 +108,7 @@ function NewItem(props) {
                         margin="normal"
                         required
                         fullWidth
+                        type="number"
                         id="price"
                         label="Item Price"
                         name="price"

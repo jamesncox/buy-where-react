@@ -1,6 +1,7 @@
 import {
     ITEM_ERRORS,
-    ADD_ITEM
+    ADD_ITEM,
+    ADD_STORE
 } from '../actionTypes'
 
 export const createItem = (item) => {
@@ -27,12 +28,12 @@ export const createItem = (item) => {
         })
 
         const itemObj = await res.json()
-        // console.log(storeObj)
 
         if (itemObj.errors) {
             dispatch({ type: ITEM_ERRORS, payload: itemObj.errors })
         } else {
             dispatch({ type: ADD_ITEM, payload: itemObj })
+            // dispatch({ type: ADD_STORE })
         }
     }
 }

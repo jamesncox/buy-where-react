@@ -47,7 +47,6 @@ export const createStore = (store) => {
         })
 
         const storeObj = await res.json()
-        // console.log(storeObj)
 
         if (storeObj.errors) {
             dispatch({ type: STORE_ERRORS, payload: storeObj.errors })

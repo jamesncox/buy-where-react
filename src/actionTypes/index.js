@@ -11,6 +11,10 @@ const LOADING_STORES = 'LOADING_STORES'
 const ADD_STORE = 'ADD_STORE'
 const STORE_ERRORS = 'STORE_ERRORS'
 
+// Item
+const ADD_ITEM = 'ADD_ITEM'
+const ITEM_ERRORS = 'ITEM_ERRORS'
+
 export {
     // User
     SET_TOKEN,
@@ -23,5 +27,9 @@ export {
     SET_STORES,
     LOADING_STORES,
     ADD_STORE,
-    STORE_ERRORS
+    STORE_ERRORS,
+
+    // Item
+    ADD_ITEM,
+    ITEM_ERRORS
 }

@@ -47,7 +47,7 @@ function Profile(props) {
     }
 
     useEffect(() => {
-        props.getStores()
+        props.getStores(props.user.id)
     }, [])
 
     if (props.storesLoading === true) {

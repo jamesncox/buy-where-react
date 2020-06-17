@@ -74,7 +74,6 @@ function Stores(props) {
     const [showNewItem, setShowNewItem] = useState(false)
 
     const handleShow = (id) => {
-        console.log(id)
         if (!showNewItem) {
             setShowNewItem(showNewItem === id ? true : id)
         } else {

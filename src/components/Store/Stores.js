@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
+import NewItem from '../Item/NewItem'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -90,6 +91,7 @@ function Stores(props) {
                 const invoiceTotal = invoiceTaxes + invoiceSubtotal;
                 return (
                     <TableContainer key={store.id} className={classes.container} component={Paper}>
+                        {showNewItem ? <NewItem /> : null}
                         <Table className={classes.table} aria-label="spanning table">
                             <TableHead>
                                 <TableRow style={{ backgroundColor: `${store.color}` }}>

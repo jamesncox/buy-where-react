@@ -34,10 +34,10 @@ const useStyles = makeStyles((theme) => ({
         fontSize: "1.5rem",
         fontWeight: "bold",
         color: "white",
-        textAlign: "center",
-        [theme.breakpoints.down('xs')]: {
-            textAlign: "left",
-        },
+        textAlign: "left",
+        // [theme.breakpoints.down('xs')]: {
+        //     textAlign: "left",
+        // },
     },
     units: {
         fontWeight: "bold",
@@ -94,7 +94,6 @@ function Stores(props) {
                                         <TableCell>{itemFormat(item.name)}</TableCell>
                                         <TableCell align="right">{item.quantity}</TableCell>
                                         <TableCell align="right">${item.price}</TableCell>
-                                        {/* need to somehow put the sum below of price * quantity */}
                                         <TableCell align="right">${ccyFormat(item.price * item.quantity)}</TableCell>
                                     </TableRow>
                                 ))}

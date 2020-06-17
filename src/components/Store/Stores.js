@@ -73,12 +73,12 @@ function Stores(props) {
 
     const [showNewItem, setShowNewItem] = useState(false)
 
-    const handleShow = () => {
-        console.log("inside handleShow")
+    const handleShow = (id) => {
+        console.log(id)
         if (!showNewItem) {
-            setShowNewItem(true)
+            setShowNewItem(showNewItem === id ? true : id)
         } else {
-            setShowNewItem(false)
+            setShowNewItem(showNewItem === id ? false : id)
         }
     }
 
@@ -91,12 +91,12 @@ function Stores(props) {
                 const invoiceTotal = invoiceTaxes + invoiceSubtotal;
                 return (
                     <TableContainer key={store.id} className={classes.container} component={Paper}>
-                        {showNewItem ? <NewItem /> : null}
+                        {showNewItem === store.id ? <NewItem /> : null}
                         <Table className={classes.table} aria-label="spanning table">
                             <TableHead>
                                 <TableRow style={{ backgroundColor: `${store.color}` }}>
                                     <TableCell>
-                                        <AddBoxIcon className={classes.addIcon} fontSize="large" onClick={handleShow} />
+                                        <AddBoxIcon className={classes.addIcon} fontSize="large" onClick={() => handleShow(store.id)} />
                                     </TableCell>
                                     <TableCell className={classes.title} colSpan={2}>
                                         {(store.name).toUpperCase()}

@@ -10,9 +10,11 @@ export const createItem = (item) => {
         const formData = {
             name: item.name,
             price: item.price,
-            color: item.quantity,
+            quantity: item.quantity,
             store_id: item.storeId
         }
+
+        console.log(formData)
 
         const res = await fetch("http://localhost:3000/api/v1/items", {
             method: "POST",

@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
         color: "white"
     },
     addIcon: {
-        color: "rgba(70, 70, 70, 0.4)",
+        color: "rgba(255, 255, 255, 0.5)",
         float: "left",
     }
 }));
@@ -72,6 +72,15 @@ function Stores(props) {
 
     const [showNewItem, setShowNewItem] = useState(false)
 
+    const handleShow = () => {
+        console.log("inside handleShow")
+        if (!showNewItem) {
+            setShowNewItem(true)
+        } else {
+            setShowNewItem(false)
+        }
+    }
+
     const renderStoreTable = (id) => {
         const userStores = props.stores.filter(store => store.user_id === id)
         return (
@@ -84,7 +93,10 @@ function Stores(props) {
                         <Table className={classes.table} aria-label="spanning table">
                             <TableHead>
                                 <TableRow style={{ backgroundColor: `${store.color}` }}>
-                                    <TableCell className={classes.title} colSpan={3}>
+                                    <TableCell>
+                                        <AddBoxIcon className={classes.addIcon} fontSize="large" onClick={handleShow} />
+                                    </TableCell>
+                                    <TableCell className={classes.title} colSpan={2}>
                                         {(store.name).toUpperCase()}
                                     </TableCell>
                                     <TableCell align="right" className={classes.storeType}>{(store.store_type).toUpperCase()}</TableCell>
@@ -105,7 +117,6 @@ function Stores(props) {
                                         <TableCell align="right">${ccyFormat(item.price * item.quantity)}</TableCell>
                                     </TableRow>
                                 ))}
-                                <AddBoxIcon className={classes.addIcon} fontSize="large" />
                                 <TableRow>
                                     <TableCell rowSpan={3} />
                                     <TableCell className={classes.units} colSpan={2}>Subtotal</TableCell>

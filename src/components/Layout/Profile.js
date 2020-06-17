@@ -26,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(1),
         textAlign: 'center',
         color: theme.palette.text.secondary,
+    },
+    button: {
+        marginTop: theme.spacing(2)
     }
 }));
 
@@ -52,7 +55,7 @@ function Profile(props) {
                     View your saved shopping records
                 </Typography>
                 <Grid item xs={12}>
-                    <Button variant="contained">New Store</Button>
+                    <Button className={classes.button} variant="contained">New Store</Button>
                     <InputStore />
                     <Stores />
                 </Grid>

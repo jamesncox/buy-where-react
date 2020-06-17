@@ -17,7 +17,7 @@ const TAX_RATE = 0.07;
 
 const useStyles = makeStyles((theme) => ({
     container: {
-        width: "40%",
+        width: "50%",
         margin: 'auto',
         marginTop: '2em',
         [theme.breakpoints.down('md')]: {

@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { createItem } from '../../actions/items'
+import { getStores } from '../../actions/stores'
 
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
@@ -33,6 +34,10 @@ function NewItem(props) {
     const [price, setPrice] = useState("")
     const [quantity, setQuantity] = useState("")
 
+    // useEffect(() => {
+    //     props.getStores()
+    // })
+
     const handleName = (e) => {
         setName(e.target.value)
     }
@@ -50,7 +55,7 @@ function NewItem(props) {
 
         const item = {
             name: name,
-            price: parseInt(price),
+            price: parseFloat(price).toFixed(2),
             quantity: parseInt(quantity),
             storeId: props.storeId
         }
@@ -136,4 +141,4 @@ const mapStateToProps = state => ({
     storeId: state.stores.storeId
 })
 
-export default connect(mapStateToProps, { createItem })(NewItem)
+export default connect(mapStateToProps, { createItem, getStores })(NewItem)

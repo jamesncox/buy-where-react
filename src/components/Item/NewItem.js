@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     },
     paper: {
         padding: theme.spacing(1),
-        textAlign: 'center',
+        margin: 'auto',
         color: theme.palette.text.secondary,
     },
     form: {
@@ -30,8 +30,8 @@ function NewItem(props) {
     const classes = useStyles()
 
     const [name, setName] = useState("")
-    const [price, setPrice] = useState(null)
-    const [quantity, setQuantity] = useState(null)
+    const [price, setPrice] = useState("")
+    const [quantity, setQuantity] = useState("")
 
     const handleName = (e) => {
         setName(e.target.value)
@@ -57,14 +57,14 @@ function NewItem(props) {
 
         props.createItem(item)
         setName("")
-        setPrice(null)
-        setQuantity(null)
+        setPrice("")
+        setQuantity("")
     }
 
     return (
-        <Grid className={classes.root}>
+        <Grid container className={classes.root}>
             <Typography className={classes.paper}>
-                Create Item
+                New Item
             </Typography>
             <form
                 className={classes.form}
@@ -86,7 +86,7 @@ function NewItem(props) {
                         autoFocus
                     />
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12}>
                     <TextField
                         variant="outlined"
                         margin="normal"
@@ -101,7 +101,7 @@ function NewItem(props) {
                         autoFocus
                     />
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12}>
                     <TextField
                         variant="outlined"
                         margin="normal"

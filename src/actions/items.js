@@ -29,6 +29,7 @@ export const createItem = (item) => {
         const itemObj = await res.json()
 
         if (itemObj.errors) {
+            alert(itemObj.errors)
             dispatch({ type: ITEM_ERRORS, payload: itemObj.errors })
         } else {
             dispatch({ type: ADD_ITEM, payload: itemObj })

@@ -53,6 +53,7 @@ export const createStore = (store) => {
         const storeObj = await res.json()
 
         if (storeObj.errors) {
+            alert(storeObj.errors)
             dispatch({ type: STORE_ERRORS, payload: storeObj.errors })
         } else {
             dispatch({ type: ADD_STORE, payload: storeObj })

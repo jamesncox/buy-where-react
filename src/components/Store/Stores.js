@@ -13,7 +13,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 
-const TAX_RATE = 0.07;
+const TAX_RATE = 0.085;
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -30,6 +30,13 @@ const useStyles = makeStyles((theme) => ({
             width: "100%",
         },
     },
+    paper: {
+        padding: theme.spacing(5),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+        fontSize: "2em",
+        fontFamily: 'Raleway, Arial',
+    },
     table: {
         width: "100%",
     },
@@ -38,9 +45,6 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: "bold",
         color: "white",
         textAlign: "left",
-        // [theme.breakpoints.down('xs')]: {
-        //     textAlign: "left",
-        // },
     },
     units: {
         fontWeight: "bold",
@@ -50,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
         color: "white"
     },
     addIcon: {
-        color: "rgba(255, 255, 255, 0.5)",
+        color: "rgba(255, 255, 255, 0.9)",
         float: "left",
         cursor: "pointer",
     }
@@ -153,7 +157,7 @@ function Stores(props) {
     } else if (hasStores.length === 0) {
         return (
             <>
-                <p>You have not created a store list yet</p>
+                <p className={classes.paper}>YOU HAVE NOT CREATED A STORE YET</p>
             </>
         )
     } else {

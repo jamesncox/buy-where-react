@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { getStores } from '../../actions/stores'
 import Stores from '../Store/Stores'
-import InputStore from '../Store/InputStore'
+import NewStore from '../Store/NewStore'
 import Copyright from '../Layout/Copyright'
 
 import { Typography } from '@material-ui/core';
@@ -63,7 +63,7 @@ function Profile(props) {
                 </Typography>
                 <Grid item xs={12}>
                     <Button className={classes.button} variant="contained" onClick={handleShow}>New Store</Button>
-                    {showNewStore ? <InputStore /> : null}
+                    {showNewStore ? <NewStore /> : null}
                     <Typography className={classes.paper}>
                         Your saved shopping records
                     </Typography>

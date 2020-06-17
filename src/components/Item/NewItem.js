@@ -46,13 +46,14 @@ function NewItem(props) {
     }
 
     const handleSubmit = (e) => {
+        debugger
         e.preventDefault()
 
         const item = {
             name: name,
             price: price,
             quantity: quantity,
-            storeId: props.store.id
+            // storeId: props.storeId
         }
 
         props.createItem(item)
@@ -131,7 +132,7 @@ function NewItem(props) {
 }
 
 const mapStateToProps = state => ({
-    store: state.stores.store
+    storeId: state.stores.storeId
 })
 
 export default connect(mapStateToProps, { createItem })(NewItem)

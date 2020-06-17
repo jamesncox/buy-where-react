@@ -10,6 +10,7 @@ const SET_STORES = 'SET_STORES'
 const LOADING_STORES = 'LOADING_STORES'
 const ADD_STORE = 'ADD_STORE'
 const STORE_ERRORS = 'STORE_ERRORS'
+const SET_STORE_ID = 'SET_STORE_ID'
 
 // Item
 const ADD_ITEM = 'ADD_ITEM'
@@ -28,6 +29,7 @@ export {
     LOADING_STORES,
     ADD_STORE,
     STORE_ERRORS,
+    SET_STORE_ID,
 
     // Item
     ADD_ITEM,

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
+import { SET_STORE_ID } from '../../actionTypes'
 import NewItem from '../Item/NewItem'
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -76,8 +77,10 @@ function Stores(props) {
     const handleShow = (id) => {
         if (!showNewItem) {
             setShowNewItem(showNewItem === id ? true : id)
+            props.setStoreId(id)
         } else {
             setShowNewItem(showNewItem === id ? false : id)
+            props.setStoreId(id)
         }
     }
 
@@ -168,4 +171,8 @@ const mapStateToProps = state => ({
     loadingStores: state.stores.loading
 })
 
-export default connect(mapStateToProps)(Stores)
+const mapDispatchToProps = dispatch => ({
+    setStoreId: (id) => dispatch({ type: SET_STORE_ID, payload: id })
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Stores)

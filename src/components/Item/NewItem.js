@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     },
     form: {
         margin: 'auto',
-        width: '90%',
+        width: '95%',
     },
     submit: {
         margin: theme.spacing(5, 0, 2),

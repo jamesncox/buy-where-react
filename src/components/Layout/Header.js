@@ -91,7 +91,7 @@ function Header(props) {
                         to="/"
                         onClick={handleClose}
                     >
-                        Profile
+                        My Stores
                     </MenuItem>
                     <MenuItem
                         component={RouterLink}
@@ -125,7 +125,7 @@ function Header(props) {
                     component={RouterLink}
                     to="/"
                 >
-                    Profile
+                    My Stores
                 </Button>
                 <Button
                     className={classes.userActions}

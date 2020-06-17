@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
 import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -51,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
     addIcon: {
         color: "rgba(255, 255, 255, 0.5)",
         float: "left",
+        cursor: "pointer",
     }
 }));
 

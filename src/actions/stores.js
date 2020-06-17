@@ -14,10 +14,14 @@ export const getStores = () => {
         dispatch({ type: LOADING_STORES })
         try {
             const res = await fetch("http://localhost:3000/api/v1/stores")
+            // const res = await fetch("http://localhost:3000/api/v1/user_stores")
+            // fetch to user_stores needs debugging on backend / always returning user_id: 2
+
             if (!res.ok) {
                 throw res
             }
             const storeData = await res.json()
+            console.log(storeData)
             dispatch(setStores(storeData))
         } catch (err) {
             console.log(err)

@@ -132,7 +132,7 @@ function InputStore(props) {
                     <ColorPalette
                         palette={palette}
                         onSelect={e => handleColor(e)}
-                        size={36}
+                        size={30}
                     />
                     <Button
                         type="submit"

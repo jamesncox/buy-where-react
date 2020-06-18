@@ -12,12 +12,13 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import AddBoxIcon from '@material-ui/icons/AddBox';
+import EditIcon from '@material-ui/icons/Edit';
 
 const TAX_RATE = 0.085;
 
 const useStyles = makeStyles((theme) => ({
     container: {
-        width: "50%",
+        width: "40%",
         margin: 'auto',
         marginTop: '2em',
         [theme.breakpoints.down('md')]: {
@@ -48,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     },
     units: {
         fontWeight: "bold",
-        color: "rgba(0, 0, 0, 0.65)"
+        color: "rgba(0, 0, 0, 0.5)"
     },
     storeType: {
         color: "white"
@@ -57,6 +58,10 @@ const useStyles = makeStyles((theme) => ({
         color: "rgba(255, 255, 255, 0.9)",
         float: "left",
         cursor: "pointer",
+    },
+    editIcon: {
+        cursor: "pointer",
+        color: "rgba(0, 0, 0, 0.65)",
     }
 }));
 
@@ -107,12 +112,13 @@ function Stores(props) {
                                     <TableCell>
                                         <AddBoxIcon className={classes.addIcon} fontSize="large" onClick={() => handleShow(store.id)} />
                                     </TableCell>
-                                    <TableCell className={classes.title} colSpan={2}>
+                                    <TableCell className={classes.title} colSpan={3}>
                                         {(store.name).toUpperCase()}
                                     </TableCell>
                                     <TableCell align="right" className={classes.storeType}>{(store.store_type).toUpperCase()}</TableCell>
                                 </TableRow>
                                 <TableRow>
+                                    <TableCell></TableCell>
                                     <TableCell className={classes.units}>Item</TableCell>
                                     <TableCell className={classes.units} align="right">Qty.</TableCell>
                                     <TableCell className={classes.units} align="right">Cost</TableCell>
@@ -122,24 +128,25 @@ function Stores(props) {
                             <TableBody>
                                 {store.items.map((item) => (
                                     <TableRow key={item.id}>
-                                        <TableCell>{itemFormat(item.name)}</TableCell>
+                                        <TableCell><EditIcon className={classes.editIcon} /></TableCell>
+                                        <TableCell alight="left">{itemFormat(item.name)}</TableCell>
                                         <TableCell align="right">{item.quantity}</TableCell>
                                         <TableCell align="right">${item.price}</TableCell>
                                         <TableCell align="right">${ccyFormat(item.price * item.quantity)}</TableCell>
                                     </TableRow>
                                 ))}
                                 <TableRow>
-                                    <TableCell rowSpan={3} />
-                                    <TableCell className={classes.units} colSpan={2}>Subtotal</TableCell>
+                                    <TableCell rowSpan={4} />
+                                    <TableCell className={classes.units} colSpan={3}>Subtotal</TableCell>
                                     <TableCell align="right">${ccyFormat(invoiceSubtotal)}</TableCell>
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell className={classes.units}>Tax</TableCell>
+                                    <TableCell className={classes.units} colSpan={2}>Tax</TableCell>
                                     <TableCell align="right">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
                                     <TableCell align="right">${ccyFormat(invoiceTaxes)}</TableCell>
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell className={classes.units} colSpan={2}>Total</TableCell>
+                                    <TableCell className={classes.units} colSpan={3}>Total</TableCell>
                                     <TableCell align="right">${ccyFormat(invoiceTotal)}</TableCell>
                                 </TableRow>
                             </TableBody>

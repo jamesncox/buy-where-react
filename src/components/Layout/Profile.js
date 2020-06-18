@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { getStores } from '../../actions/stores'
-import Stores from '../Store/Stores'
+import StoresTable from '../Store/StoresTable'
 import NewStore from '../Store/NewStore'
 import Copyright from '../Layout/Copyright'
 
@@ -67,7 +67,7 @@ function Profile(props) {
                     <Typography className={classes.paper}>
                         Your saved shopping records
                     </Typography>
-                    <Stores />
+                    <StoresTable />
                 </Grid>
                 <Box mt={5}>
                     <Copyright />

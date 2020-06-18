@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     },
     units: {
         fontWeight: "bold",
-        color: "rgba(0, 0, 0, 0.5)"
+        color: "rgba(0, 0, 0, 0.65)"
     },
     storeType: {
         color: "white"
@@ -61,7 +61,14 @@ const useStyles = makeStyles((theme) => ({
     },
     editIcon: {
         cursor: "pointer",
-        color: "rgba(0, 0, 0, 0.65)",
+        color: "rgba(0, 0, 0, 0.4)",
+    },
+    iconColumn: {
+        width: 1
+    },
+    invoiceStyles: {
+        fontWeight: "bold",
+        color: "rgba(0, 0, 0, 0.65)"
     }
 }));
 
@@ -118,7 +125,7 @@ function Stores(props) {
                                     <TableCell align="right" className={classes.storeType}>{(store.store_type).toUpperCase()}</TableCell>
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell></TableCell>
+                                    <TableCell size="small" className={classes.iconColumn}></TableCell>
                                     <TableCell className={classes.units}>Item</TableCell>
                                     <TableCell className={classes.units} align="right">Qty.</TableCell>
                                     <TableCell className={classes.units} align="right">Cost</TableCell>
@@ -128,7 +135,7 @@ function Stores(props) {
                             <TableBody>
                                 {store.items.map((item) => (
                                     <TableRow key={item.id}>
-                                        <TableCell><EditIcon className={classes.editIcon} /></TableCell>
+                                        <TableCell><EditIcon className={classes.editIcon} fontSize="small" /></TableCell>
                                         <TableCell alight="left">{itemFormat(item.name)}</TableCell>
                                         <TableCell align="right">{item.quantity}</TableCell>
                                         <TableCell align="right">${item.price}</TableCell>
@@ -136,17 +143,17 @@ function Stores(props) {
                                     </TableRow>
                                 ))}
                                 <TableRow>
-                                    <TableCell rowSpan={4} />
-                                    <TableCell className={classes.units} colSpan={3}>Subtotal</TableCell>
+                                    <TableCell rowSpan={3} />
+                                    <TableCell className={classes.invoiceStyles} colSpan={3}>Subtotal</TableCell>
                                     <TableCell align="right">${ccyFormat(invoiceSubtotal)}</TableCell>
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell className={classes.units} colSpan={2}>Tax</TableCell>
+                                    <TableCell className={classes.invoiceStyles} colSpan={2}>Tax</TableCell>
                                     <TableCell align="right">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
                                     <TableCell align="right">${ccyFormat(invoiceTaxes)}</TableCell>
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell className={classes.units} colSpan={3}>Total</TableCell>
+                                    <TableCell className={classes.invoiceStyles} colSpan={3}>Total</TableCell>
                                     <TableCell align="right">${ccyFormat(invoiceTotal)}</TableCell>
                                 </TableRow>
                             </TableBody>

@@ -1,7 +1,12 @@
 import {
     ITEM_ERRORS,
     ADD_ITEM,
+    ADD_ITEM_TO_STORE,
 } from '../actionTypes'
+
+export const addItemToStore = (item) => {
+    return { type: ADD_ITEM_TO_STORE, payload: item }
+}
 
 export const createItem = (item) => {
 

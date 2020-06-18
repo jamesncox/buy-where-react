@@ -57,7 +57,7 @@ function SignInSuccess(props) {
                             color="primary"
                             component={RouterLink}
                             to="/">
-                            Profile
+                            My Stores
                         </Button>
                         <Button size="small" color="primary">
                             New

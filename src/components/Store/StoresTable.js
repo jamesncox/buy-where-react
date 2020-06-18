@@ -64,9 +64,12 @@ function ccyFormat(num) {
     return `${num.toFixed(2)}`;
 }
 
-function itemFormat(word) {
-    let lowerCased = word.toLowerCase()
-    return lowerCased.toLowerCase()[0].toUpperCase() + lowerCased.slice(1)
+function itemFormat(words) {
+    return words
+        .toLowerCase()
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
 }
 
 function subtotal(items) {

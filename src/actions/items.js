@@ -43,32 +43,33 @@ export const createItem = (item) => {
 }
 
 export const updateItem = (item, id) => {
+    return async (dispatch) => {
 
-    const formData = {
-        name: item.name,
-        price: item.price,
-        quantity: item.quantity,
-        store_id: item.storeId,
-        id: id
+        const formData = {
+            name: item.name,
+            price: item.price,
+            quantity: item.quantity,
+            store_id: item.storeId,
+            id: id
+        }
+
+        const res = await fetch("http://localhost:3000/api/v1/items", {
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(formData),
+            credentials: 'include'
+        })
+
+        const itemObj = await res.json()
+
+        if (itemObj.errors) {
+            alert(itemObj.errors)
+            dispatch({ type: ITEM_ERRORS, payload: itemObj.errors })
+        } else {
+            dispatch({ type: ADD_ITEM, payload: itemObj })
+        }
     }
-
-    const res = await fetch("http://localhost:3000/api/v1/items", {
-        method: "PATCH",
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify(formData),
-        credentials: 'include'
-    })
-
-    const itemObj = await res.json()
-
-    if (itemObj.errors) {
-        alert(itemObj.errors)
-        dispatch({ type: ITEM_ERRORS, payload: itemObj.errors })
-    } else {
-        dispatch({ type: ADD_ITEM, payload: itemObj })
-    }
-
 }

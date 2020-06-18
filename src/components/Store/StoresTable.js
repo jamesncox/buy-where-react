@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { SET_STORE_ID } from '../../actionTypes'
 import NewItem from '../Item/NewItem'
+import EditItem from '../Item/EditItem'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -92,6 +93,18 @@ function Stores(props) {
     const classes = useStyles();
 
     const [showNewItem, setShowNewItem] = useState(false)
+    const [showEditItem, setShowEditItem] = useState(false)
+
+    const handleShowEditItem = (id) => {
+        // will have to put this in a modal probably.... or maybe do content-editable instead // 
+        if (!showEditItem) {
+            setShowEditItem(showEditItem === id ? true : id)
+            // props.setItemId(id)
+        } else {
+            setShowEditItem(showEditItem === id ? false : id)
+            // props.setItemId(id)
+        }
+    }
 
     const handleShow = (id) => {
         if (!showNewItem) {
@@ -135,7 +148,7 @@ function Stores(props) {
                             <TableBody>
                                 {store.items.map((item) => (
                                     <TableRow key={item.id}>
-                                        <TableCell><EditIcon className={classes.editIcon} fontSize="small" /></TableCell>
+                                        <TableCell><EditIcon className={classes.editIcon} fontSize="small" onClick={() => handleShowEditItem(item.id)} /></TableCell>
                                         <TableCell alight="left">{itemFormat(item.name)}</TableCell>
                                         <TableCell align="right">{item.quantity}</TableCell>
                                         <TableCell align="right">${item.price}</TableCell>

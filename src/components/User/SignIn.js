@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.secondary.main,
     },
     form: {
-        width: '100%', // Fix IE 11 issue.
+        width: '100%',
         marginTop: theme.spacing(1),
     },
     submit: {
@@ -140,6 +140,7 @@ function SignIn(props) {
                                 fullWidth
                                 variant="contained"
                                 color="primary"
+                                className={classes.submit}
                             >
                                 Sign In
                             </Button>

@@ -39,8 +39,8 @@ function SignInSuccess(props) {
                     <CardActionArea component={RouterLink} to="/">
                         <CardMedia
                             classes={wideCardMediaStyles}
-                            image="https://images.unsplash.com/photo-1533745848184-3db07256e163?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80"
-                            title="Rainbow welcome sign"
+                            image="https://images.unsplash.com/photo-1460467820054-c87ab43e9b59?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1261&q=80"
+                            title="Welcome, please come in"
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">

@@ -20,10 +20,9 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(1),
         textAlign: 'center',
         color: theme.palette.text.secondary,
-        // marginBottom: "-1em"
     },
     header: {
-        fontSize: "2em",
+        fontSize: "3em",
         marginTop: theme.spacing(2),
         padding: theme.spacing(1),
         textAlign: 'center',
@@ -70,7 +69,7 @@ function Profile(props) {
                     Hello, {props.user.username}.
                 </Typography>
                 <Typography className={classes.paper}>
-                    Track your spending here. Create stores. Add items.
+                    Track your spending. Create stores. Add items.
                 </Typography>
                 <Grid item xs={12}>
                     <Button className={classes.button} variant="contained" onClick={handleShow}>New Store</Button>

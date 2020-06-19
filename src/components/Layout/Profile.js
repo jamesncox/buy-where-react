@@ -37,6 +37,9 @@ const useStyles = makeStyles((theme) => ({
         '& > * + *': {
             marginLeft: theme.spacing(2),
         },
+    },
+    footer: {
+        marginBottom: theme.spacing(2)
     }
 }));
 
@@ -76,7 +79,7 @@ function Profile(props) {
                     {showNewStore ? <NewStore /> : null}
                     <StoresTable />
                 </Grid>
-                <Box mt={5}>
+                <Box mt={5} className={classes.footer}>
                     <Copyright />
                 </Box>
             </div>

@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(1),
         textAlign: 'center',
         color: theme.palette.text.secondary,
-        marginBottom: "-1em"
+        // marginBottom: "-1em"
     },
     header: {
         fontSize: "2em",
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     },
     button: {
         marginTop: theme.spacing(2),
-        marginBottom: theme.spacing(2)
+        // marginBottom: theme.spacing(2)
     },
     spinner: {
         display: 'flex',
@@ -66,16 +66,15 @@ function Profile(props) {
     } else {
         return (
             <div className={classes.root}>
-                {/* The className array example below is not valid, not sure proper syntax */}
                 <Typography className={classes.header}>
                     Hello, {props.user.username}.
+                </Typography>
+                <Typography className={classes.paper}>
+                    Track your spending here. Create stores. Add items.
                 </Typography>
                 <Grid item xs={12}>
                     <Button className={classes.button} variant="contained" onClick={handleShow}>New Store</Button>
                     {showNewStore ? <NewStore /> : null}
-                    <Typography className={classes.paper}>
-                        Your saved shopping records
-                    </Typography>
                     <StoresTable />
                 </Grid>
                 <Box mt={5}>

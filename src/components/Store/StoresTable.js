@@ -118,7 +118,7 @@ function Stores(props) {
                                     <TableCell>
                                         <AddBoxIcon className={classes.addIcon} fontSize="large" onClick={() => handleShow(store.id)} />
                                     </TableCell>
-                                    <TableCell className={classes.title} colSpan={2}>
+                                    <TableCell align="right" className={classes.title} colSpan={2}>
                                         {(store.name).toUpperCase()}
                                     </TableCell>
                                     <TableCell align="right" className={classes.storeType}>{(store.store_type).toUpperCase()}</TableCell>
@@ -133,7 +133,7 @@ function Stores(props) {
                             <TableBody>
                                 {store.items.map((item) => (
                                     <TableRow key={item.id}>
-                                        <TableCell alight="left">{itemFormat(item.name)}</TableCell>
+                                        <TableCell>{itemFormat(item.name)}</TableCell>
                                         <TableCell align="right">{item.quantity}</TableCell>
                                         <TableCell align="right">${item.price}</TableCell>
                                         <TableCell align="right">${ccyFormat(item.price * item.quantity)}</TableCell>

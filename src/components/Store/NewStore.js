@@ -5,14 +5,29 @@ import { createStore } from '../../actions/stores'
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
-// import { ColorPicker } from 'material-ui-color';
 import { ColorPalette } from 'material-ui-color';
 
 const useStyles = makeStyles((theme) => ({
     root: {
+        width: "40%",
         margin: 'auto',
+        marginTop: '2em',
+        [theme.breakpoints.down('md')]: {
+            width: "60%",
+        },
+        [theme.breakpoints.down('sm')]: {
+            width: "80%",
+        },
+        [theme.breakpoints.down('xs')]: {
+            width: "98%",
+        },
+    },
+    newStore: {
+        margin: 'auto',
+        width: '95%',
     },
     paper: {
         padding: theme.spacing(1),
@@ -26,6 +41,9 @@ const useStyles = makeStyles((theme) => ({
     submit: {
         margin: theme.spacing(5, 0, 2),
     },
+    colorPicker: {
+        margin: 'auto',
+    }
 }))
 
 const palette = {
@@ -85,11 +103,8 @@ function InputStore(props) {
     }
 
     return (
-        <Grid container component="main" className={classes.root}>
-            <Grid className={classes.root}>
-                {/* <Typography className={classes.paper}>
-                    Create Store
-                </Typography> */}
+        <Grid container component={Paper} className={classes.root}>
+            <Grid className={classes.newStore}>
                 <form
                     className={classes.form}
                     noValidate
@@ -121,18 +136,14 @@ function InputStore(props) {
                         value={storeType}
                         autoFocus
                     />
-                    {/* <ColorPicker
-                        defaultValue="Select store header color"
-                        onClick={e => handleColor(e)}
-                        autoFocus
-                    /> */}
                     <Typography className={classes.paper}>
                         Select color for store header
                     </Typography>
                     <ColorPalette
+                        className={classes.colorPicker}
                         palette={palette}
                         onSelect={e => handleColor(e)}
-                        size={30}
+                        size={32}
                     />
                     <Button
                         type="submit"

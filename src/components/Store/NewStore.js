@@ -41,14 +41,12 @@ const useStyles = makeStyles((theme) => ({
     submit: {
         margin: theme.spacing(5, 0, 2),
     },
-    colorPicker: {
-        margin: 'auto',
-    }
 }))
 
 const palette = {
     crimson: 'crimson',
     maroon: 'maroon',
+    orangeRed: 'orangeRed',
     orange: 'orange',
     darkOrange: 'darkOrange',
     darkGoldenRod: 'DarkGoldenRod',
@@ -140,10 +138,9 @@ function InputStore(props) {
                         Select color for store header
                     </Typography>
                     <ColorPalette
-                        className={classes.colorPicker}
                         palette={palette}
                         onSelect={e => handleColor(e)}
-                        size={32}
+                        size={31}
                     />
                     <Button
                         type="submit"

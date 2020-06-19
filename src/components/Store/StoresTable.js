@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { SET_STORE_ID } from '../../actionTypes'
 import NewItem from '../Item/NewItem'
-import EditItem from '../Item/EditItem'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -13,7 +12,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import AddBoxIcon from '@material-ui/icons/AddBox';
-import EditIcon from '@material-ui/icons/Edit';
 
 const TAX_RATE = 0.085;
 
@@ -93,18 +91,6 @@ function Stores(props) {
     const classes = useStyles();
 
     const [showNewItem, setShowNewItem] = useState(false)
-    const [showEditItem, setShowEditItem] = useState(false)
-
-    const handleShowEditItem = (id) => {
-        // will have to put this in a modal probably.... or maybe do content-editable instead // 
-        if (!showEditItem) {
-            setShowEditItem(showEditItem === id ? true : id)
-            // props.setItemId(id)
-        } else {
-            setShowEditItem(showEditItem === id ? false : id)
-            // props.setItemId(id)
-        }
-    }
 
     const handleShow = (id) => {
         if (!showNewItem) {
@@ -132,13 +118,12 @@ function Stores(props) {
                                     <TableCell>
                                         <AddBoxIcon className={classes.addIcon} fontSize="large" onClick={() => handleShow(store.id)} />
                                     </TableCell>
-                                    <TableCell className={classes.title} colSpan={3}>
+                                    <TableCell className={classes.title} colSpan={2}>
                                         {(store.name).toUpperCase()}
                                     </TableCell>
                                     <TableCell align="right" className={classes.storeType}>{(store.store_type).toUpperCase()}</TableCell>
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell size="small" className={classes.iconColumn}></TableCell>
                                     <TableCell className={classes.units}>Item</TableCell>
                                     <TableCell className={classes.units} align="right">Qty.</TableCell>
                                     <TableCell className={classes.units} align="right">Cost</TableCell>
@@ -148,7 +133,6 @@ function Stores(props) {
                             <TableBody>
                                 {store.items.map((item) => (
                                     <TableRow key={item.id}>
-                                        <TableCell><EditIcon className={classes.editIcon} fontSize="small" onClick={() => handleShowEditItem(item.id)} /></TableCell>
                                         <TableCell alight="left">{itemFormat(item.name)}</TableCell>
                                         <TableCell align="right">{item.quantity}</TableCell>
                                         <TableCell align="right">${item.price}</TableCell>
@@ -157,16 +141,16 @@ function Stores(props) {
                                 ))}
                                 <TableRow>
                                     <TableCell rowSpan={3} />
-                                    <TableCell className={classes.invoiceStyles} colSpan={3}>Subtotal</TableCell>
+                                    <TableCell className={classes.units} colSpan={2}>Subtotal</TableCell>
                                     <TableCell align="right">${ccyFormat(invoiceSubtotal)}</TableCell>
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell className={classes.invoiceStyles} colSpan={2}>Tax</TableCell>
+                                    <TableCell className={classes.units}>Tax</TableCell>
                                     <TableCell align="right">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
                                     <TableCell align="right">${ccyFormat(invoiceTaxes)}</TableCell>
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell className={classes.invoiceStyles} colSpan={3}>Total</TableCell>
+                                    <TableCell className={classes.units} colSpan={2}>Total</TableCell>
                                     <TableCell align="right">${ccyFormat(invoiceTotal)}</TableCell>
                                 </TableRow>
                             </TableBody>

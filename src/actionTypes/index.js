@@ -3,7 +3,7 @@ const SET_TOKEN = 'SET_TOKEN'
 const SET_USER = 'SET_USER'
 const CLEAR_USER = 'CLEAR_USER'
 const USER_ERRORS = 'USER_ERRORS'
-const CLEAR_ERRORS = 'CLEAR_ERRORS'
+// const CLEAR_ERRORS = 'CLEAR_ERRORS'
 
 // Store
 const SET_STORES = 'SET_STORES'
@@ -17,13 +17,17 @@ const SET_STORE_ID = 'SET_STORE_ID'
 const ADD_ITEM = 'ADD_ITEM'
 const ITEM_ERRORS = 'ITEM_ERRORS'
 
+// Errors
+const SET_ERRORS = 'SET_ERRORS'
+const CLEAR_ERRORS = 'CLEAR_ERRORS'
+
 export {
     // User
     SET_TOKEN,
     SET_USER,
     CLEAR_USER,
     USER_ERRORS,
-    CLEAR_ERRORS,
+    // CLEAR_ERRORS,
 
     // Store
     SET_STORES,
@@ -35,5 +39,9 @@ export {
 
     // Item
     ADD_ITEM,
-    ITEM_ERRORS
+    ITEM_ERRORS,
+
+    // Errors
+    SET_ERRORS,
+    CLEAR_ERRORS
 }

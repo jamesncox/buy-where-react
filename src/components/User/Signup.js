@@ -185,7 +185,7 @@ function SignUp(props) {
 
 const mapStateToProps = state => ({
     user: state.users.user,
-    errors: state.users.errors,
+    // errors: state.users.errors,
     loggedIn: state.users.loggedIn,
     token: state.sessions.token
 })

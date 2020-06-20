@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: theme.spacing(2)
     },
     media: {
-        height: 150,
+        height: 240,
     },
 }));
 
@@ -25,8 +25,8 @@ function NoStoreYet(props) {
         <Card className={classes.root}>
             <CardMedia
                 className={classes.media}
-                image="https://media.gettyimages.com/videos/escalator-video-id127912885?s=640x640"
-                title="Error"
+                image="https://assets.dockyard.com/images/White%20arrow%20pointed%20up%20painted%20on%20blue%20concrete.jpg"
+                title="Painted arrow pointing up"
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">

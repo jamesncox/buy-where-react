@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { signupUser } from '../../actions/users'
 import SignInSuccess from './SignInSuccess'
 import Copyright from '../Layout/Copyright'
+import Errors from '../Layout/Errors'
 
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -94,8 +95,25 @@ function SignUp(props) {
                 {renderSuccessMessage()}
             </div>
         )
+    } else if (props.errors) {
+        return (
+            <Grid container component="main" className={classes.root}>
+                <CssBaseline />
+                <Grid item xs={12} sm={12} md={7} className={classes.image} />
+                <Grid item xs={12} sm={12} md={5} component={Paper} elevation={6} square>
+                    <div className={classes.paper}>
+                        <Avatar className={classes.avatar}>
+                            <LockOutlinedIcon />
+                        </Avatar>
+                        <Typography component="h1" variant="h5">
+                            Create an account
+                        </Typography>
+                        <Errors />
+                    </div>
+                </Grid>
+            </Grid>
+        )
     } else {
-
         return (
             <Grid container component="main" className={classes.root}>
                 <CssBaseline />
@@ -185,7 +203,7 @@ function SignUp(props) {
 
 const mapStateToProps = state => ({
     user: state.users.user,
-    // errors: state.users.errors,
+    errors: state.errors.errors,
     loggedIn: state.users.loggedIn,
     token: state.sessions.token
 })

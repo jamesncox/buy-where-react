@@ -41,7 +41,7 @@ function SignInMessage(props) {
                     <CardActionArea component={RouterLink} to="/SignIn">
                         <CardMedia
                             classes={wideCardMediaStyles}
-                            image="https://images.unsplash.com/photo-1458707926943-2226cddba8d4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
+                            image="https://images.unsplash.com/photo-1587316348545-9edaf7952c3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=848&q=80"
                             title="Do not walk sign"
                         />
                         <CardContent>

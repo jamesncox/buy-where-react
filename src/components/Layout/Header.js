@@ -111,105 +111,164 @@ function Header(props) {
         handleClose()
     }
 
-    return (
-        <>
-            <CssBaseline />
-            <AppBar>
-                <Toolbar>
-                    <IconButton
-                        aria-controls="simple-menu"
-                        aria-haspopup="true"
-                        onClick={handleClick}
-                        edge="start"
-                        className={classes.menuButton}
-                        color="inherit"
-                        aria-label="menu"
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Menu
-                        id="simple-menu"
-                        anchorEl={anchorEl}
-                        keepMounted
-                        open={Boolean(anchorEl)}
-                        onClose={handleClose}
-                    >
-                        <MenuItem
+    if (props.loggedIn === false) {
+        return (
+            <>
+                <CssBaseline />
+                <AppBar>
+                    <Toolbar>
+                        <IconButton
+                            aria-controls="simple-menu"
+                            aria-haspopup="true"
+                            onClick={handleClick}
+                            edge="start"
+                            className={classes.menuButton}
+                            color="inherit"
+                            aria-label="menu"
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                        <Menu
+                            id="simple-menu"
+                            anchorEl={anchorEl}
+                            keepMounted
+                            open={Boolean(anchorEl)}
+                            onClose={handleClose}
+                        >
+                            <MenuItem
+                                component={RouterLink}
+                                to="/"
+                                onClick={handleClose}
+                            >
+                                My Stores
+                            </MenuItem>
+                            <MenuItem
+                                component={RouterLink}
+                                to="/SignIn"
+                                onClick={handleClose}
+                            >
+                                Sign In
+                            </MenuItem>
+                            <MenuItem
+                                component={RouterLink}
+                                to="/SignUp"
+                                onClick={handleClose}
+                            >
+                                Sign Up
+                            </MenuItem>
+                        </Menu>
+                        <Typography variant="h6" className={classes.title}>
+                            BUY / WHERE
+                        </Typography>
+                        <Button
+                            className={classes.userActions}
+                            color="inherit"
                             component={RouterLink}
                             to="/"
-                            onClick={handleClose}
                         >
                             My Stores
-                    </MenuItem>
-                        <MenuItem
+                        </Button>
+                        <Button
+                            className={classes.userActions}
+                            color="inherit"
                             component={RouterLink}
                             to="/SignIn"
-                            onClick={handleClose}
                         >
                             Sign In
-                    </MenuItem>
-                        <MenuItem
+                        </Button>
+                        <Button
+                            className={classes.userActions}
+                            color="inherit"
                             component={RouterLink}
                             to="/SignUp"
-                            onClick={handleClose}
                         >
                             Sign Up
+                        </Button>
+                    </Toolbar>
+                </AppBar>
+                <Toolbar id="back-to-top-anchor" />
+                <ScrollTop {...props}>
+                    <Fab color="secondary" size="small" aria-label="scroll back to top">
+                        <KeyboardArrowUpIcon />
+                    </Fab>
+                </ScrollTop>
+            </>
+        )
+    } else {
+        return (
+            <>
+                <CssBaseline />
+                <AppBar>
+                    <Toolbar>
+                        <IconButton
+                            aria-controls="simple-menu"
+                            aria-haspopup="true"
+                            onClick={handleClick}
+                            edge="start"
+                            className={classes.menuButton}
+                            color="inherit"
+                            aria-label="menu"
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                        <Menu
+                            id="simple-menu"
+                            anchorEl={anchorEl}
+                            keepMounted
+                            open={Boolean(anchorEl)}
+                            onClose={handleClose}
+                        >
+                            <MenuItem
+                                component={RouterLink}
+                                to="/"
+                                onClick={handleClose}
+                            >
+                                My Stores
                     </MenuItem>
-                        <MenuItem
+                            <MenuItem
+                                component={RouterLink}
+                                to="/LogOut"
+                                onClick={handleBoth}
+                            >
+                                Log Out
+                    </MenuItem>
+
+                        </Menu>
+                        <Typography variant="h6" className={classes.title}>
+                            BUY / WHERE
+                    </Typography>
+                        <Button
+                            className={classes.userActions}
+                            color="inherit"
+                            component={RouterLink}
+                            to="/"
+                        >
+                            My Stores
+                    </Button>
+                        <Button
+                            className={classes.userActions}
+                            onClick={handleLogout}
+                            color="inherit"
                             component={RouterLink}
                             to="/LogOut"
-                            onClick={handleBoth}
                         >
-                            Log Out
-                    </MenuItem>
-
-                    </Menu>
-                    <Typography variant="h6" className={classes.title}>
-                        BUY / WHERE
-                    </Typography>
-                    <Button
-                        className={classes.userActions}
-                        color="inherit"
-                        component={RouterLink}
-                        to="/"
-                    >
-                        My Stores
+                            Log out
                     </Button>
-                    <Button
-                        className={classes.userActions}
-                        color="inherit"
-                        component={RouterLink}
-                        to="/SignIn"
-                    >
-                        Sign In
-                    </Button>
-                    <Button
-                        className={classes.userActions}
-                        color="inherit"
-                        component={RouterLink}
-                        to="/SignUp"
-                    >
-                        Sign Up
-                    </Button>
-                    <Button
-                        className={classes.userActions}
-                        onClick={handleLogout}
-                        color="inherit"
-                        component={RouterLink}
-                        to="/LogOut"
-                    >
-                        Log out
-                    </Button>
-                </Toolbar>
-            </AppBar>
-            <Toolbar id="back-to-top-anchor" />
-            <ScrollTop {...props}>
-                <Fab color="secondary" size="small" aria-label="scroll back to top">
-                    <KeyboardArrowUpIcon />
-                </Fab>
-            </ScrollTop>
-        </>
-    )
+                    </Toolbar>
+                </AppBar>
+                <Toolbar id="back-to-top-anchor" />
+                <ScrollTop {...props}>
+                    <Fab color="secondary" size="small" aria-label="scroll back to top">
+                        <KeyboardArrowUpIcon />
+                    </Fab>
+                </ScrollTop>
+            </>
+        )
+    }
 }
 
-export default connect(null, { clearCurrentUser, getToken })(Header)
+const mapStateToProps = state => ({
+    loggedIn: state.users.loggedIn
+})
+
+export default connect(mapStateToProps, { clearCurrentUser, getToken })(Header)

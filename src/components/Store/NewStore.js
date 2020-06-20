@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { createStore } from '../../actions/stores'
+import Errors from '../Layout/Errors'
 
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
@@ -100,66 +101,72 @@ function InputStore(props) {
         setColor("")
     }
 
-    return (
-        <Grid container component={Paper} className={classes.root}>
-            <Grid className={classes.newStore}>
-                <form
-                    className={classes.form}
-                    noValidate
-                    onSubmit={e => handleSubmit(e)}
-                >
-                    <TextField
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="name"
-                        label="Store Name"
-                        name="name"
-                        autoComplete="name"
-                        onChange={handleName}
-                        value={name}
-                        autoFocus
-                    />
-                    <TextField
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="storeType"
-                        label="Store Type (e.g. grocery)"
-                        name="storeType"
-                        autoComplete="storeType"
-                        onChange={handleStoreType}
-                        value={storeType}
-                        autoFocus
-                    />
-                    <Typography className={classes.paper}>
-                        Select color for store header
-                    </Typography>
-                    <ColorPalette
-                        palette={palette}
-                        onSelect={e => handleColor(e)}
-                        size={31}
-                    />
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        color="primary"
-                        className={classes.submit}
+    if (props.errors) {
+        return (
+            <Errors />
+        )
+    } else {
+        return (
+            <Grid container component={Paper} className={classes.root}>
+                <Grid className={classes.newStore}>
+                    <form
+                        className={classes.form}
+                        noValidate
+                        onSubmit={e => handleSubmit(e)}
                     >
-                        Create Store
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="name"
+                            label="Store Name"
+                            name="name"
+                            autoComplete="name"
+                            onChange={handleName}
+                            value={name}
+                            autoFocus
+                        />
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="storeType"
+                            label="Store Type (e.g. grocery)"
+                            name="storeType"
+                            autoComplete="storeType"
+                            onChange={handleStoreType}
+                            value={storeType}
+                            autoFocus
+                        />
+                        <Typography className={classes.paper}>
+                            Select color for store header
+                    </Typography>
+                        <ColorPalette
+                            palette={palette}
+                            onSelect={e => handleColor(e)}
+                            size={31}
+                        />
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                            className={classes.submit}
+                        >
+                            Create Store
                     </Button>
-                </form>
+                    </form>
+                </Grid>
             </Grid>
-        </Grid>
-    )
-
+        )
+    }
 }
 
 const mapStateToProps = state => ({
-    user: state.users.user
+    user: state.users.user,
+    errors: state.errors.errors
 })
 
 export default connect(mapStateToProps, { createStore })(InputStore)

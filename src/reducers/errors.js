@@ -4,7 +4,7 @@ import {
 } from '../actionTypes'
 
 export default (state = {
-    errors: []
+    errors: null
 }, action) => {
     switch (action.type) {
 
@@ -13,7 +13,7 @@ export default (state = {
             return { ...state, errors: action.payload }
 
         case CLEAR_ERRORS:
-            return { ...state, errors: [] }
+            return { ...state, errors: null }
 
         default:
             return state

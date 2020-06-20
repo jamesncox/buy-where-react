@@ -171,7 +171,7 @@ function Stores(props) {
     } else if (hasStores.length === 0) {
         return (
             <>
-                <p className={classes.paper}>YOU HAVE NOT CREATED A STORE YET</p>
+                <p component={Paper} className={classes.paper}>YOU HAVE NOT CREATED A STORE YET</p>
             </>
         )
     } else {

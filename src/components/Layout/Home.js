@@ -1,13 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import SignInMessage from '../User/SignInMessage'
+import SignInPrompt from '../User/SignInPrompt'
 import Profile from './Profile'
 
 function Home(props) {
 
     if (props.loggedIn === false) {
         return (
-            <SignInMessage />
+            <SignInPrompt />
         )
     } else {
         return (

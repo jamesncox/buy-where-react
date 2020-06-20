@@ -5,3 +5,5 @@
 [] Create an edit/delete component that gets opened when clicking on a specefic item
 
 [] Create errors components for users/items/stores etc
+
+[] Figure out how to render a newly created Item immediately to the DOM (not wait for page refresh).

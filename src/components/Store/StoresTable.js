@@ -135,7 +135,7 @@ function Stores(props) {
                                     <TableRow key={item.id}>
                                         <TableCell>{itemFormat(item.name)}</TableCell>
                                         <TableCell align="right">{item.quantity}</TableCell>
-                                        <TableCell align="right">${item.price}</TableCell>
+                                        <TableCell align="right">${ccyFormat(item.price)}</TableCell>
                                         <TableCell align="right">${ccyFormat(item.price * item.quantity)}</TableCell>
                                     </TableRow>
                                 ))}

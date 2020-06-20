@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function SignInMessage(props) {
+function SignInPrompt(props) {
     const classes = useStyles();
     const wideCardMediaStyles = useWideCardMediaStyles();
 
@@ -84,4 +84,4 @@ const mapStateToProps = state => ({
     loggedIn: state.users.loggedIn
 })
 
-export default connect(mapStateToProps)(SignInMessage)
+export default connect(mapStateToProps)(SignInPrompt)

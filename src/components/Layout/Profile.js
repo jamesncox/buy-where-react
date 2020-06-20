@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { getStores } from '../../actions/stores'
+import { clearErrors } from '../../actions/errors'
 import StoresTable from '../Store/StoresTable'
 import NewStore from '../Store/NewStore'
 import Copyright from '../Layout/Copyright'
@@ -50,8 +51,10 @@ function Profile(props) {
     const handleShow = () => {
         if (!showNewStore) {
             setShowNewStore(true)
+            props.clearErrors()
         } else {
             setShowNewStore(false)
+            props.clearErrors()
         }
     }
 
@@ -92,4 +95,4 @@ const mapStateToProps = state => ({
     storesLoading: state.stores.loading
 })
 
-export default connect(mapStateToProps, { getStores })(Profile)
+export default connect(mapStateToProps, { getStores, clearErrors })(Profile)

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { SET_STORE_ID } from '../../actionTypes'
+import { SET_STORE_ID, CLEAR_ERRORS } from '../../actionTypes'
 import NewItem from '../Item/NewItem'
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -96,9 +96,11 @@ function Stores(props) {
         if (!showNewItem) {
             setShowNewItem(showNewItem === id ? true : id)
             props.setStoreId(id)
+            props.clearErrors()
         } else {
             setShowNewItem(showNewItem === id ? false : id)
             props.setStoreId(id)
+            props.clearErrors()
         }
     }
 
@@ -190,7 +192,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    setStoreId: (id) => dispatch({ type: SET_STORE_ID, payload: id })
+    setStoreId: (id) => dispatch({ type: SET_STORE_ID, payload: id }),
+    clearErrors: () => dispatch({ type: CLEAR_ERRORS })
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Stores)

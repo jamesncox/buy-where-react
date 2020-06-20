@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { createItem, addItemToStore } from '../../actions/items'
 import { getStores } from '../../actions/stores'
+import Errors from '../Layout/Errors'
 
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
@@ -63,79 +64,86 @@ function NewItem(props) {
         setQuantity("")
     }
 
-    return (
-        <Grid container className={classes.root}>
-            <Typography className={classes.paper}>
-                New Item
+    if (props.errors) {
+        return (
+            <Errors />
+        )
+    } else {
+        return (
+            <Grid container className={classes.root}>
+                <Typography className={classes.paper}>
+                    New Item
             </Typography>
-            <form
-                className={classes.form}
-                noValidate
-                onSubmit={e => handleSubmit(e)}
-            >
-                <Grid item xs={12}>
-                    <TextField
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="name"
-                        label="Item Name"
-                        name="name"
-                        autoComplete="name"
-                        onChange={handleName}
-                        value={name}
-                        autoFocus
-                    />
-                </Grid>
-                <Grid item xs={12}>
-                    <TextField
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        fullWidth
-                        type="number"
-                        id="quantity"
-                        label="Item quantity"
-                        name="quantity"
-                        autoComplete="quantity"
-                        onChange={handleQuantity}
-                        value={quantity}
-                        autoFocus
-                    />
-                </Grid>
-                <Grid item xs={12}>
-                    <TextField
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        fullWidth
-                        type="number"
-                        id="price"
-                        label="Item Price"
-                        name="price"
-                        autoComplete="price"
-                        onChange={handlePrice}
-                        value={price}
-                        autoFocus
-                    />
-                </Grid>
-                <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    color="primary"
-                    className={classes.submit}
+                <form
+                    className={classes.form}
+                    noValidate
+                    onSubmit={e => handleSubmit(e)}
                 >
-                    Create Item
+                    <Grid item xs={12}>
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="name"
+                            label="Item Name"
+                            name="name"
+                            autoComplete="name"
+                            onChange={handleName}
+                            value={name}
+                            autoFocus
+                        />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            type="number"
+                            id="quantity"
+                            label="Item quantity"
+                            name="quantity"
+                            autoComplete="quantity"
+                            onChange={handleQuantity}
+                            value={quantity}
+                            autoFocus
+                        />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            type="number"
+                            id="price"
+                            label="Item Price"
+                            name="price"
+                            autoComplete="price"
+                            onChange={handlePrice}
+                            value={price}
+                            autoFocus
+                        />
+                    </Grid>
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        className={classes.submit}
+                    >
+                        Create Item
                 </Button>
-            </form>
-        </Grid>
-    )
+                </form>
+            </Grid>
+        )
+    }
 }
 
 const mapStateToProps = state => ({
-    storeId: state.stores.storeId
+    storeId: state.stores.storeId,
+    errors: state.errors.errors
 })
 
 export default connect(mapStateToProps, { createItem, addItemToStore, getStores })(NewItem)

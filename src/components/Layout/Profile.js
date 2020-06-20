@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     spinner: {
         display: 'flex',
         '& > * + *': {
-            marginLeft: theme.spacing(2),
+            margin: 'auto',
         },
     },
     footer: {

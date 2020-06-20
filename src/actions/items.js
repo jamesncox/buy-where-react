@@ -1,5 +1,5 @@
 import {
-    ITEM_ERRORS,
+    SET_ERRORS,
     ADD_ITEM,
     ADD_ITEM_TO_STORE,
 } from '../actionTypes'
@@ -34,8 +34,7 @@ export const createItem = (item) => {
         const itemObj = await res.json()
 
         if (itemObj.errors) {
-            alert(itemObj.errors)
-            dispatch({ type: ITEM_ERRORS, payload: itemObj.errors })
+            dispatch({ type: SET_ERRORS, payload: itemObj.errors })
         } else {
             dispatch({ type: ADD_ITEM, payload: itemObj })
         }
@@ -67,7 +66,7 @@ export const updateItem = (item, id) => {
 
         if (itemObj.errors) {
             alert(itemObj.errors)
-            dispatch({ type: ITEM_ERRORS, payload: itemObj.errors })
+            dispatch({ type: SET_ERRORS, payload: itemObj.errors })
         } else {
             dispatch({ type: ADD_ITEM, payload: itemObj })
         }

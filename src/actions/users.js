@@ -1,7 +1,7 @@
 import {
     SET_USER,
     CLEAR_USER,
-    USER_ERRORS,
+    SET_ERRORS,
     CLEAR_ERRORS
 } from '../actionTypes'
 
@@ -35,7 +35,7 @@ export function signupUser(token, user) {
 
         const userObj = await res.json()
         if (userObj.errors) {
-            dispatch({ type: USER_ERRORS, payload: userObj.errors })
+            dispatch({ type: SET_ERRORS, payload: userObj.errors })
         } else {
             dispatch({ type: SET_USER, payload: userObj })
         }
@@ -65,7 +65,7 @@ export function loginUser(user) {
         })
         const userObj = await res.json()
         if (userObj.errors) {
-            dispatch({ type: USER_ERRORS, payload: userObj.errors })
+            dispatch({ type: SET_ERRORS, payload: userObj.errors })
         } else {
             dispatch({ type: SET_USER, payload: userObj })
         }

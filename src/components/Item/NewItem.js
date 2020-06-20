@@ -51,7 +51,7 @@ function NewItem(props) {
 
         const item = {
             name: name,
-            price: parseFloat(price).toFixed(2),
+            price: parseFloat(price),
             quantity: parseInt(quantity),
             storeId: props.storeId
         }

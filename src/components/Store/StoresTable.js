@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { SET_STORE_ID, CLEAR_ERRORS } from '../../actionTypes'
 import NewItem from '../Item/NewItem'
+import NoStoresYet from '../Layout/NoStoreYet'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -173,7 +174,8 @@ function Stores(props) {
     } else if (hasStores.length === 0) {
         return (
             <>
-                <p component={Paper} className={classes.paper}>YOU HAVE NOT CREATED A STORE YET</p>
+                <NoStoresYet />
+                {/* <p component={Paper} className={classes.paper}>YOU HAVE NOT CREATED A STORE YET</p> */}
             </>
         )
     } else {

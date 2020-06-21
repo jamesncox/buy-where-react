@@ -16,7 +16,6 @@ export default (state = {
             return { ...state, items: [...state.items], loading: true }
 
         case SET_ITEMS:
-            console.log(action.payload)
             return { ...state, items: action.payload, loading: false }
 
         case ADD_ITEM:

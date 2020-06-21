@@ -4,6 +4,8 @@
 
 [] Create an edit/delete component that gets opened when clicking on a specefic item
 
+[] Function to close the new item and new store forms when new item or store is created
+
 [x] Create errors components for users/items/stores etc
 
 [x] Figure out how to render a newly created Item immediately to the DOM (not wait for page refresh).

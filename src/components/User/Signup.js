@@ -163,10 +163,10 @@ function SignUp(props) {
                                 value={passwordConfirmation}
                                 autoComplete="current-password"
                             />
-                            <FormControlLabel
+                            {/* <FormControlLabel
                                 control={<Checkbox value="remember" color="primary" />}
                                 label="Remember me"
-                            />
+                            /> */}
                             <Button
                                 type="submit"
                                 fullWidth
@@ -178,7 +178,7 @@ function SignUp(props) {
                             </Button>
                             <Grid container>
                                 <Grid item xs>
-                                    <Link component={RouterLink} to="/Login">
+                                    <Link component={RouterLink} to="/SignIn">
                                         {"Already have an account? Login"}
                                     </Link>
                                 </Grid>

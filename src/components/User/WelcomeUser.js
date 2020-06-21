@@ -28,9 +28,12 @@ const useStyles = makeStyles((theme) => ({
     grid: {
         marginTop: "5rem",
     },
+    topMargin: {
+        marginTop: theme.spacing(2)
+    }
 }));
 
-function SignInPrompt(props) {
+function WelcomeUser(props) {
     const classes = useStyles();
     const wideCardMediaStyles = useWideCardMediaStyles();
 
@@ -41,15 +44,18 @@ function SignInPrompt(props) {
                     <CardActionArea component={RouterLink} to="/SignIn">
                         <CardMedia
                             classes={wideCardMediaStyles}
-                            image="https://images.unsplash.com/photo-1587316348545-9edaf7952c3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=848&q=80"
+                            image="https://images.unsplash.com/photo-1460467820054-c87ab43e9b59?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1261&q=80"
                             title="Do not walk sign"
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
-                                Uh oh!
+                                Buy / Where
                             </Typography>
                             <Typography variant="body2" color="textSecondary" component="p">
-                                You must be logged in to view your profile
+                                Track your spending at the stores you love
+                            </Typography>
+                            <Typography className={classes.topMargin} variant="body2" color="textSecondary" component="p">
+                                Sign In to your account or Sign Up to begin
                             </Typography>
                         </CardContent>
                     </CardActionArea>
@@ -84,4 +90,4 @@ const mapStateToProps = state => ({
     loggedIn: state.users.loggedIn
 })
 
-export default connect(mapStateToProps)(SignInPrompt)
+export default connect(mapStateToProps)(WelcomeUser)

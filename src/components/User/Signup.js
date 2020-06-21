@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { signupUser } from '../../actions/users'
 import { Redirect } from "react-router";
 
-import SignInSuccess from './SignInSuccess'
 import Copyright from '../Layout/Copyright'
 import Errors from '../Layout/Errors'
 
@@ -85,18 +84,9 @@ function SignUp(props) {
         setPasswordConfirmation('')
     }
 
-    const renderSuccessMessage = () => {
-        return (
-            <SignInSuccess />
-        )
-    }
-
     if (props.loggedIn === true) {
         return (
             <Redirect to="/" />
-            // <div>
-            //     {renderSuccessMessage()}
-            // </div>
         )
     } else if (props.errors) {
         return (

@@ -1,15 +1,38 @@
 import {
+    SET_ITEMS,
+    LOADING_ITEMS,
     SET_ERRORS,
     ADD_ITEM,
     ADD_ITEM_TO_STORE,
 } from '../actionTypes'
 
+const setItems = items => {
+    return { type: SET_ITEMS, payload: items }
+}
+
 export const addItemToStore = (item) => {
     return { type: ADD_ITEM_TO_STORE, payload: item }
 }
 
-export const createItem = (item) => {
+export const getItems = (id) => {
+    return async dispatch => {
 
+        dispatch({ type: LOADING_ITEMS })
+
+        try {
+            const res = await fetch(`http://localhost:3000/api/v1/user_items/${id}`)
+            if (!res.ok) {
+                throw res
+            }
+            const itemData = await res.json()
+            dispatch(setItems(itemData))
+        } catch (err) {
+            console.log(err)
+        }
+    }
+}
+
+export const createItem = (item) => {
     return async (dispatch) => {
 
         const formData = {

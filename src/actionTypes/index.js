@@ -14,6 +14,8 @@ const STORE_ERRORS = 'STORE_ERRORS'
 const SET_STORE_ID = 'SET_STORE_ID'
 
 // Item
+const SET_ITEMS = 'SET_ITEMS'
+const LOADING_ITEMS = 'LOADING_ITEMS'
 const ADD_ITEM = 'ADD_ITEM'
 const ITEM_ERRORS = 'ITEM_ERRORS'
 
@@ -38,6 +40,8 @@ export {
     SET_STORE_ID,
 
     // Item
+    SET_ITEMS,
+    LOADING_ITEMS,
     ADD_ITEM,
     ITEM_ERRORS,
 

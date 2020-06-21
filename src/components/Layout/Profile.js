@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { getStores } from '../../actions/stores'
 import { clearErrors } from '../../actions/errors'
+import { getItems } from '../../actions/items'
 import StoresTable from '../Store/StoresTable'
 import NewStore from '../Store/NewStore'
 import Copyright from '../Layout/Copyright'
@@ -60,6 +61,7 @@ function Profile(props) {
 
     useEffect(() => {
         props.getStores(props.user.id)
+        props.getItems(props.user.id)
     }, [])
 
     if (props.storesLoading === true) {
@@ -95,4 +97,4 @@ const mapStateToProps = state => ({
     storesLoading: state.stores.loading
 })
 
-export default connect(mapStateToProps, { getStores, clearErrors })(Profile)
+export default connect(mapStateToProps, { getStores, getItems, clearErrors })(Profile)

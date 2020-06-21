@@ -42,8 +42,6 @@ export const createItem = (item) => {
             store_id: item.storeId
         }
 
-        console.log(formData)
-
         const res = await fetch("http://localhost:3000/api/v1/items", {
             method: "POST",
             headers: {

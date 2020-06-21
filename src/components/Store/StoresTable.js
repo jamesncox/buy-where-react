@@ -109,6 +109,7 @@ function Stores(props) {
         const userStores = props.stores.filter(store => store.user_id === id)
         return (
             userStores.map(store => {
+                const userItems = props.items.filter(item => item.store_id === store.id)
                 const invoiceSubtotal = subtotal(store.items);
                 const invoiceTaxes = TAX_RATE * invoiceSubtotal;
                 const invoiceTotal = invoiceTaxes + invoiceSubtotal;
@@ -134,7 +135,7 @@ function Stores(props) {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {store.items.map((item) => (
+                                {userItems.map((item) => (
                                     <TableRow key={item.id}>
                                         <TableCell>{itemFormat(item.name)}</TableCell>
                                         <TableCell align="right">{item.quantity}</TableCell>
@@ -190,7 +191,9 @@ function Stores(props) {
 const mapStateToProps = state => ({
     user: state.users.user,
     stores: state.stores.stores,
-    loadingStores: state.stores.loading
+    items: state.items.items,
+    loadingStores: state.stores.loading,
+    loadingItems: state.items.loading
 })
 
 const mapDispatchToProps = dispatch => ({

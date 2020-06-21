@@ -41,7 +41,7 @@ function LogOut(props) {
                     <CardActionArea component={RouterLink} to="/SignIn">
                         <CardMedia
                             classes={wideCardMediaStyles}
-                            image="https://images.unsplash.com/photo-1503980599186-9cc36eda351a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+                            image="https://www.reedpublicrelations.com/wp-content/uploads/2019/11/Reed-blog-post-image.jpg"
                             title="The best is yet to come"
                         />
                         <CardContent>

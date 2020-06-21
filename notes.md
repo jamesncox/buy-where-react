@@ -6,4 +6,6 @@
 
 [x] Create errors components for users/items/stores etc
 
-[] Figure out how to render a newly created Item immediately to the DOM (not wait for page refresh).
+[x] Figure out how to render a newly created Item immediately to the DOM (not wait for page refresh).
+    I DID IT! Had to create a custom route for Rails API and add the fetch action in Items action, and 
+    create a filter method to display the items stores. It works perfectly now!!!

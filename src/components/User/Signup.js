@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { signupUser } from '../../actions/users'
+import { Redirect } from "react-router";
+
 import SignInSuccess from './SignInSuccess'
 import Copyright from '../Layout/Copyright'
 import Errors from '../Layout/Errors'
@@ -91,9 +93,10 @@ function SignUp(props) {
 
     if (props.loggedIn === true) {
         return (
-            <div>
-                {renderSuccessMessage()}
-            </div>
+            <Redirect to="/" />
+            // <div>
+            //     {renderSuccessMessage()}
+            // </div>
         )
     } else if (props.errors) {
         return (

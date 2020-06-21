@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { loginUser } from '../../actions/users'
+import { Redirect } from "react-router";
+
 import SignInSuccess from './SignInSuccess'
 import Copyright from '../Layout/Copyright'
 import Errors from '../Layout/Errors'
@@ -76,17 +78,18 @@ function SignIn(props) {
         setPassword('')
     }
 
-    const renderSuccessMessage = () => {
-        return (
-            <SignInSuccess />
-        )
-    }
+    // const renderSuccessMessage = () => {
+    //     return (
+    //         <SignInSuccess />
+    //     )
+    // }
 
     if (props.loggedIn === true) {
         return (
-            <div>
-                {renderSuccessMessage()}
-            </div>
+            <Redirect to="/" />
+            // <div>
+            //     {renderSuccessMessage()}
+            // </div>
         )
     } else if (props.errors) {
         return (

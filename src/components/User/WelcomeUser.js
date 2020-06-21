@@ -44,8 +44,8 @@ function WelcomeUser(props) {
                     <CardActionArea component={RouterLink} to="/SignIn">
                         <CardMedia
                             classes={wideCardMediaStyles}
-                            image="https://images.unsplash.com/photo-1460467820054-c87ab43e9b59?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1261&q=80"
-                            title="Do not walk sign"
+                            image="https://www.playthegamereadthestory.com/media/mageplaza/blog/post/w/e/welcome.png"
+                            title="Welcome sign"
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
@@ -55,7 +55,7 @@ function WelcomeUser(props) {
                                 Track your spending at the stores you love
                             </Typography>
                             <Typography className={classes.topMargin} variant="body2" color="textSecondary" component="p">
-                                Sign In to your account or Sign Up to begin
+                                Sign in to your account or click Sign Up below to begin
                             </Typography>
                         </CardContent>
                     </CardActionArea>

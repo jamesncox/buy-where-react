@@ -3,15 +3,10 @@ import {
     LOADING_ITEMS,
     SET_ERRORS,
     ADD_ITEM,
-    ADD_ITEM_TO_STORE,
 } from '../actionTypes'
 
 const setItems = items => {
     return { type: SET_ITEMS, payload: items }
-}
-
-export const addItemToStore = (item) => {
-    return { type: ADD_ITEM_TO_STORE, payload: item }
 }
 
 export const getItems = (id) => {

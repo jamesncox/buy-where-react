@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { createItem, addItemToStore } from '../../actions/items'
+import { createItem } from '../../actions/items'
 import { getStores } from '../../actions/stores'
 import Errors from '../Layout/Errors'
 
@@ -58,7 +58,6 @@ function NewItem(props) {
         }
 
         props.createItem(item)
-        // props.addItemToStore(item)
         setName("")
         setPrice("")
         setQuantity("")
@@ -146,4 +145,4 @@ const mapStateToProps = state => ({
     errors: state.errors.errors
 })
 
-export default connect(mapStateToProps, { createItem, addItemToStore, getStores })(NewItem)
+export default connect(mapStateToProps, { createItem, getStores })(NewItem)

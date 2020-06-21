@@ -2,7 +2,6 @@ import {
     SET_STORES,
     LOADING_STORES,
     ADD_STORE,
-    ADD_ITEM_TO_STORE,
     STORE_ERRORS,
     SET_STORE_ID
 } from '../actionTypes'

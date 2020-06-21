@@ -41,7 +41,7 @@ function LogOut(props) {
                     <CardActionArea component={RouterLink} to="/SignIn">
                         <CardMedia
                             classes={wideCardMediaStyles}
-                            image="https://www.reedpublicrelations.com/wp-content/uploads/2019/11/Reed-blog-post-image.jpg"
+                            image="https://www.tinyprints.com/inspiration/wp-content/uploads/2019/02/thank-you-quotes-1-1024x683.jpg"
                             title="The best is yet to come"
                         />
                         <CardContent>

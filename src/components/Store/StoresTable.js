@@ -46,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
         fontSize: "1.5rem",
         fontWeight: "bold",
         color: "white",
+        align: "left",
         [theme.breakpoints.down('xs')]: {
             fontSize: "1rem"
         },
@@ -84,6 +85,18 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         '& > * + *': {
             margin: 'auto',
+        },
+    },
+    itemRow: {
+        width: "18em",
+        [theme.breakpoints.down('md')]: {
+            width: "16em"
+        },
+        [theme.breakpoints.down('sm')]: {
+            width: "15em"
+        },
+        [theme.breakpoints.down('xs')]: {
+            width: "8em"
         },
     },
 }));
@@ -125,7 +138,7 @@ function Stores(props) {
         const userStores = props.stores.filter(store => store.user_id === id).reverse()
         return (
             userStores.map(store => {
-                const userItems = props.items.filter(item => item.store_id === store.id)
+                const userItems = props.items.filter(item => item.store_id === store.id).reverse()
                 const invoiceSubtotal = subtotal(userItems);
                 const invoiceTaxes = TAX_RATE * invoiceSubtotal;
                 const invoiceTotal = invoiceTaxes + invoiceSubtotal;
@@ -153,7 +166,7 @@ function Stores(props) {
                             <TableBody>
                                 {userItems.map((item) => (
                                     <TableRow key={item.id}>
-                                        <TableCell>{itemFormat(item.name)}</TableCell>
+                                        <TableCell className={classes.itemRow}>{itemFormat(item.name)}</TableCell>
                                         <TableCell align="right">{item.quantity}</TableCell>
                                         <TableCell align="right">${ccyFormat(item.price)}</TableCell>
                                         <TableCell align="right">${ccyFormat(item.price * item.quantity)}</TableCell>

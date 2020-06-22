@@ -128,10 +128,12 @@ function Stores(props) {
     const handleShowNewItem = (id) => {
         if (!showNewItem) {
             setShowNewItem(showNewItem === id ? true : id)
+            // setShowEditStore(showEditStore === id ? false : id)
             props.setStoreId(id)
             props.clearErrors()
         } else {
             setShowNewItem(showNewItem === id ? false : id)
+            // setShowEditStore(showEditStore === id ? false : id)
             props.setStoreId(id)
             props.clearErrors()
         }
@@ -140,10 +142,12 @@ function Stores(props) {
     const handleShowEditStore = (id) => {
         if (!showEditStore) {
             setShowEditStore(showEditStore === id ? true : id)
+            // setShowNewItem(showNewItem === id ? false : id)
             props.setStoreId(id)
             props.clearErrors()
         } else {
             setShowEditStore(showEditStore === id ? false : id)
+            // setShowNewItem(showNewItem === id ? false : id)
             props.setStoreId(id)
             props.clearErrors()
         }
@@ -159,8 +163,8 @@ function Stores(props) {
                 const invoiceTotal = invoiceTaxes + invoiceSubtotal;
                 return (
                     <TableContainer key={store.id} className={classes.container} component={Paper}>
-                        {showNewItem === store.id ? <NewItem /> : null}
                         {showEditStore === store.id ? <EditStore /> : null}
+                        {showNewItem === store.id ? <NewItem /> : null}
                         <Table className={classes.table} aria-label="spanning table">
                             <TableHead>
                                 <TableRow style={{ backgroundColor: `${store.color}` }}>

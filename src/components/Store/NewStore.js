@@ -141,7 +141,7 @@ function NewStore(props) {
                         // autoFocus
                         />
                         <Typography className={classes.paper}>
-                            Select color for store header
+                            select color for store header
                     </Typography>
                         <ColorPalette
                             palette={palette}

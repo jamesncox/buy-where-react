@@ -10,25 +10,32 @@ import Button from '@material-ui/core/Button';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-    },
-    paper: {
-        padding: theme.spacing(1),
-        margin: 'auto',
-        color: theme.palette.text.secondary,
-    },
-    form: {
-        margin: 'auto',
-        width: '95%',
-    },
-    submit: {
-        margin: theme.spacing(5, 0, 2),
-    },
-}))
+
 
 function NewItem(props) {
+
+    const selectedStore = props.stores.filter(store => store.id === props.storeId)
+
+    const useStyles = makeStyles((theme) => ({
+        root: {
+            flexGrow: 1,
+        },
+        paper: {
+            padding: theme.spacing(1),
+            margin: 'auto',
+            color: `${selectedStore[0].color}`,
+            fontWeight: 'bold',
+            opacity: "60%"
+        },
+        form: {
+            margin: 'auto',
+            width: '95%',
+        },
+        submit: {
+            margin: theme.spacing(5, 0, 2),
+        },
+    }))
+
     const classes = useStyles()
 
     const [name, setName] = useState("")
@@ -68,11 +75,11 @@ function NewItem(props) {
             <Errors />
         )
     } else {
-        const selectedStore = props.stores.filter(store => store.id === props.storeId)
+
         return (
             <Grid container className={classes.root}>
                 <Typography className={classes.paper}>
-                    New {selectedStore[0].name} Item
+                    {selectedStore[0].name.toUpperCase()} PURCHASE
                 </Typography>
                 <form
                     className={classes.form}
@@ -133,8 +140,8 @@ function NewItem(props) {
                         color="primary"
                         className={classes.submit}
                     >
-                        Create Item
-                </Button>
+                        ADD
+                    </Button>
                 </form>
             </Grid>
         )

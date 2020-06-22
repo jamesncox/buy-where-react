@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { SET_STORE_ID, CLEAR_ERRORS } from '../../actionTypes'
 import NewItem from '../Item/NewItem'
 import NoStoresYet from '../Layout/NoStoreYet'
+import EditStore from './EditStore'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -47,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: "bold",
         color: "white",
         align: "left",
+        cursor: 'pointer',
         [theme.breakpoints.down('xs')]: {
             fontSize: "1rem"
         },
@@ -121,14 +123,27 @@ function Stores(props) {
     const classes = useStyles();
 
     const [showNewItem, setShowNewItem] = useState(false)
+    const [showEditStore, setShowEditStore] = useState(false)
 
-    const handleShow = (id) => {
+    const handleShowNewItem = (id) => {
         if (!showNewItem) {
             setShowNewItem(showNewItem === id ? true : id)
             props.setStoreId(id)
             props.clearErrors()
         } else {
             setShowNewItem(showNewItem === id ? false : id)
+            props.setStoreId(id)
+            props.clearErrors()
+        }
+    }
+
+    const handleShowEditStore = (id) => {
+        if (!showEditStore) {
+            setShowEditStore(showEditStore === id ? true : id)
+            props.setStoreId(id)
+            props.clearErrors()
+        } else {
+            setShowEditStore(showEditStore === id ? false : id)
             props.setStoreId(id)
             props.clearErrors()
         }
@@ -145,13 +160,14 @@ function Stores(props) {
                 return (
                     <TableContainer key={store.id} className={classes.container} component={Paper}>
                         {showNewItem === store.id ? <NewItem /> : null}
+                        {showEditStore === store.id ? <EditStore /> : null}
                         <Table className={classes.table} aria-label="spanning table">
                             <TableHead>
                                 <TableRow style={{ backgroundColor: `${store.color}` }}>
                                     <TableCell>
-                                        <AddBoxIcon className={classes.addIcon} onClick={() => handleShow(store.id)} />
+                                        <AddBoxIcon className={classes.addIcon} onClick={() => handleShowNewItem(store.id)} />
                                     </TableCell>
-                                    <TableCell className={classes.title} colSpan={2}>
+                                    <TableCell onClick={() => handleShowEditStore(store.id)} className={classes.title} colSpan={2}>
                                         {(store.name).toUpperCase()}
                                     </TableCell>
                                     <TableCell align="right" className={classes.storeType}>{(store.store_type).toUpperCase()}</TableCell>

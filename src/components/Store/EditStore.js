@@ -13,22 +13,12 @@ import { ColorPalette } from 'material-ui-color';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: "40%",
+        width: "100%",
         margin: 'auto',
-        marginTop: '2em',
-        [theme.breakpoints.down('md')]: {
-            width: "60%",
-        },
-        [theme.breakpoints.down('sm')]: {
-            width: "80%",
-        },
-        [theme.breakpoints.down('xs')]: {
-            width: "98%",
-        },
     },
     newStore: {
         margin: 'auto',
-        width: '95%',
+        width: '98%',
     },
     paper: {
         padding: theme.spacing(1),
@@ -65,13 +55,15 @@ const palette = {
     black: 'black',
 }
 
-function NewStore(props) {
+function EditStore(props) {
 
     const classes = useStyles()
 
     const [name, setName] = useState("")
     const [storeType, setStoreType] = useState("")
     const [color, setColor] = useState("")
+
+    const selectedStore = props.stores.filter(store => store.id === props.storeId)
 
     const handleName = (e) => {
         setName(e.target.value)
@@ -120,7 +112,7 @@ function NewStore(props) {
                             required
                             fullWidth
                             id="name"
-                            label="Store Name"
+                            label={selectedStore[0].name}
                             name="name"
                             autoComplete="name"
                             onChange={handleName}
@@ -133,7 +125,7 @@ function NewStore(props) {
                             required
                             fullWidth
                             id="storeType"
-                            label="Store Type (e.g. grocery)"
+                            label={selectedStore[0].store_type}
                             name="storeType"
                             autoComplete="storeType"
                             onChange={handleStoreType}
@@ -142,7 +134,7 @@ function NewStore(props) {
                         />
                         <Typography className={classes.paper}>
                             Select color for store header
-                    </Typography>
+                        </Typography>
                         <ColorPalette
                             palette={palette}
                             onSelect={e => handleColor(e)}
@@ -155,7 +147,7 @@ function NewStore(props) {
                             color="primary"
                             className={classes.submit}
                         >
-                            Create Store
+                            Submit Changes
                     </Button>
                     </form>
                 </Grid>
@@ -166,7 +158,9 @@ function NewStore(props) {
 
 const mapStateToProps = state => ({
     user: state.users.user,
-    errors: state.errors.errors
+    errors: state.errors.errors,
+    stores: state.stores.stores,
+    storeId: state.stores.storeId,
 })
 
-export default connect(mapStateToProps, { createStore })(NewStore)
+export default connect(mapStateToProps, { createStore })(EditStore)

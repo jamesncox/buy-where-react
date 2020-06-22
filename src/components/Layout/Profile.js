@@ -35,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
         // marginBottom: theme.spacing(2)
     },
     spinner: {
+        margin: 'auto',
         display: 'flex',
         '& > * + *': {
             margin: 'auto',

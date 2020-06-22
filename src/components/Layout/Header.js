@@ -159,7 +159,7 @@ function Header(props) {
                             component={RouterLink}
                             to="/"
                         >
-                            My Stores
+                            Home
                         </Button>
                         <Button
                             className={classes.userActions}

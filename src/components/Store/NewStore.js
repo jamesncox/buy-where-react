@@ -138,7 +138,7 @@ function InputStore(props) {
                             autoComplete="storeType"
                             onChange={handleStoreType}
                             value={storeType}
-                            autoFocus
+                        // autoFocus
                         />
                         <Typography className={classes.paper}>
                             Select color for store header

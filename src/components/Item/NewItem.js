@@ -107,7 +107,7 @@ function NewItem(props) {
                             autoComplete="quantity"
                             onChange={handleQuantity}
                             value={quantity}
-                            autoFocus
+                        // autoFocus
                         />
                     </Grid>
                     <Grid item xs={12}>
@@ -123,7 +123,7 @@ function NewItem(props) {
                             autoComplete="price"
                             onChange={handlePrice}
                             value={price}
-                            autoFocus
+                        // autoFocus
                         />
                     </Grid>
                     <Button

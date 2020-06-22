@@ -44,7 +44,7 @@ function WelcomeUser(props) {
                     <CardActionArea component={RouterLink} to="/SignIn">
                         <CardMedia
                             classes={wideCardMediaStyles}
-                            image="https://www.playthegamereadthestory.com/media/mageplaza/blog/post/w/e/welcome.png"
+                            image="https://images.pexels.com/photos/4473400/pexels-photo-4473400.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
                             title="Welcome sign"
                         />
                         <CardContent>

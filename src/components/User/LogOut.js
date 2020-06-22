@@ -42,7 +42,7 @@ function LogOut(props) {
                         <CardMedia
                             classes={wideCardMediaStyles}
                             image="https://www.tinyprints.com/inspiration/wp-content/uploads/2019/02/thank-you-quotes-1-1024x683.jpg"
-                            title="The best is yet to come"
+                            title="Thank you Scrabble tiles"
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">

@@ -1,10 +1,12 @@
 # TO DO 
 
-[] Create a better landing page for users. Description of the app. Links to login. Etc.
-
 [] Create an edit/delete component that gets opened when clicking on a specefic item
 
 [] Function to close the new item and new store forms when new item or store is created
+
+[] StoreTable columns changing size with item name. Make them sticky / set width.
+
+[x] Create a better landing page for users. Description of the app. Links to login. Etc.
 
 [x] Create errors components for users/items/stores etc
 

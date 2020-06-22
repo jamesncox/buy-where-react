@@ -46,19 +46,28 @@ const useStyles = makeStyles((theme) => ({
         fontSize: "1.5rem",
         fontWeight: "bold",
         color: "white",
-        textAlign: "left",
+        [theme.breakpoints.down('xs')]: {
+            fontSize: "1rem"
+        },
     },
     units: {
         fontWeight: "bold",
         color: "rgba(0, 0, 0, 0.65)"
     },
     storeType: {
-        color: "white"
+        color: "white",
+        [theme.breakpoints.down('xs')]: {
+            fontSize: ".75rem"
+        },
     },
     addIcon: {
         color: "rgba(255, 255, 255, 0.9)",
         float: "left",
         cursor: "pointer",
+        fontSize: "2rem",
+        [theme.breakpoints.down('xs')]: {
+            fontSize: "1.25rem"
+        },
     },
     editIcon: {
         cursor: "pointer",
@@ -127,9 +136,9 @@ function Stores(props) {
                             <TableHead>
                                 <TableRow style={{ backgroundColor: `${store.color}` }}>
                                     <TableCell>
-                                        <AddBoxIcon className={classes.addIcon} fontSize="large" onClick={() => handleShow(store.id)} />
+                                        <AddBoxIcon className={classes.addIcon} onClick={() => handleShow(store.id)} />
                                     </TableCell>
-                                    <TableCell align="right" className={classes.title} colSpan={2}>
+                                    <TableCell className={classes.title} colSpan={2}>
                                         {(store.name).toUpperCase()}
                                     </TableCell>
                                     <TableCell align="right" className={classes.storeType}>{(store.store_type).toUpperCase()}</TableCell>

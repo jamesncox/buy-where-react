@@ -2,7 +2,8 @@ import {
     SET_STORES,
     LOADING_STORES,
     SET_ERRORS,
-    ADD_STORE
+    ADD_STORE,
+    UPDATE_STORE
 } from '../actionTypes'
 
 const setStores = stores => {
@@ -84,7 +85,7 @@ export const editStore = (store) => {
         if (storeObj.errors) {
             dispatch({ type: SET_ERRORS, payload: storeObj.errors })
         } else {
-            dispatch({ type: ADD_STORE, payload: storeObj })
+            dispatch({ type: UPDATE_STORE, payload: storeObj })
         }
     }
 }

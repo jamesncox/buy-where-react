@@ -4,6 +4,7 @@ import users from '../reducers/users'
 import stores from '../reducers/stores'
 import items from '../reducers/items'
 import errors from '../reducers/errors'
+import isOpen from '../reducers/isOpen'
 
 const rootReducer = combineReducers(
     {
@@ -11,7 +12,8 @@ const rootReducer = combineReducers(
         users,
         stores,
         items,
-        errors
+        errors,
+        isOpen
     }
 )
 

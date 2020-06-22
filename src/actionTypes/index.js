@@ -11,6 +11,7 @@ const LOADING_STORES = 'LOADING_STORES'
 const ADD_STORE = 'ADD_STORE'
 const STORE_ERRORS = 'STORE_ERRORS'
 const SET_STORE_ID = 'SET_STORE_ID'
+const UPDATE_STORE = 'UPDATE_STORE'
 
 // Item
 const SET_ITEMS = 'SET_ITEMS'
@@ -21,6 +22,9 @@ const ITEM_ERRORS = 'ITEM_ERRORS'
 // Errors
 const SET_ERRORS = 'SET_ERRORS'
 const CLEAR_ERRORS = 'CLEAR_ERRORS'
+
+// Is Open?
+const IS_NEW_ITEM_OPEN = 'IS_NEW_ITEM_OPEN'
 
 export {
     // User
@@ -36,6 +40,7 @@ export {
     ADD_STORE,
     STORE_ERRORS,
     SET_STORE_ID,
+    UPDATE_STORE,
 
     // Item
     SET_ITEMS,
@@ -45,5 +50,8 @@ export {
 
     // Errors
     SET_ERRORS,
-    CLEAR_ERRORS
+    CLEAR_ERRORS,
+
+    // Is Open?
+    IS_NEW_ITEM_OPEN
 }

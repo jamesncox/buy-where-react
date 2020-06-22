@@ -3,7 +3,8 @@ import {
     LOADING_STORES,
     ADD_STORE,
     STORE_ERRORS,
-    SET_STORE_ID
+    SET_STORE_ID,
+    UPDATE_STORE
 } from '../actionTypes'
 
 export default (state = {
@@ -28,6 +29,14 @@ export default (state = {
 
         case SET_STORE_ID:
             return { ...state, storeId: action.payload }
+
+        case UPDATE_STORE:
+            return {
+                ...state,
+                stores: [...state.stores.map(
+                    (store, i) => i === store[i] ? { ...store, stores: action.payload } : store
+                )]
+            }
 
         default:
             return state

@@ -40,6 +40,9 @@ const useStyles = makeStyles((theme) => ({
     avatar: {
         margin: theme.spacing(1),
         backgroundColor: theme.palette.secondary.main,
+        [theme.breakpoints.down('sm')]: {
+            marginTop: "-2em"
+        }
     },
     form: {
         width: '100%',
@@ -161,10 +164,6 @@ function SignUp(props) {
                                 value={passwordConfirmation}
                                 autoComplete="current-password"
                             />
-                            {/* <FormControlLabel
-                                control={<Checkbox value="remember" color="primary" />}
-                                label="Remember me"
-                            /> */}
                             <Button
                                 type="submit"
                                 fullWidth

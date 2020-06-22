@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { connect } from 'react-redux'
 import { Link as RouterLink } from 'react-router-dom';
@@ -84,7 +84,7 @@ ScrollTop.propTypes = {
 function Header(props) {
     const classes = useStyles();
 
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [anchorEl, setAnchorEl] = useState(null);
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -133,7 +133,7 @@ function Header(props) {
                                 to="/"
                                 onClick={handleClose}
                             >
-                                My Stores
+                                Home
                             </MenuItem>
                             <MenuItem
                                 component={RouterLink}

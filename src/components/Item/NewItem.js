@@ -68,11 +68,12 @@ function NewItem(props) {
             <Errors />
         )
     } else {
+        const selectedStore = props.stores.filter(store => store.id === props.storeId)
         return (
             <Grid container className={classes.root}>
                 <Typography className={classes.paper}>
-                    New Item
-            </Typography>
+                    New {selectedStore[0].name} Item
+                </Typography>
                 <form
                     className={classes.form}
                     noValidate
@@ -142,7 +143,8 @@ function NewItem(props) {
 
 const mapStateToProps = state => ({
     storeId: state.stores.storeId,
-    errors: state.errors.errors
+    errors: state.errors.errors,
+    stores: state.stores.stores
 })
 
 export default connect(mapStateToProps, { createItem, getStores })(NewItem)

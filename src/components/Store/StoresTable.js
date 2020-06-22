@@ -13,6 +13,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import AddBoxIcon from '@material-ui/icons/AddBox';
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 const TAX_RATE = 0.085;
 
@@ -69,7 +70,13 @@ const useStyles = makeStyles((theme) => ({
     invoiceStyles: {
         fontWeight: "bold",
         color: "rgba(0, 0, 0, 0.65)"
-    }
+    },
+    spinner: {
+        display: 'flex',
+        '& > * + *': {
+            margin: 'auto',
+        },
+    },
 }));
 
 function ccyFormat(num) {
@@ -168,23 +175,14 @@ function Stores(props) {
     const hasStores = props.stores.filter(store => store.user_id === props.user.id)
     if (props.loadingStores) {
         return (
-            <>
-                <p>Loading stores...</p>
-            </>
+            <div className={classes.spinner}>
+                <CircularProgress />
+            </div>
         )
     } else if (hasStores.length === 0) {
-        return (
-            <>
-                <NoStoresYet />
-                {/* <p component={Paper} className={classes.paper}>YOU HAVE NOT CREATED A STORE YET</p> */}
-            </>
-        )
+        return <NoStoresYet />
     } else {
-        return (
-            <>
-                {renderStoreTable(props.user.id)}
-            </>
-        )
+        return renderStoreTable(props.user.id)
     }
 }
 

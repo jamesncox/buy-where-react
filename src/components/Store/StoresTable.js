@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { SET_STORE_ID, CLEAR_ERRORS } from '../../actionTypes'
+import { SET_STORE_ID, CLEAR_ERRORS, NEW_STORE_CLOSE } from '../../actionTypes'
 import NewItem from '../Item/NewItem'
 import NoStoresYet from '../Layout/NoStoreYet'
 import EditStore from './EditStore'
@@ -131,6 +131,7 @@ function Stores(props) {
             props.setStoreId(id)
             setShowEditStore(false)
             props.clearErrors()
+            props.newStoreClose()
         } else {
             setShowNewItem(showNewItem === id ? false : id)
             props.setStoreId(id)
@@ -232,12 +233,13 @@ const mapStateToProps = state => ({
     items: state.items.items,
     loadingStores: state.stores.loading,
     loadingItems: state.items.loading,
-    newStoreOpen: state.isOpen.newStoreOpen
+    isStoreOpen: state.isOpen.isStoreOpen
 })
 
 const mapDispatchToProps = dispatch => ({
     setStoreId: (id) => dispatch({ type: SET_STORE_ID, payload: id }),
-    clearErrors: () => dispatch({ type: CLEAR_ERRORS })
+    clearErrors: () => dispatch({ type: CLEAR_ERRORS }),
+    newStoreClose: () => dispatch({ type: NEW_STORE_CLOSE })
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Stores)

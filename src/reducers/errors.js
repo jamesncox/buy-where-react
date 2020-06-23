@@ -9,7 +9,6 @@ export default (state = {
     switch (action.type) {
 
         case SET_ERRORS:
-            console.log(action.payload)
             return { ...state, errors: action.payload }
 
         case CLEAR_ERRORS:

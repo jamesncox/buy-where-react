@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { getStores } from '../../actions/stores'
 import { clearErrors } from '../../actions/errors'
 import { getItems } from '../../actions/items'
+import { newStoreOpen, newStoreClose } from '../../actions/isOpen'
 import StoresTable from '../Store/StoresTable'
 import NewStore from '../Store/NewStore'
 import Copyright from '../Layout/Copyright'
@@ -32,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
     },
     button: {
         marginTop: theme.spacing(2),
-        // marginBottom: theme.spacing(2)
     },
     spinner: {
         margin: 'auto',
@@ -51,12 +51,14 @@ function Profile(props) {
     const [showNewStore, setShowNewStore] = useState(false)
 
     const handleShow = () => {
-        if (!showNewStore) {
+        if (!showNewStore && props.isStore !== true) {
             setShowNewStore(true)
             props.clearErrors()
+            props.newStoreOpen()
         } else {
             setShowNewStore(false)
             props.clearErrors()
+            props.newStoreClose()
         }
     }
 
@@ -82,7 +84,7 @@ function Profile(props) {
                 </Typography>
                 <Grid item xs={12}>
                     <Button className={classes.button} variant="contained" onClick={handleShow}>New Store</Button>
-                    {showNewStore ? <NewStore /> : null}
+                    {showNewStore && props.storeIsOpen !== false ? <NewStore /> : null}
                     <StoresTable />
                 </Grid>
                 <Box mt={5} className={classes.footer}>
@@ -95,7 +97,8 @@ function Profile(props) {
 
 const mapStateToProps = state => ({
     user: state.users.user,
-    storesLoading: state.stores.loading
+    storesLoading: state.stores.loading,
+    storeIsOpen: state.isOpen.isStoreOpen
 })
 
-export default connect(mapStateToProps, { getStores, getItems, clearErrors })(Profile)
+export default connect(mapStateToProps, { getStores, getItems, clearErrors, newStoreOpen, newStoreClose })(Profile)

@@ -142,7 +142,7 @@ function NewStore(props) {
                         />
                         <Typography className={classes.paper}>
                             select color for store header
-                    </Typography>
+                        </Typography>
                         <ColorPalette
                             palette={palette}
                             onSelect={e => handleColor(e)}

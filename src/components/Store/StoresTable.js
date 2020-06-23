@@ -128,12 +128,11 @@ function Stores(props) {
     const handleShowNewItem = (id) => {
         if (!showNewItem) {
             setShowNewItem(showNewItem === id ? true : id)
-            // setShowEditStore(showEditStore === id ? false : id)
             props.setStoreId(id)
+            setShowEditStore(false)
             props.clearErrors()
         } else {
             setShowNewItem(showNewItem === id ? false : id)
-            // setShowEditStore(showEditStore === id ? false : id)
             props.setStoreId(id)
             props.clearErrors()
         }
@@ -142,12 +141,11 @@ function Stores(props) {
     const handleShowEditStore = (id) => {
         if (!showEditStore) {
             setShowEditStore(showEditStore === id ? true : id)
-            // setShowNewItem(showNewItem === id ? false : id)
             props.setStoreId(id)
+            setShowNewItem(false)
             props.clearErrors()
         } else {
             setShowEditStore(showEditStore === id ? false : id)
-            // setShowNewItem(showNewItem === id ? false : id)
             props.setStoreId(id)
             props.clearErrors()
         }
@@ -233,7 +231,8 @@ const mapStateToProps = state => ({
     stores: state.stores.stores,
     items: state.items.items,
     loadingStores: state.stores.loading,
-    loadingItems: state.items.loading
+    loadingItems: state.items.loading,
+    newStoreOpen: state.isOpen.newStoreOpen
 })
 
 const mapDispatchToProps = dispatch => ({

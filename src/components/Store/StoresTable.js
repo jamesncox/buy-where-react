@@ -1,6 +1,15 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { SET_STORE_ID, CLEAR_ERRORS, NEW_STORE_CLOSE, NEW_STORE_OPEN } from '../../actionTypes'
+import {
+    SET_STORE_ID,
+    CLEAR_ERRORS,
+    NEW_STORE_CLOSE,
+    NEW_STORE_OPEN,
+    NEW_ITEM_OPEN,
+    NEW_ITEM_CLOSE,
+    EDIT_ITEM_OPEN,
+    EDIT_ITEM_CLOSE
+} from '../../actionTypes'
 import NewItem from '../Item/NewItem'
 import NoStoresYet from '../Layout/NoStoreYet'
 import EditStore from './EditStore'
@@ -240,7 +249,11 @@ const mapDispatchToProps = dispatch => ({
     setStoreId: (id) => dispatch({ type: SET_STORE_ID, payload: id }),
     clearErrors: () => dispatch({ type: CLEAR_ERRORS }),
     newStoreClose: () => dispatch({ type: NEW_STORE_CLOSE }),
-    newStoreOpen: () => dispatch({ type: NEW_STORE_OPEN })
+    newStoreOpen: () => dispatch({ type: NEW_STORE_OPEN }),
+    newItemOpen: () => dispatch({ type: NEW_ITEM_OPEN }),
+    newItemClose: () => dispatch({ type: NEW_ITEM_CLOSE }),
+    editItemOpen: () => dispatch({ type: EDIT_ITEM_OPEN }),
+    editItemClose: () => dispatch({ type: EDIT_ITEM_CLOSE })
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Stores)

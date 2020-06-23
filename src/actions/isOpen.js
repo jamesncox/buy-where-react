@@ -1,6 +1,6 @@
 import {
     NEW_STORE_OPEN,
-    NEW_STORE_CLOSE
+    NEW_STORE_CLOSE,
 } from '../actionTypes'
 
 export const newStoreOpen = () => {

@@ -50,15 +50,25 @@ function Profile(props) {
     const classes = useStyles();
     const [showNewStore, setShowNewStore] = useState(false)
 
+    // const handleShow = () => {
+    //     if (!showNewStore) {
+    //         setShowNewStore(true)
+    //         props.clearErrors()
+    //         props.newStoreOpen()
+    //     } else {
+    //         setShowNewStore(false)
+    //         props.clearErrors()
+    //         props.newStoreClose()
+    //     }
+    // }
+
     const handleShow = () => {
-        if (!showNewStore) {
-            setShowNewStore(true)
-            props.clearErrors()
+        if (props.isStoreOpen === false) {
             props.newStoreOpen()
-        } else {
-            setShowNewStore(false)
             props.clearErrors()
+        } else {
             props.newStoreClose()
+            props.clearErrors()
         }
     }
 
@@ -84,7 +94,7 @@ function Profile(props) {
                 </Typography>
                 <Grid item xs={12}>
                     <Button className={classes.button} variant="contained" onClick={handleShow}>New Store</Button>
-                    {showNewStore && props.storeIsOpen ? <NewStore /> : null}
+                    {props.isStoreOpen ? <NewStore /> : null}
                     <StoresTable />
                 </Grid>
                 <Box mt={5} className={classes.footer}>
@@ -98,7 +108,7 @@ function Profile(props) {
 const mapStateToProps = state => ({
     user: state.users.user,
     storesLoading: state.stores.loading,
-    storeIsOpen: state.isOpen.isStoreOpen
+    isStoreOpen: state.isOpen.isStoreOpen
 })
 
 export default connect(mapStateToProps, { getStores, getItems, clearErrors, newStoreOpen, newStoreClose })(Profile)

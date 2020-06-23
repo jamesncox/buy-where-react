@@ -6,9 +6,7 @@ import {
     NEW_STORE_CLOSE,
     NEW_STORE_OPEN,
     NEW_ITEM_OPEN,
-    NEW_ITEM_CLOSE,
     EDIT_ITEM_OPEN,
-    EDIT_ITEM_CLOSE
 } from '../../actionTypes'
 import NewItem from '../Item/NewItem'
 import NoStoresYet from '../Layout/NoStoreYet'
@@ -258,9 +256,7 @@ const mapDispatchToProps = dispatch => ({
     newStoreClose: () => dispatch({ type: NEW_STORE_CLOSE }),
     newStoreOpen: () => dispatch({ type: NEW_STORE_OPEN }),
     newItemOpen: () => dispatch({ type: NEW_ITEM_OPEN }),
-    newItemClose: () => dispatch({ type: NEW_ITEM_CLOSE }),
     editItemOpen: () => dispatch({ type: EDIT_ITEM_OPEN }),
-    editItemClose: () => dispatch({ type: EDIT_ITEM_CLOSE })
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Stores)

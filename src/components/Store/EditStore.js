@@ -112,10 +112,10 @@ function EditStore(props) {
             <Grid container component={Paper} className={classes.root}>
                 <Grid className={classes.newStore}>
                     <Typography className={classes.header}>
-                        {selectedStore[0].name.toUpperCase()}
+                        EDIT {selectedStore[0].name.toUpperCase()}
                     </Typography>
                     <Typography className={classes.paper}>
-                        edit store name, type and color
+                        update store name, type and color
                     </Typography>
                     <form
                         className={classes.form}

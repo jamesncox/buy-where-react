@@ -79,7 +79,7 @@ function NewItem(props) {
         return (
             <Grid container className={classes.root}>
                 <Typography className={classes.paper}>
-                    {selectedStore[0].name.toUpperCase()} PURCHASE
+                    NEW {selectedStore[0].name.toUpperCase()} PURCHASE
                 </Typography>
                 <form
                     className={classes.form}
@@ -114,7 +114,6 @@ function NewItem(props) {
                             autoComplete="quantity"
                             onChange={handleQuantity}
                             value={quantity}
-                        // autoFocus
                         />
                     </Grid>
                     <Grid item xs={12}>
@@ -130,7 +129,6 @@ function NewItem(props) {
                             autoComplete="price"
                             onChange={handlePrice}
                             value={price}
-                        // autoFocus
                         />
                     </Grid>
                     <Button

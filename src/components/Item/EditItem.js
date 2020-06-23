@@ -57,7 +57,6 @@ function EditItem(props) {
         }
 
         props.createItem(item)
-        // props.addItemToStore(item)
         setName("")
         setPrice("")
         setQuantity("")

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { getStores } from '../../actions/stores'
 import { clearErrors } from '../../actions/errors'
@@ -48,19 +48,6 @@ const useStyles = makeStyles((theme) => ({
 
 function Profile(props) {
     const classes = useStyles();
-    // const [showNewStore, setShowNewStore] = useState(false)
-
-    // const handleShow = () => {
-    //     if (!showNewStore) {
-    //         setShowNewStore(true)
-    //         props.clearErrors()
-    //         props.newStoreOpen()
-    //     } else {
-    //         setShowNewStore(false)
-    //         props.clearErrors()
-    //         props.newStoreClose()
-    //     }
-    // }
 
     const handleShow = () => {
         if (!props.isStoreOpen) {

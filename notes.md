@@ -3,6 +3,7 @@
 [] Create an edit/delete component that gets opened when clicking on a specefic item
 
 [] Function to close the new item and new store forms when new item or store is created
+    (tried creating a bunch of action creators and reducers to handle when components are open...not working right now)
 
 [] StoreTable columns changing size with item name. Make them sticky / set width.
 

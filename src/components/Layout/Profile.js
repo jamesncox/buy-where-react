@@ -51,7 +51,7 @@ function Profile(props) {
     const [showNewStore, setShowNewStore] = useState(false)
 
     const handleShow = () => {
-        if (!showNewStore && props.isStore !== true) {
+        if (!showNewStore) {
             setShowNewStore(true)
             props.clearErrors()
             props.newStoreOpen()
@@ -84,7 +84,7 @@ function Profile(props) {
                 </Typography>
                 <Grid item xs={12}>
                     <Button className={classes.button} variant="contained" onClick={handleShow}>New Store</Button>
-                    {showNewStore && props.storeIsOpen !== false ? <NewStore /> : null}
+                    {showNewStore && props.storeIsOpen ? <NewStore /> : null}
                     <StoresTable />
                 </Grid>
                 <Box mt={5} className={classes.footer}>

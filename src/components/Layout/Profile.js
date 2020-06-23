@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { getStores } from '../../actions/stores'
 import { clearErrors } from '../../actions/errors'
 import { getItems } from '../../actions/items'
-import { newStoreOpen, newStoreClose } from '../../actions/isOpen'
+import { newStoreOpen, newStoreClose, newItemClose } from '../../actions/isOpen'
 import StoresTable from '../Store/StoresTable'
 import NewStore from '../Store/NewStore'
 import Copyright from '../Layout/Copyright'
@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Profile(props) {
     const classes = useStyles();
-    const [showNewStore, setShowNewStore] = useState(false)
+    // const [showNewStore, setShowNewStore] = useState(false)
 
     // const handleShow = () => {
     //     if (!showNewStore) {
@@ -63,12 +63,13 @@ function Profile(props) {
     // }
 
     const handleShow = () => {
-        if (props.isStoreOpen === false) {
+        if (!props.isStoreOpen) {
             props.newStoreOpen()
             props.clearErrors()
         } else {
             props.newStoreClose()
             props.clearErrors()
+            props.newItemClose()
         }
     }
 
@@ -111,4 +112,11 @@ const mapStateToProps = state => ({
     isStoreOpen: state.isOpen.isStoreOpen
 })
 
-export default connect(mapStateToProps, { getStores, getItems, clearErrors, newStoreOpen, newStoreClose })(Profile)
+export default connect(mapStateToProps, {
+    getStores,
+    getItems,
+    clearErrors,
+    newStoreOpen,
+    newStoreClose,
+    newItemClose
+})(Profile)

@@ -141,10 +141,12 @@ function Stores(props) {
             setShowEditStore(false)
             props.clearErrors()
             props.newStoreClose()
+            props.newItemOpen()
         } else {
             setShowNewItem(showNewItem === id ? false : id)
             props.setStoreId(id)
             props.clearErrors()
+            props.newItemOpen()
         }
     }
 
@@ -172,7 +174,7 @@ function Stores(props) {
                 return (
                     <TableContainer key={store.id} className={classes.container} component={Paper}>
                         {showEditStore === store.id ? <EditStore /> : null}
-                        {showNewItem === store.id ? <NewItem /> : null}
+                        {showNewItem === store.id && props.isNewItemOpen ? <NewItem /> : null}
                         <Table className={classes.table} aria-label="spanning table">
                             <TableHead>
                                 <TableRow style={{ backgroundColor: `${store.color}` }}>
@@ -242,7 +244,9 @@ const mapStateToProps = state => ({
     items: state.items.items,
     loadingStores: state.stores.loading,
     loadingItems: state.items.loading,
-    isStoreOpen: state.isOpen.isStoreOpen
+    isStoreOpen: state.isOpen.isStoreOpen,
+    isNewItemOpen: state.isOpen.isNewItemOpen,
+    isEditItemOpen: state.isOpen.isEditItemOpen
 })
 
 const mapDispatchToProps = dispatch => ({

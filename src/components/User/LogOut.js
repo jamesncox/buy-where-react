@@ -33,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
 
 function LogOut(props) {
     const dispatch = useDispatch()
-    // const { newStoreClose } = props
     const classes = useStyles();
     const wideCardMediaStyles = useWideCardMediaStyles();
 
@@ -90,9 +89,5 @@ const mapStateToProps = state => ({
     errors: state.users.errors,
     loggedIn: state.users.loggedIn
 })
-
-// const mapDispatchToProps = dispatch => ({
-//     newStoreClose: () => dispatch({ type: NEW_STORE_CLOSE })
-// })
 
 export default connect(mapStateToProps, { newStoreClose })(LogOut)

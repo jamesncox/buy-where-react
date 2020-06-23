@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 import { getStores } from '../../actions/stores'
 import { clearErrors } from '../../actions/errors'
 import { getItems } from '../../actions/items'
@@ -47,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Profile(props) {
+    const dispatch = useDispatch()
     const classes = useStyles();
 
     const handleShow = () => {
@@ -62,9 +63,9 @@ function Profile(props) {
     }
 
     useEffect(() => {
-        props.getStores(props.user.id)
-        props.getItems(props.user.id)
-    }, [])
+        dispatch(getStores(props.user.id))
+        dispatch(getItems(props.user.id))
+    }, [dispatch, props.user.id])
 
     if (props.storesLoading === true) {
         return (

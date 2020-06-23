@@ -31,12 +31,7 @@ export default (state = {
             return { ...state, storeId: action.payload }
 
         case UPDATE_STORE:
-            return {
-                ...state,
-                stores: [...state.stores.map(
-                    (store, i) => i === store[i] ? { ...store, stores: action.payload } : store
-                )]
-            }
+            console.log(action.payload)
 
         default:
             return state

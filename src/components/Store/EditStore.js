@@ -95,8 +95,6 @@ function EditStore(props) {
             storeId: props.storeId
         }
 
-        console.log(store)
-
         props.editStore(store)
         setName("")
         setStoreType("")

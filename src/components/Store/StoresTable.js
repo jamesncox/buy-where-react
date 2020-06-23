@@ -156,10 +156,13 @@ function Stores(props) {
             props.setStoreId(id)
             setShowNewItem(false)
             props.clearErrors()
+            props.newStoreClose()
+            props.editItemOpen()
         } else {
             setShowEditStore(showEditStore === id ? false : id)
             props.setStoreId(id)
             props.clearErrors()
+            props.editItemOpen()
         }
     }
 
@@ -173,7 +176,7 @@ function Stores(props) {
                 const invoiceTotal = invoiceTaxes + invoiceSubtotal;
                 return (
                     <TableContainer key={store.id} className={classes.container} component={Paper}>
-                        {showEditStore === store.id ? <EditStore /> : null}
+                        {showEditStore === store.id && props.isEditItemOpen ? <EditStore /> : null}
                         {showNewItem === store.id && props.isNewItemOpen ? <NewItem /> : null}
                         <Table className={classes.table} aria-label="spanning table">
                             <TableHead>

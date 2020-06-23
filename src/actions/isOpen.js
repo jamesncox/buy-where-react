@@ -2,6 +2,7 @@ import {
     NEW_STORE_OPEN,
     NEW_STORE_CLOSE,
     NEW_ITEM_CLOSE,
+    EDIT_ITEM_CLOSE
 } from '../actionTypes'
 
 export const newStoreOpen = () => {
@@ -14,4 +15,8 @@ export const newStoreClose = () => {
 
 export const newItemClose = () => {
     return { type: NEW_ITEM_CLOSE }
+}
+
+export const editItemClose = () => {
+    return { type: EDIT_ITEM_CLOSE }
 }

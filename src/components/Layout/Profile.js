@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { getStores } from '../../actions/stores'
 import { clearErrors } from '../../actions/errors'
 import { getItems } from '../../actions/items'
-import { newStoreOpen, newStoreClose, newItemClose } from '../../actions/isOpen'
+import { newStoreOpen, newStoreClose, newItemClose, editItemClose } from '../../actions/isOpen'
 import StoresTable from '../Store/StoresTable'
 import NewStore from '../Store/NewStore'
 import Copyright from '../Layout/Copyright'
@@ -70,6 +70,7 @@ function Profile(props) {
             props.newStoreClose()
             props.clearErrors()
             props.newItemClose()
+            props.editItemClose()
         }
     }
 
@@ -118,5 +119,6 @@ export default connect(mapStateToProps, {
     clearErrors,
     newStoreOpen,
     newStoreClose,
-    newItemClose
+    newItemClose,
+    editItemClose
 })(Profile)

@@ -1,13 +1,24 @@
 import {
-    IS_NEW_ITEM_OPEN
+    NEW_ITEM_OPEN,
+    NEW_STORE_OPEN,
+    EDIT_STORE_OPEN
 } from '../actionTypes'
 
-export default (state = { itemOpen: false }, action) => {
+export default (state = {
+    newItemOpen: false,
+    newStoreOpen: false,
+    editStoreOpen: false,
+}, action) => {
     switch (action.type) {
-        case IS_NEW_ITEM_OPEN:
-            return {
-                itemOpen: true
-            }
+        case NEW_ITEM_OPEN:
+            return { newItemOpen: true }
+
+        case NEW_STORE_OPEN:
+            return { newStoreOpen: true }
+
+        case EDIT_STORE_OPEN:
+            return { editStoreOpen: true }
+
         default:
             return state
     }

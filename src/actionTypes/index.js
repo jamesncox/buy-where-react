@@ -3,7 +3,6 @@ const SET_TOKEN = 'SET_TOKEN'
 const SET_USER = 'SET_USER'
 const CLEAR_USER = 'CLEAR_USER'
 const USER_ERRORS = 'USER_ERRORS'
-// const CLEAR_ERRORS = 'CLEAR_ERRORS'
 
 // Store
 const SET_STORES = 'SET_STORES'
@@ -24,7 +23,9 @@ const SET_ERRORS = 'SET_ERRORS'
 const CLEAR_ERRORS = 'CLEAR_ERRORS'
 
 // Is Open?
-const IS_NEW_ITEM_OPEN = 'IS_NEW_ITEM_OPEN'
+const NEW_ITEM_OPEN = 'NEW_ITEM_OPEN'
+const NEW_STORE_OPEN = 'NEW_STORE_OPEN'
+const EDIT_STORE_OPEN = 'EDIT_STORE_OPEN'
 
 export {
     // User
@@ -32,7 +33,6 @@ export {
     SET_USER,
     CLEAR_USER,
     USER_ERRORS,
-    // CLEAR_ERRORS,
 
     // Store
     SET_STORES,
@@ -53,5 +53,7 @@ export {
     CLEAR_ERRORS,
 
     // Is Open?
-    IS_NEW_ITEM_OPEN
+    NEW_ITEM_OPEN,
+    NEW_STORE_OPEN,
+    EDIT_STORE_OPEN
 }

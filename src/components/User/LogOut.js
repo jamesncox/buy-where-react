@@ -1,7 +1,8 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React, { useEffect } from 'react'
+import { connect, useDispatch } from 'react-redux'
 import { Link as RouterLink } from 'react-router-dom';
 import Copyright from '../Layout/Copyright'
+import { newStoreClose } from '../../actions/isOpen'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -31,8 +32,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function LogOut(props) {
+    const dispatch = useDispatch()
+    // const { newStoreClose } = props
     const classes = useStyles();
     const wideCardMediaStyles = useWideCardMediaStyles();
+
+    useEffect(() => {
+        dispatch(newStoreClose())
+    }, [dispatch])
 
     if (props.user) {
         return (
@@ -84,4 +91,8 @@ const mapStateToProps = state => ({
     loggedIn: state.users.loggedIn
 })
 
-export default connect(mapStateToProps)(LogOut)
+// const mapDispatchToProps = dispatch => ({
+//     newStoreClose: () => dispatch({ type: NEW_STORE_CLOSE })
+// })
+
+export default connect(mapStateToProps, { newStoreClose })(LogOut)

@@ -179,9 +179,10 @@ function Stores(props) {
         if (!showEditItem) {
             setShowEditItem(showEditItem === id ? true : id)
             props.setItemId(id)
+            props.setStoreId(storeID)
             setShowEditStore(false)
             setShowNewItem(false)
-            props.setStoreId(storeID)
+            props.newStoreClose()
             props.clearErrors()
             props.editItemOpen()
         } else {

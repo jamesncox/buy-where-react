@@ -6,7 +6,7 @@ import {
     NEW_STORE_CLOSE,
     NEW_STORE_OPEN,
     NEW_ITEM_OPEN,
-    EDIT_ITEM_OPEN,
+    EDIT_STORE_OPEN,
 } from '../../actionTypes'
 import NewItem from '../Item/NewItem'
 import NoStoresYet from '../Layout/NoStoreYet'
@@ -155,12 +155,12 @@ function Stores(props) {
             setShowNewItem(false)
             props.clearErrors()
             props.newStoreClose()
-            props.editItemOpen()
+            props.editStoreOpen()
         } else {
             setShowEditStore(showEditStore === id ? false : id)
             props.setStoreId(id)
             props.clearErrors()
-            props.editItemOpen()
+            props.editStoreOpen()
         }
     }
 
@@ -174,7 +174,7 @@ function Stores(props) {
                 const invoiceTotal = invoiceTaxes + invoiceSubtotal;
                 return (
                     <TableContainer key={store.id} className={classes.container} component={Paper}>
-                        {showEditStore === store.id && props.isEditItemOpen ? <EditStore /> : null}
+                        {showEditStore === store.id && props.isEditStoreOpen ? <EditStore /> : null}
                         {showNewItem === store.id && props.isNewItemOpen ? <NewItem /> : null}
                         <Table className={classes.table} aria-label="spanning table">
                             <TableHead>
@@ -247,7 +247,7 @@ const mapStateToProps = state => ({
     loadingItems: state.items.loading,
     isStoreOpen: state.isOpen.isStoreOpen,
     isNewItemOpen: state.isOpen.isNewItemOpen,
-    isEditItemOpen: state.isOpen.isEditItemOpen
+    isEditStoreOpen: state.isOpen.isEditStoreOpen
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -256,7 +256,7 @@ const mapDispatchToProps = dispatch => ({
     newStoreClose: () => dispatch({ type: NEW_STORE_CLOSE }),
     newStoreOpen: () => dispatch({ type: NEW_STORE_OPEN }),
     newItemOpen: () => dispatch({ type: NEW_ITEM_OPEN }),
-    editItemOpen: () => dispatch({ type: EDIT_ITEM_OPEN }),
+    editStoreOpen: () => dispatch({ type: EDIT_STORE_OPEN }),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Stores)

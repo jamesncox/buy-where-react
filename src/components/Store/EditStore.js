@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { editStore } from '../../actions/stores'
+import { editStoreClose } from '../../actions/isOpen'
 import Errors from '../Layout/Errors'
 
 import Grid from '@material-ui/core/Grid'

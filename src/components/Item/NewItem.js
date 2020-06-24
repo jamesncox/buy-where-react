@@ -75,7 +75,6 @@ function NewItem(props) {
             <Errors />
         )
     } else {
-
         return (
             <Grid container className={classes.root}>
                 <Typography className={classes.paper}>

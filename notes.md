@@ -7,7 +7,7 @@
 [] When store is updated, not automatically rendering to the DOM. Need a reducer action to handle this.
     (refer to Memes vs Gifs delete actions/reducer for Gifs/Memes to see how specific item was removed)
 
-[] Error message isn't rendering when a store is incorrectly updated. Add error component to edit form!
+[x] Error message isn't rendering when a store is incorrectly updated. Add error component to edit form!
 
 
 [x] Function to close the new item and new store forms when new item or store is created

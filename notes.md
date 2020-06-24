@@ -1,6 +1,9 @@
 # TO DO 
 
 [] Create an edit/delete component that gets opened when clicking on a specefic item
+    [x] Create Edit Item component, working correctly. 
+        [] Add isEditItemOpen/Closed actions/reducers to only open one component
+    [] Create Delete Item functionality.
 
 [] Create delete store functionatlity / probably just refactor the EditStore component to include a delete button.
 

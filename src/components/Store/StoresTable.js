@@ -173,7 +173,6 @@ function Stores(props) {
     }
 
     const handleShowEditItem = (id, storeID) => {
-        console.log(id, storeID)
         if (!showEditItem) {
             setShowEditItem(showEditItem === id ? true : id)
             props.setItemId(id)

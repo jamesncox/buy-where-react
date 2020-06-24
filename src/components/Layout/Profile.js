@@ -3,7 +3,13 @@ import { connect, useDispatch } from 'react-redux'
 import { getStores } from '../../actions/stores'
 import { clearErrors } from '../../actions/errors'
 import { getItems } from '../../actions/items'
-import { newStoreOpen, newStoreClose, newItemClose, editStoreClose } from '../../actions/isOpen'
+import {
+    newStoreOpen,
+    newStoreClose,
+    newItemClose,
+    editStoreClose,
+    editItemClose
+} from '../../actions/isOpen'
 import StoresTable from '../Store/StoresTable'
 import NewStore from '../Store/NewStore'
 import Copyright from '../Layout/Copyright'
@@ -59,6 +65,7 @@ function Profile(props) {
             props.clearErrors()
             props.newItemClose()
             props.editStoreClose()
+            props.editItemClose()
         }
     }
 
@@ -108,5 +115,6 @@ export default connect(mapStateToProps, {
     newStoreOpen,
     newStoreClose,
     newItemClose,
-    editStoreClose
+    editStoreClose,
+    editItemClose
 })(Profile)

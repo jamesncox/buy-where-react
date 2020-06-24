@@ -8,7 +8,8 @@ import {
     NEW_STORE_OPEN,
     NEW_ITEM_OPEN,
     EDIT_STORE_OPEN,
-    EDIT_STORE_CLOSE
+    EDIT_STORE_CLOSE,
+    EDIT_ITEM_OPEN
 } from '../../actionTypes'
 import NewItem from '../Item/NewItem'
 import NoStoresYet from '../Layout/NoStoreYet'
@@ -145,6 +146,7 @@ function Stores(props) {
             setShowEditStore(showEditStore === id ? true : id)
             props.setStoreId(id)
             setShowNewItem(false)
+            setShowEditItem(false)
             props.clearErrors()
             props.newStoreClose()
             props.editStoreOpen()
@@ -161,6 +163,7 @@ function Stores(props) {
             setShowNewItem(showNewItem === id ? true : id)
             props.setStoreId(id)
             setShowEditStore(false)
+            setShowEditItem(false)
             props.clearErrors()
             props.newStoreClose()
             props.newItemOpen()
@@ -176,13 +179,17 @@ function Stores(props) {
         if (!showEditItem) {
             setShowEditItem(showEditItem === id ? true : id)
             props.setItemId(id)
+            setShowEditStore(false)
+            setShowNewItem(false)
             props.setStoreId(storeID)
             props.clearErrors()
+            props.editItemOpen()
         } else {
             setShowEditItem(showEditItem === id ? false : id)
             props.setItemId(id)
             props.setStoreId(storeID)
             props.clearErrors()
+            props.editItemOpen()
         }
     }
 
@@ -198,7 +205,7 @@ function Stores(props) {
                     <TableContainer key={store.id} className={classes.container} component={Paper}>
                         {showEditStore === store.id && props.isEditStoreOpen ? <EditStore /> : null}
                         {showNewItem === store.id && props.isNewItemOpen ? <NewItem /> : null}
-                        {showEditItem === props.itemId && props.storeId === store.id ? <EditItem /> : null}
+                        {showEditItem === props.itemId && props.storeId === store.id && props.isEditItemOpen ? <EditItem /> : null}
                         <Table className={classes.table} aria-label="spanning table">
                             <TableHead>
                                 <TableRow style={{ backgroundColor: `${store.color}` }}>
@@ -271,6 +278,7 @@ const mapStateToProps = state => ({
     isStoreOpen: state.isOpen.isStoreOpen,
     isNewItemOpen: state.isOpen.isNewItemOpen,
     isEditStoreOpen: state.isOpen.isEditStoreOpen,
+    isEditItemOpen: state.isOpen.isEditItemOpen,
     itemId: state.items.itemId,
     storeId: state.stores.storeId
 })
@@ -283,7 +291,8 @@ const mapDispatchToProps = dispatch => ({
     newStoreOpen: () => dispatch({ type: NEW_STORE_OPEN }),
     newItemOpen: () => dispatch({ type: NEW_ITEM_OPEN }),
     editStoreOpen: () => dispatch({ type: EDIT_STORE_OPEN }),
-    editStoreClose: () => dispatch({ type: EDIT_STORE_CLOSE })
+    editStoreClose: () => dispatch({ type: EDIT_STORE_CLOSE }),
+    editItemOpen: () => dispatch({ type: EDIT_ITEM_OPEN })
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Stores)

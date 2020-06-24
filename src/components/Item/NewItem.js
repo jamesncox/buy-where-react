@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { createItem } from '../../actions/items'
-import { getStores } from '../../actions/stores'
 import Errors from '../Layout/Errors'
 
 import Grid from '@material-ui/core/Grid'
@@ -148,4 +147,4 @@ const mapStateToProps = state => ({
     stores: state.stores.stores
 })
 
-export default connect(mapStateToProps, { createItem, getStores })(NewItem)
+export default connect(mapStateToProps, { createItem })(NewItem)

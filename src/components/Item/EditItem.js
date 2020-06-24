@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { createItem, addItemToStore } from '../../actions/items'
-import { getStores } from '../../actions/stores'
 import Errors from '../Layout/Errors'
 
 import Grid from '@material-ui/core/Grid'
@@ -12,7 +10,8 @@ import { makeStyles } from '@material-ui/core/styles'
 
 function EditItem(props) {
 
-    const selectedItem = props.items.filter(item => item.id === props.itemId)
+    const selectedStore = props.stores.filter(store => store.id === props.storeId)
+
     const useStyles = makeStyles((theme) => ({
         root: {
             flexGrow: 1,
@@ -79,6 +78,7 @@ function EditItem(props) {
                     <TextField
                         variant="outlined"
                         margin="normal"
+                        color="secondary"
                         required
                         fullWidth
                         id="name"
@@ -94,6 +94,7 @@ function EditItem(props) {
                     <TextField
                         variant="outlined"
                         margin="normal"
+                        color="secondary"
                         required
                         fullWidth
                         type="number"
@@ -110,6 +111,7 @@ function EditItem(props) {
                     <TextField
                         variant="outlined"
                         margin="normal"
+                        color="secondary"
                         required
                         fullWidth
                         type="number"
@@ -126,7 +128,7 @@ function EditItem(props) {
                     type="submit"
                     fullWidth
                     variant="contained"
-                    color="primary"
+                    color="secondary"
                     className={classes.submit}
                 >
                     Create Item
@@ -137,7 +139,9 @@ function EditItem(props) {
 }
 
 const mapStateToProps = state => ({
-    storeId: state.stores.storeId
+    storeId: state.stores.storeId,
+    errors: state.errors.errors,
+    stores: state.stores.stores
 })
 
-export default connect(mapStateToProps, { createItem, addItemToStore, getStores })(EditItem)
+export default connect(mapStateToProps)(EditItem)

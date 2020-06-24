@@ -13,6 +13,7 @@ import {
 import NewItem from '../Item/NewItem'
 import NoStoresYet from '../Layout/NoStoreYet'
 import EditStore from './EditStore'
+import EditItem from '../Item/EditItem'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -131,24 +132,9 @@ function subtotal(items) {
 function Stores(props) {
     const classes = useStyles();
 
-    const [showNewItem, setShowNewItem] = useState(false)
     const [showEditStore, setShowEditStore] = useState(false)
-
-    const handleShowNewItem = (id) => {
-        if (!showNewItem) {
-            setShowNewItem(showNewItem === id ? true : id)
-            props.setStoreId(id)
-            setShowEditStore(false)
-            props.clearErrors()
-            props.newStoreClose()
-            props.newItemOpen()
-        } else {
-            setShowNewItem(showNewItem === id ? false : id)
-            props.setStoreId(id)
-            props.clearErrors()
-            props.newItemOpen()
-        }
-    }
+    const [showNewItem, setShowNewItem] = useState(false)
+    const [showEditItem, setShowEditItem] = useState(false)
 
     const handleShowEditStore = (id) => {
         if (!showEditStore) {
@@ -166,6 +152,34 @@ function Stores(props) {
         }
     }
 
+    const handleShowNewItem = (id) => {
+        if (!showNewItem) {
+            setShowNewItem(showNewItem === id ? true : id)
+            props.setStoreId(id)
+            setShowEditStore(false)
+            props.clearErrors()
+            props.newStoreClose()
+            props.newItemOpen()
+        } else {
+            setShowNewItem(showNewItem === id ? false : id)
+            props.setStoreId(id)
+            props.clearErrors()
+            props.newItemOpen()
+        }
+    }
+
+    const handleShowEditItem = (id) => {
+        if (!showEditItem) {
+            setShowEditItem(showEditItem === id ? true : id)
+            props.setStoreId(id)
+            props.clearErrors()
+        } else {
+            setShowEditItem(showEditItem === id ? false : id)
+            props.setStoreId(id)
+            props.clearErrors()
+        }
+    }
+
     const renderStoreTable = (id) => {
         const userStores = props.stores.filter(store => store.user_id === id).reverse()
         return (
@@ -178,6 +192,7 @@ function Stores(props) {
                     <TableContainer key={store.id} className={classes.container} component={Paper}>
                         {showEditStore === store.id && props.isEditStoreOpen ? <EditStore /> : null}
                         {showNewItem === store.id && props.isNewItemOpen ? <NewItem /> : null}
+                        {showEditItem === store.id && props.isEditItemOpen ? <EditItem /> : null}
                         <Table className={classes.table} aria-label="spanning table">
                             <TableHead>
                                 <TableRow style={{ backgroundColor: `${store.color}` }}>

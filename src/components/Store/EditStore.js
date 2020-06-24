@@ -128,7 +128,6 @@ function EditStore(props) {
                             id="name"
                             label={selectedStore[0].name}
                             name="name"
-                            autoComplete={selectedStore[0].name}
                             onChange={handleName}
                             value={name}
                             autoFocus
@@ -141,7 +140,6 @@ function EditStore(props) {
                             id="storeType"
                             label={selectedStore[0].store_type}
                             name="storeType"
-                            autoComplete="storeType"
                             onChange={handleStoreType}
                             value={storeType}
                         />

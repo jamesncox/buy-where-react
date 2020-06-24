@@ -94,7 +94,6 @@ function NewItem(props) {
                             id="name"
                             label="Item Name"
                             name="name"
-                            autoComplete="name"
                             onChange={handleName}
                             value={name}
                             autoFocus
@@ -110,7 +109,6 @@ function NewItem(props) {
                             id="quantity"
                             label="Item quantity"
                             name="quantity"
-                            autoComplete="quantity"
                             onChange={handleQuantity}
                             value={quantity}
                         />
@@ -125,7 +123,6 @@ function NewItem(props) {
                             id="price"
                             label="Item Price"
                             name="price"
-                            autoComplete="price"
                             onChange={handlePrice}
                             value={price}
                         />

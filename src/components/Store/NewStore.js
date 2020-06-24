@@ -138,7 +138,6 @@ function NewStore(props) {
                             id="storeType"
                             label="Store Type (e.g. grocery)"
                             name="storeType"
-                            autoComplete="storeType"
                             onChange={handleStoreType}
                             value={storeType}
                         />

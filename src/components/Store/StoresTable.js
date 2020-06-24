@@ -101,6 +101,7 @@ const useStyles = makeStyles((theme) => ({
     },
     itemRow: {
         width: "18em",
+        cursor: "pointer",
         [theme.breakpoints.down('md')]: {
             width: "16em"
         },
@@ -111,6 +112,9 @@ const useStyles = makeStyles((theme) => ({
             width: "8em"
         },
     },
+    cursorPointer: {
+        cursor: "pointer"
+    }
 }));
 
 function ccyFormat(num) {
@@ -168,14 +172,17 @@ function Stores(props) {
         }
     }
 
-    const handleShowEditItem = (id) => {
+    const handleShowEditItem = (id, storeID) => {
+        console.log(id, storeID)
         if (!showEditItem) {
             setShowEditItem(showEditItem === id ? true : id)
-            props.setStoreId(id)
+            props.setItemId(id)
+            props.setStoreId(storeID)
             props.clearErrors()
         } else {
             setShowEditItem(showEditItem === id ? false : id)
-            props.setStoreId(id)
+            props.setItemId(id)
+            props.setStoreId(storeID)
             props.clearErrors()
         }
     }
@@ -192,7 +199,7 @@ function Stores(props) {
                     <TableContainer key={store.id} className={classes.container} component={Paper}>
                         {showEditStore === store.id && props.isEditStoreOpen ? <EditStore /> : null}
                         {showNewItem === store.id && props.isNewItemOpen ? <NewItem /> : null}
-                        {showEditItem === store.id && props.isEditItemOpen ? <EditItem /> : null}
+                        {showEditItem === props.itemId && props.storeId === store.id ? <EditItem /> : null}
                         <Table className={classes.table} aria-label="spanning table">
                             <TableHead>
                                 <TableRow style={{ backgroundColor: `${store.color}` }}>
@@ -213,7 +220,7 @@ function Stores(props) {
                             </TableHead>
                             <TableBody>
                                 {userItems.map((item) => (
-                                    <TableRow key={item.id}>
+                                    <TableRow hover={true} className={classes.cursorPointer} key={item.id} onClick={() => handleShowEditItem(item.id, store.id)}>
                                         <TableCell className={classes.itemRow}>{itemFormat(item.name)}</TableCell>
                                         <TableCell align="right">{item.quantity}</TableCell>
                                         <TableCell align="right">${ccyFormat(item.price)}</TableCell>
@@ -264,12 +271,14 @@ const mapStateToProps = state => ({
     loadingItems: state.items.loading,
     isStoreOpen: state.isOpen.isStoreOpen,
     isNewItemOpen: state.isOpen.isNewItemOpen,
-    isEditStoreOpen: state.isOpen.isEditStoreOpen
+    isEditStoreOpen: state.isOpen.isEditStoreOpen,
+    itemId: state.items.itemId,
+    storeId: state.stores.storeId
 })
 
 const mapDispatchToProps = dispatch => ({
     setStoreId: (id) => dispatch({ type: SET_STORE_ID, payload: id }),
-    setItemId: (id) => dispatch({ type: SET_ITEM_ID }),
+    setItemId: (id) => dispatch({ type: SET_ITEM_ID, payload: id }),
     clearErrors: () => dispatch({ type: CLEAR_ERRORS }),
     newStoreClose: () => dispatch({ type: NEW_STORE_CLOSE }),
     newStoreOpen: () => dispatch({ type: NEW_STORE_OPEN }),

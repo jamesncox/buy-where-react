@@ -236,7 +236,6 @@ function Stores(props) {
     } else if (hasStores.length === 0) {
         return <NoStoresYet />
     } else {
-        // props.editStoreClose()
         return renderStoreTable(props.user.id)
     }
 }

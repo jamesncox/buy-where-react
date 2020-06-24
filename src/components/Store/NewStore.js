@@ -99,6 +99,7 @@ function NewStore(props) {
         setName("")
         setStoreType("")
         setColor("")
+
     }
 
     if (props.errors) {

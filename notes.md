@@ -4,8 +4,9 @@
 
 [] Create delete store functionatlity / probably just refactor the EditStore component to include a delete button.
 
-[] When store is updated, not automatically rendering to the DOM. Need a reducer action to handle this.
+[x] When store is updated, not automatically rendering to the DOM. Need a reducer action to handle this.
     (refer to Memes vs Gifs delete actions/reducer for Gifs/Memes to see how specific item was removed)
+    GOT IT! Used a .map to update the specific store's properties / replacing old array
 
 [x] Error message isn't rendering when a store is incorrectly updated. Add error component to edit form!
 

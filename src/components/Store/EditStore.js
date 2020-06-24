@@ -123,6 +123,7 @@ function EditStore(props) {
                         <TextField
                             variant="outlined"
                             margin="normal"
+                            color="secondary"
                             required
                             fullWidth
                             id="name"
@@ -135,6 +136,7 @@ function EditStore(props) {
                         <TextField
                             variant="outlined"
                             margin="normal"
+                            color="secondary"
                             required
                             fullWidth
                             id="storeType"
@@ -155,7 +157,7 @@ function EditStore(props) {
                             type="submit"
                             fullWidth
                             variant="contained"
-                            color="primary"
+                            color="secondary"
                             className={classes.submit}
                         >
                             Submit Changes

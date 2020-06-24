@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { createItem, addItemToStore } from '../../actions/items'
 import { getStores } from '../../actions/stores'
+import Errors from '../Layout/Errors'
 
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
@@ -9,25 +10,27 @@ import Button from '@material-ui/core/Button';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-    },
-    paper: {
-        padding: theme.spacing(1),
-        margin: 'auto',
-        color: theme.palette.text.secondary,
-    },
-    form: {
-        margin: 'auto',
-        width: '95%',
-    },
-    submit: {
-        margin: theme.spacing(5, 0, 2),
-    },
-}))
-
 function EditItem(props) {
+
+    const selectedItem = props.items.filter(item => item.id === props.itemId)
+    const useStyles = makeStyles((theme) => ({
+        root: {
+            flexGrow: 1,
+        },
+        paper: {
+            padding: theme.spacing(1),
+            margin: 'auto',
+            color: theme.palette.text.secondary,
+        },
+        form: {
+            margin: 'auto',
+            width: '95%',
+        },
+        submit: {
+            margin: theme.spacing(5, 0, 2),
+        },
+    }))
+
     const classes = useStyles()
 
     const [name, setName] = useState("")

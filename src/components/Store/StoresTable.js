@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import {
     SET_STORE_ID,
+    SET_ITEM_ID,
     CLEAR_ERRORS,
     NEW_STORE_CLOSE,
     NEW_STORE_OPEN,
@@ -253,6 +254,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     setStoreId: (id) => dispatch({ type: SET_STORE_ID, payload: id }),
+    setItemId: (id) => dispatch({ type: SET_ITEM_ID }),
     clearErrors: () => dispatch({ type: CLEAR_ERRORS }),
     newStoreClose: () => dispatch({ type: NEW_STORE_CLOSE }),
     newStoreOpen: () => dispatch({ type: NEW_STORE_OPEN }),

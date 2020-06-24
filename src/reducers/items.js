@@ -2,13 +2,15 @@ import {
     SET_ITEMS,
     LOADING_ITEMS,
     ADD_ITEM,
-    ITEM_ERRORS
+    ITEM_ERRORS,
+    SET_ITEM_ID
 } from '../actionTypes'
 
 export default (state = {
     items: [],
     loading: false,
-    errors: null
+    errors: null,
+    itemId: null
 }, action) => {
     switch (action.type) {
 
@@ -23,6 +25,9 @@ export default (state = {
 
         case ITEM_ERRORS:
             return { ...state, errors: action.payload }
+
+        case SET_ITEM_ID:
+            return { ...state, itemId: action.payload }
 
         default:
             return state

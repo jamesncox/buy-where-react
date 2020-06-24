@@ -17,6 +17,7 @@ const SET_ITEMS = 'SET_ITEMS'
 const LOADING_ITEMS = 'LOADING_ITEMS'
 const ADD_ITEM = 'ADD_ITEM'
 const ITEM_ERRORS = 'ITEM_ERRORS'
+const SET_ITEM_ID = 'SET_ITEM_ID'
 
 // Errors
 const SET_ERRORS = 'SET_ERRORS'
@@ -50,6 +51,7 @@ export {
     LOADING_ITEMS,
     ADD_ITEM,
     ITEM_ERRORS,
+    SET_ITEM_ID,
 
     // Errors
     SET_ERRORS,

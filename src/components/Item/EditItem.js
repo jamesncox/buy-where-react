@@ -9,6 +9,7 @@ import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
 
 function EditItem(props) {
+    const selectedStore = props.stores.filter(store => store.id === props.storeId)
     const selectedItem = props.items.filter(item => item.id === props.itemId)
 
     const useStyles = makeStyles((theme) => ({
@@ -63,6 +64,14 @@ function EditItem(props) {
         setQuantity("")
     }
 
+    function itemFormat(words) {
+        return words
+            .toLowerCase()
+            .split(' ')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+    }
+
     if (props.errors) {
         return (
             <Errors />
@@ -71,7 +80,7 @@ function EditItem(props) {
         return (
             <Grid container className={classes.root}>
                 <Typography className={classes.paper}>
-                    EDIT {selectedItem[0].name.toUpperCase()}
+                    Edit {itemFormat(selectedItem[0].name)} From {itemFormat(selectedStore[0].name)}
                 </Typography>
                 <form
                     className={classes.form}
@@ -108,7 +117,6 @@ function EditItem(props) {
                             autoComplete="quantity"
                             onChange={handleQuantity}
                             value={quantity}
-                            autoFocus
                         />
                     </Grid>
                     <Grid item xs={12}>
@@ -125,7 +133,6 @@ function EditItem(props) {
                             autoComplete="price"
                             onChange={handlePrice}
                             value={price}
-                            autoFocus
                         />
                     </Grid>
                     <Button

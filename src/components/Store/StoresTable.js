@@ -7,6 +7,7 @@ import {
     NEW_STORE_OPEN,
     NEW_ITEM_OPEN,
     EDIT_STORE_OPEN,
+    EDIT_STORE_CLOSE
 } from '../../actionTypes'
 import NewItem from '../Item/NewItem'
 import NoStoresYet from '../Layout/NoStoreYet'
@@ -235,6 +236,7 @@ function Stores(props) {
     } else if (hasStores.length === 0) {
         return <NoStoresYet />
     } else {
+        // props.editStoreClose()
         return renderStoreTable(props.user.id)
     }
 }
@@ -257,6 +259,7 @@ const mapDispatchToProps = dispatch => ({
     newStoreOpen: () => dispatch({ type: NEW_STORE_OPEN }),
     newItemOpen: () => dispatch({ type: NEW_ITEM_OPEN }),
     editStoreOpen: () => dispatch({ type: EDIT_STORE_OPEN }),
+    editStoreClose: () => dispatch({ type: EDIT_STORE_CLOSE })
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Stores)

@@ -109,6 +109,9 @@ function NewStore(props) {
         return (
             <Grid container component={Paper} className={classes.root}>
                 <Grid className={classes.newStore}>
+                    <Typography className={classes.paper}>
+                        Add New Store
+                    </Typography>
                     <form
                         className={classes.form}
                         noValidate

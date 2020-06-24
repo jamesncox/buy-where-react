@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { editStore } from '../../actions/stores'
-import { editStoreClose } from '../../actions/isOpen'
 import Errors from '../Layout/Errors'
 
 import Grid from '@material-ui/core/Grid'
@@ -97,7 +96,6 @@ function EditStore(props) {
         }
 
         props.editStore(store)
-        props.editStoreClose()
         setName("")
         setStoreType("")
         setColor("")
@@ -146,7 +144,6 @@ function EditStore(props) {
                             autoComplete="storeType"
                             onChange={handleStoreType}
                             value={storeType}
-                        // autoFocus
                         />
                         <Typography className={classes.paper}>
                             select color for store header
@@ -179,4 +176,4 @@ const mapStateToProps = state => ({
     storeId: state.stores.storeId,
 })
 
-export default connect(mapStateToProps, { editStore, editStoreClose })(EditStore)
+export default connect(mapStateToProps, { editStore })(EditStore)

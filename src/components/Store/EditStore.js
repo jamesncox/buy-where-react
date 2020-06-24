@@ -97,6 +97,7 @@ function EditStore(props) {
         }
 
         props.editStore(store)
+        props.editStoreClose()
         setName("")
         setStoreType("")
         setColor("")
@@ -178,4 +179,4 @@ const mapStateToProps = state => ({
     storeId: state.stores.storeId,
 })
 
-export default connect(mapStateToProps, { editStore })(EditStore)
+export default connect(mapStateToProps, { editStore, editStoreClose })(EditStore)

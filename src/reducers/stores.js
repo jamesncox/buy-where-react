@@ -31,7 +31,20 @@ export default (state = {
             return { ...state, storeId: action.payload }
 
         case UPDATE_STORE:
-            console.log(action.payload)
+            // console.log(action.payload)
+            const updatedStores = state.stores.map((store, index) => {
+                if (store.id === action.payload.id) {
+                    return {
+                        ...store,
+                        name: action.payload.name,
+                        store_type: action.payload.store_type,
+                        color: action.payload.color,
+                    }
+                }
+                return store
+            })
+            console.log(updatedStores)
+            return { ...state, stores: updatedStores }
 
         default:
             return state

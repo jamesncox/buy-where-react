@@ -3,7 +3,7 @@ import {
     LOADING_STORES,
     SET_ERRORS,
     ADD_STORE,
-    UPDATE_STORE
+    UPDATE_STORE,
 } from '../actionTypes'
 
 const setStores = stores => {

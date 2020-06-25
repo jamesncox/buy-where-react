@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import Errors from '../Layout/Errors'
+import { editItem } from '../../actions/items'
 
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
@@ -63,10 +64,12 @@ function EditItem(props) {
             name: name,
             price: parseFloat(price).toFixed(2),
             quantity: parseInt(quantity),
-            storeId: props.storeId
+            userId: props.user.id,
+            storeId: props.storeId,
+            itemId: props.itemId
         }
 
-        // props.editItem(item)
+        props.editItem(item)
         setName("")
         setPrice("")
         setQuantity("")
@@ -150,7 +153,7 @@ function EditItem(props) {
                         color="secondary"
                         className={classes.submit}
                     >
-                        Create Item
+                        Edit Item
                 </Button>
                 </form>
             </Grid>
@@ -159,6 +162,7 @@ function EditItem(props) {
 }
 
 const mapStateToProps = state => ({
+    user: state.users.user,
     storeId: state.stores.storeId,
     errors: state.errors.errors,
     stores: state.stores.stores,
@@ -166,4 +170,4 @@ const mapStateToProps = state => ({
     itemId: state.items.itemId
 })
 
-export default connect(mapStateToProps)(EditItem)
+export default connect(mapStateToProps, { editItem })(EditItem)

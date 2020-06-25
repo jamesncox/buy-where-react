@@ -57,7 +57,7 @@ export const createItem = (item) => {
     }
 }
 
-export const updateItem = (item, id) => {
+export const editItem = (item) => {
     return async (dispatch) => {
 
         const formData = {
@@ -65,10 +65,10 @@ export const updateItem = (item, id) => {
             price: item.price,
             quantity: item.quantity,
             store_id: item.storeId,
-            id: id
+            user_id: item.userId,
         }
 
-        const res = await fetch("http://localhost:3000/api/v1/items", {
+        const res = await fetch(`http://localhost:3000/api/v1/items/${item.itemId}`, {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',
@@ -81,7 +81,6 @@ export const updateItem = (item, id) => {
         const itemObj = await res.json()
 
         if (itemObj.errors) {
-            alert(itemObj.errors)
             dispatch({ type: SET_ERRORS, payload: itemObj.errors })
         } else {
             dispatch({ type: ADD_ITEM, payload: itemObj })

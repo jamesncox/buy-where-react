@@ -42,10 +42,7 @@ const useStyles = makeStyles((theme) => ({
     },
     spinner: {
         margin: 'auto',
-        display: 'flex',
-        '& > * + *': {
-            margin: 'auto',
-        },
+        marginTop: '2em'
     },
     footer: {
         marginBottom: theme.spacing(2)
@@ -77,7 +74,7 @@ function Profile(props) {
     if (props.storesLoading === true) {
         return (
             <div className={classes.spinner}>
-                <CircularProgress />
+                <CircularProgress color="secondary" size={100} thickness={6} />
             </div>
         )
     } else {

@@ -2,7 +2,7 @@ import {
     SET_ITEMS,
     LOADING_ITEMS,
     SET_ERRORS,
-    ADD_ITEM,
+    CREATE_ITEM,
     UPDATE_ITEM,
     DELETE_ITEM
 } from '../actionTypes'
@@ -56,7 +56,7 @@ export const createItem = (item) => {
         if (itemObj.errors) {
             dispatch({ type: SET_ERRORS, payload: itemObj.errors })
         } else {
-            dispatch({ type: ADD_ITEM, payload: itemObj })
+            dispatch({ type: CREATE_ITEM, payload: itemObj })
         }
     }
 }

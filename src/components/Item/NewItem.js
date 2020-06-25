@@ -6,6 +6,7 @@ import Errors from '../Layout/Errors'
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress'
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -32,6 +33,10 @@ function NewItem(props) {
         },
         submit: {
             margin: theme.spacing(5, 0, 2),
+        },
+        spinner: {
+            margin: 'auto',
+            padding: '5em'
         },
     }))
 
@@ -69,7 +74,13 @@ function NewItem(props) {
         setQuantity("")
     }
 
-    if (props.errors) {
+    if (props.loading) {
+        return (
+            <div className={classes.spinner}>
+                <CircularProgress color="secondary" size={100} thickness={6} />
+            </div>
+        )
+    } else if (props.errors) {
         return (
             <Errors />
         )
@@ -144,7 +155,8 @@ function NewItem(props) {
 const mapStateToProps = state => ({
     storeId: state.stores.storeId,
     errors: state.errors.errors,
-    stores: state.stores.stores
+    stores: state.stores.stores,
+    loading: state.items.loading
 })
 
 export default connect(mapStateToProps, { createItem })(NewItem)

@@ -1,7 +1,7 @@
 import {
     SET_ITEMS,
     LOADING_ITEMS,
-    ADD_ITEM,
+    CREATE_ITEM,
     ITEM_ERRORS,
     SET_ITEM_ID,
     UPDATE_ITEM,
@@ -22,8 +22,8 @@ export default (state = {
         case SET_ITEMS:
             return { ...state, items: action.payload, loading: false }
 
-        case ADD_ITEM:
-            return { ...state, items: [...state.items, action.payload] }
+        case CREATE_ITEM:
+            return { ...state, items: [...state.items, action.payload], loading: false }
 
         case ITEM_ERRORS:
             return { ...state, errors: action.payload }

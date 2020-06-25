@@ -17,7 +17,8 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import CircularProgress from '@material-ui/core/CircularProgress'
+import LinearProgress from '@material-ui/core/LinearProgress';
+// import CircularProgress from '@material-ui/core/CircularProgress'
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -52,12 +53,16 @@ const useStyles = makeStyles((theme) => ({
     submit: {
         margin: theme.spacing(3, 0, 2),
     },
-    spinner: {
+    loader: {
         margin: 'auto',
-        padding: '5em'
+        padding: '5em',
     },
     header: {
         padding: '1em'
+    },
+    progressBar: {
+        width: "15em",
+        height: "1em"
     }
 }));
 
@@ -132,7 +137,7 @@ function SignUp(props) {
                             <Typography className={classes.header}>
                                 Logging in...
                             </Typography>
-                            <CircularProgress color="secondary" size={100} thickness={6} />
+                            <LinearProgress className={classes.progressBar} color="secondary" />
                         </div>
                     </div>
                 </Grid>

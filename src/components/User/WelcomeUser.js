@@ -55,7 +55,7 @@ function WelcomeUser(props) {
                                 Track your spending at the stores you love
                             </Typography>
                             <Typography className={classes.topMargin} variant="body2" color="textSecondary" component="p">
-                                Sign in to your account or click Sign Up below to begin
+                                Sign In to your account or Sign Up to create an account
                             </Typography>
                         </CardContent>
                     </CardActionArea>

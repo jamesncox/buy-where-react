@@ -3,7 +3,8 @@ import {
     LOADING_ITEMS,
     ADD_ITEM,
     ITEM_ERRORS,
-    SET_ITEM_ID
+    SET_ITEM_ID,
+    UPDATE_ITEM
 } from '../actionTypes'
 
 export default (state = {
@@ -28,6 +29,20 @@ export default (state = {
 
         case SET_ITEM_ID:
             return { ...state, itemId: action.payload }
+
+        case UPDATE_ITEM:
+            const updatedItems = state.items.map((item, index) => {
+                if (item.id === action.payload.id) {
+                    return {
+                        ...item,
+                        name: action.payload.name,
+                        quantity: action.payload.quantity,
+                        price: action.payload.price
+                    }
+                }
+                return item
+            })
+            return { ...state, items: updatedItems }
 
         default:
             return state

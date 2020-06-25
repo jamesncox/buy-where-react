@@ -3,6 +3,7 @@ import {
     LOADING_ITEMS,
     SET_ERRORS,
     ADD_ITEM,
+    UPDATE_ITEM
 } from '../actionTypes'
 
 const setItems = items => {
@@ -83,7 +84,7 @@ export const editItem = (item) => {
         if (itemObj.errors) {
             dispatch({ type: SET_ERRORS, payload: itemObj.errors })
         } else {
-            dispatch({ type: ADD_ITEM, payload: itemObj })
+            dispatch({ type: UPDATE_ITEM, payload: itemObj })
         }
     }
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux'
-
 import {
     CLEAR_ERRORS,
     CLEAR_IS_ITEM_LOADING,

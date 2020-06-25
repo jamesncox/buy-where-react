@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress'
+import LinearProgress from '@material-ui/core/LinearProgress';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -39,10 +40,16 @@ function NewItem(props) {
         submit: {
             margin: theme.spacing(5, 0, 2),
         },
-        spinner: {
+        loader: {
             margin: 'auto',
-            padding: '5em'
+            padding: '5em',
         },
+        header: {
+            padding: '1em'
+        },
+        progressBar: {
+            height: ".75em"
+        }
     }))
 
     const classes = useStyles()
@@ -85,11 +92,13 @@ function NewItem(props) {
         )
     } else if (props.loading) {
         return (
-            <div className={classes.spinner}>
+            <div className={classes.loader}>
                 <Typography className={classes.header}>
                     Adding item to list...
                     </Typography>
-                <CircularProgress color="secondary" size={100} thickness={6} />
+                {/* <CircularProgress color="secondary" size={100} thickness={6} /> */}
+                <LinearProgress className={classes.progressBar} color="secondary" />
+
             </div>
         )
     } else {

@@ -29,7 +29,7 @@ export default (state = {
             return { ...state, stores: action.payload, loadingStores: false }
 
         case CREATE_STORE:
-            return { ...state, stores: [...state.stores, action.payload] }
+            return { ...state, stores: [...state.stores, action.payload], loadingSingleStore: false }
 
         case STORE_ERRORS:
             return { ...state, errors: action.payload }

@@ -76,7 +76,6 @@ export const editItem = (item) => {
             price: item.price,
             quantity: item.quantity,
             store_id: item.storeId,
-            user_id: item.userId,
         }
 
         const res = await fetch(`http://localhost:3000/api/v1/items/${item.itemId}`, {

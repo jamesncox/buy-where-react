@@ -75,9 +75,8 @@ function EditItem(props) {
 
         const item = {
             name: name,
-            price: parseFloat(price).toFixed(2),
+            price: parseFloat(price),
             quantity: parseInt(quantity),
-            userId: props.user.id,
             storeId: props.storeId,
             itemId: props.itemId
         }
@@ -135,7 +134,6 @@ function EditItem(props) {
                             id="name"
                             label={selectedItem[0].name}
                             name="name"
-                            autoComplete="name"
                             onChange={handleName}
                             value={name}
                             autoFocus
@@ -150,9 +148,7 @@ function EditItem(props) {
                             fullWidth
                             type="number"
                             id="quantity"
-                            label={selectedItem[0].quantity}
-                            name="quantity"
-                            autoComplete="quantity"
+                            label="quantity"
                             onChange={handleQuantity}
                             value={quantity}
                         />
@@ -166,9 +162,7 @@ function EditItem(props) {
                             fullWidth
                             type="number"
                             id="price"
-                            label={selectedItem[0].price}
-                            name="price"
-                            autoComplete="price"
+                            label="price"
                             onChange={handlePrice}
                             value={price}
                         />
@@ -192,7 +186,6 @@ function EditItem(props) {
 }
 
 const mapStateToProps = state => ({
-    user: state.users.user,
     storeId: state.stores.storeId,
     errors: state.errors.errors,
     stores: state.stores.stores,

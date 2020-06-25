@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import CircularProgress from '@material-ui/core/CircularProgress'
+import LinearProgress from '@material-ui/core/LinearProgress';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -26,11 +26,11 @@ function EditItem(props) {
         root: {
             flexGrow: 1,
         },
-        paper: {
-            padding: theme.spacing(1),
-            margin: 'auto',
-            color: theme.palette.text.secondary,
-        },
+        // paper: {
+        //     padding: theme.spacing(1),
+        //     margin: 'auto',
+        //     color: theme.palette.text.secondary,
+        // },
         header: {
             padding: theme.spacing(1),
             margin: 'auto',
@@ -46,10 +46,13 @@ function EditItem(props) {
         submit: {
             margin: theme.spacing(5, 0, 2),
         },
-        spinner: {
+        loader: {
             margin: 'auto',
-            padding: '5em'
+            padding: '5em',
         },
+        progressBar: {
+            height: ".75em"
+        }
     }))
 
     const classes = useStyles()
@@ -106,11 +109,12 @@ function EditItem(props) {
         )
     } else if (props.loading) {
         return (
-            <div className={classes.spinner}>
+            <div className={classes.loader}>
                 <Typography className={classes.header}>
                     Updating item...
-                    </Typography>
-                <CircularProgress color="secondary" size={100} thickness={6} />
+                </Typography>
+                <LinearProgress className={classes.progressBar} color="secondary" />
+
             </div>
         )
     } else {

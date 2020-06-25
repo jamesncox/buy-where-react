@@ -25,7 +25,7 @@ function NewItem(props) {
         root: {
             flexGrow: 1,
         },
-        paper: {
+        header: {
             padding: theme.spacing(1),
             margin: 'auto',
             color: `${selectedStore[0].color}`,
@@ -42,9 +42,6 @@ function NewItem(props) {
         loader: {
             margin: 'auto',
             padding: '5em',
-        },
-        header: {
-            padding: '1em'
         },
         progressBar: {
             height: ".75em"
@@ -94,7 +91,7 @@ function NewItem(props) {
             <div className={classes.loader}>
                 <Typography className={classes.header}>
                     Adding item to list...
-                    </Typography>
+                </Typography>
                 <LinearProgress className={classes.progressBar} color="secondary" />
 
             </div>
@@ -102,7 +99,7 @@ function NewItem(props) {
     } else {
         return (
             <Grid container className={classes.root} >
-                <Typography className={classes.paper}>
+                <Typography className={classes.header}>
                     NEW {selectedStore[0].name.toUpperCase()} PURCHASE
                 </Typography>
                 <form

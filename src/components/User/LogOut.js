@@ -3,6 +3,7 @@ import { connect, useDispatch } from 'react-redux'
 import { Link as RouterLink } from 'react-router-dom';
 import Copyright from '../Layout/Copyright'
 import { newStoreClose } from '../../actions/isOpen'
+import ThankYou from '../../assets/images/thank you scrabble pieces.jpg'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -47,7 +48,7 @@ function LogOut(props) {
                     <CardActionArea component={RouterLink} to="/SignIn">
                         <CardMedia
                             classes={wideCardMediaStyles}
-                            image="https://www.tinyprints.com/inspiration/wp-content/uploads/2019/02/thank-you-quotes-1-1024x683.jpg"
+                            image={ThankYou}
                             title="Thank you Scrabble tiles"
                         />
                         <CardContent>

@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import Errors from '../Layout/Errors'
-import { editItem } from '../../actions/items'
+import { editItem, deleteItem } from '../../actions/items'
 
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -73,6 +74,10 @@ function EditItem(props) {
         setName("")
         setPrice("")
         setQuantity("")
+    }
+
+    const handleDelete = (id) => {
+        props.deleteItem(id)
     }
 
     function itemFormat(words) {
@@ -154,7 +159,10 @@ function EditItem(props) {
                         className={classes.submit}
                     >
                         Edit Item
-                </Button>
+                    </Button>
+                    <Button color="primary">
+                        <DeleteForeverIcon fontSize="large" onClick={() => { if (window.confirm(`Are you sure you wish to delete ${selectedItem[0].name}?`)) handleDelete(selectedItem[0].id) }} />
+                    </Button>
                 </form>
             </Grid>
         )
@@ -170,4 +178,4 @@ const mapStateToProps = state => ({
     itemId: state.items.itemId
 })
 
-export default connect(mapStateToProps, { editItem })(EditItem)
+export default connect(mapStateToProps, { editItem, deleteItem })(EditItem)

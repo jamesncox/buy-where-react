@@ -107,7 +107,6 @@ function EditStore(props) {
     }
 
     const handleDelete = (id) => {
-        console.log(id)
         props.deleteStore(id)
     }
 

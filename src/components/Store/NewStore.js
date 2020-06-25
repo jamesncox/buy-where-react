@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
-import { connect } from 'react-redux'
-import { createStore } from '../../actions/stores'
+import React, { useState, useEffect } from 'react'
+import { connect, useDispatch } from 'react-redux'
+import { createStore, clearIsStoreLoading } from '../../actions/stores'
 import Errors from '../Layout/Errors'
 
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
+import CircularProgress from '@material-ui/core/CircularProgress'
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
 import { ColorPalette } from 'material-ui-color';
@@ -42,6 +43,10 @@ const useStyles = makeStyles((theme) => ({
     submit: {
         margin: theme.spacing(5, 0, 2),
     },
+    spinner: {
+        margin: 'auto',
+        padding: '5em'
+    },
 }))
 
 const palette = {
@@ -66,6 +71,11 @@ const palette = {
 }
 
 function NewStore(props) {
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(clearIsStoreLoading())
+    }, [dispatch])
 
     const classes = useStyles()
 
@@ -104,6 +114,15 @@ function NewStore(props) {
     if (props.errors) {
         return (
             <Errors />
+        )
+    } else if (props.loadingSingleStore) {
+        return (
+            <div className={classes.spinner}>
+                <Typography className={classes.header}>
+                    Creating store...
+                    </Typography>
+                <CircularProgress color="secondary" size={100} thickness={6} />
+            </div>
         )
     } else {
         return (
@@ -167,7 +186,8 @@ function NewStore(props) {
 
 const mapStateToProps = state => ({
     user: state.users.user,
-    errors: state.errors.errors
+    errors: state.errors.errors,
+    loadingSingleStore: state.stores.loadingSingleStore
 })
 
-export default connect(mapStateToProps, { createStore })(NewStore)
+export default connect(mapStateToProps, { createStore, clearIsStoreLoading })(NewStore)

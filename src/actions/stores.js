@@ -39,6 +39,8 @@ export const createStore = (store) => {
 
     return async (dispatch) => {
 
+        dispatch({ type: LOADING_SINGLE_STORE })
+
         const formData = {
             name: store.name,
             store_type: store.storeType,

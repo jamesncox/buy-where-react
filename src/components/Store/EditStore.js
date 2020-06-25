@@ -41,7 +41,7 @@ function EditStore(props) {
             textAlign: 'center',
             color: `${selectedStore[0].color}`,
             fontWeight: 'bold',
-            opacity: "60%"
+            opacity: "90%"
         },
         form: {
             width: '100%',

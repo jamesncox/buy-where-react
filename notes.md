@@ -4,10 +4,12 @@
 
 [] Change opacity on all the new/edit forms
 
-[] Create an edit/delete component that gets opened when clicking on a specefic item
+[] Add loading/spinner to user Sign In / Sign Up like I did with creating/editing stores/items
+
+[x] Create an edit/delete component that gets opened when clicking on a specefic item
     [x] Create Edit Item component, working correctly. 
         [x] Add isEditItemOpen/Closed actions/reducers to only open one component
-    [] Create Delete Item functionality.
+    [x] Create Delete Item functionality.
 
 [x] Create delete store functionatlity / probably just refactor the EditStore component to include a delete button.
 

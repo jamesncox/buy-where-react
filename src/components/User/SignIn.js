@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { connect } from 'react-redux'
-import { loginUser } from '../../actions/users'
+import { connect, useDispatch } from 'react-redux'
+import { loginUser, clearIsUserLoading } from '../../actions/users'
+import { clearErrors } from '../../actions/errors'
 import { Redirect } from "react-router";
 
 import Copyright from '../Layout/Copyright'
@@ -66,6 +67,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function SignIn(props) {
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(clearErrors())
+        dispatch(clearIsUserLoading())
+    }, [dispatch])
     const classes = useStyles();
 
     const [username, setUsername] = useState('')
@@ -213,4 +220,4 @@ const mapStateToProps = state => ({
     loadingUser: state.users.loadingUser
 })
 
-export default connect(mapStateToProps, { loginUser })(SignIn)
+export default connect(mapStateToProps, { loginUser, clearErrors, clearIsUserLoading })(SignIn)

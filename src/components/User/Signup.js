@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { connect } from 'react-redux'
-import { signupUser } from '../../actions/users'
+import { connect, useDispatch } from 'react-redux'
+import { signupUser, clearIsUserLoading } from '../../actions/users'
+import { clearErrors } from '../../actions/errors'
 import { Redirect } from "react-router";
 
 import Copyright from '../Layout/Copyright'
@@ -67,6 +68,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function SignUp(props) {
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(clearErrors())
+        dispatch(clearIsUserLoading())
+    }, [dispatch])
+
     const classes = useStyles();
 
     const [username, setUsername] = useState('')
@@ -235,4 +243,4 @@ const mapStateToProps = state => ({
     loadingUser: state.users.loadingUser
 })
 
-export default connect(mapStateToProps, { signupUser })(SignUp)
+export default connect(mapStateToProps, { signupUser, clearIsUserLoading, clearErrors })(SignUp)

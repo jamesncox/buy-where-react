@@ -3,7 +3,8 @@ import {
     CLEAR_USER,
     SET_ERRORS,
     CLEAR_ERRORS,
-    LOADING_USER
+    LOADING_USER,
+    CLEAR_IS_USER_LOADING
 } from '../actionTypes'
 
 export const clearUser = () => {
@@ -12,6 +13,10 @@ export const clearUser = () => {
 
 export const clearErrors = () => {
     return { type: CLEAR_ERRORS }
+}
+
+export const clearIsUserLoading = () => {
+    return { type: CLEAR_IS_USER_LOADING }
 }
 
 export function signupUser(token, user) {

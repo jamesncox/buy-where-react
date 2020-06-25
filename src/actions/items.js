@@ -4,11 +4,16 @@ import {
     SET_ERRORS,
     CREATE_ITEM,
     UPDATE_ITEM,
-    DELETE_ITEM
+    DELETE_ITEM,
+    CLEAR_IS_ITEM_LOADING
 } from '../actionTypes'
 
 const setItems = items => {
     return { type: SET_ITEMS, payload: items }
+}
+
+export const clearIsItemLoading = () => {
+    return { type: CLEAR_IS_ITEM_LOADING }
 }
 
 export const getItems = (id) => {

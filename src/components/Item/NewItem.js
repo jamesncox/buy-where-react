@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import { connect } from 'react-redux'
-import { createItem } from '../../actions/items'
+import React, { useState, useEffect } from 'react'
+import { connect, useDispatch } from 'react-redux'
+import { createItem, clearIsItemLoading } from '../../actions/items'
 import Errors from '../Layout/Errors'
 
 import Grid from '@material-ui/core/Grid'
@@ -13,6 +13,11 @@ import { makeStyles } from '@material-ui/core/styles'
 
 
 function NewItem(props) {
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(clearIsItemLoading())
+    }, [dispatch])
 
     const selectedStore = props.stores.filter(store => store.id === props.storeId)
 
@@ -162,4 +167,4 @@ const mapStateToProps = state => ({
     loading: state.items.loading
 })
 
-export default connect(mapStateToProps, { createItem })(NewItem)
+export default connect(mapStateToProps, { createItem, clearIsItemLoading })(NewItem)

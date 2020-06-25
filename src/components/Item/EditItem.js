@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import { connect } from 'react-redux'
+import React, { useState, useEffect } from 'react'
+import { connect, useDispatch } from 'react-redux'
 import Errors from '../Layout/Errors'
-import { editItem, deleteItem } from '../../actions/items'
+import { editItem, deleteItem, clearIsItemLoading } from '../../actions/items'
 import { editItemClose } from '../../actions/isOpen'
 
 import Grid from '@material-ui/core/Grid'
@@ -12,6 +12,12 @@ import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
 
 function EditItem(props) {
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(clearIsItemLoading())
+    }, [dispatch])
+
     const selectedStore = props.stores.filter(store => store.id === props.storeId)
     const selectedItem = props.items.filter(item => item.id === props.itemId)
 
@@ -180,4 +186,4 @@ const mapStateToProps = state => ({
     itemId: state.items.itemId
 })
 
-export default connect(mapStateToProps, { editItem, deleteItem, editItemClose })(EditItem)
+export default connect(mapStateToProps, { editItem, deleteItem, editItemClose, clearIsItemLoading })(EditItem)

@@ -20,6 +20,7 @@ const ADD_ITEM = 'ADD_ITEM'
 const ITEM_ERRORS = 'ITEM_ERRORS'
 const SET_ITEM_ID = 'SET_ITEM_ID'
 const UPDATE_ITEM = 'UPDATE_ITEM'
+const DELETE_ITEM = 'DELETE_ITEM'
 
 // Errors
 const SET_ERRORS = 'SET_ERRORS'
@@ -58,6 +59,7 @@ export {
     ITEM_ERRORS,
     SET_ITEM_ID,
     UPDATE_ITEM,
+    DELETE_ITEM,
 
     // Errors
     SET_ERRORS,

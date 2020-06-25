@@ -2,7 +2,7 @@ import {
     SET_STORES,
     LOADING_STORES,
     SET_ERRORS,
-    ADD_STORE,
+    CREATE_STORE,
     UPDATE_STORE,
     DELETE_STORE
 } from '../actionTypes'
@@ -55,7 +55,7 @@ export const createStore = (store) => {
         if (storeObj.errors) {
             dispatch({ type: SET_ERRORS, payload: storeObj.errors })
         } else {
-            dispatch({ type: ADD_STORE, payload: storeObj })
+            dispatch({ type: CREATE_STORE, payload: storeObj })
         }
     }
 }
@@ -63,6 +63,8 @@ export const createStore = (store) => {
 export const editStore = (store) => {
 
     return async (dispatch) => {
+
+        dispatch({ type: LOADING_STORES })
 
         const formData = {
             name: store.name,

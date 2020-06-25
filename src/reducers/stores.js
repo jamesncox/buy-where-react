@@ -1,11 +1,12 @@
 import {
     SET_STORES,
     LOADING_STORES,
-    ADD_STORE,
+    CREATE_STORE,
     STORE_ERRORS,
     SET_STORE_ID,
     UPDATE_STORE,
-    DELETE_STORE
+    DELETE_STORE,
+    CLEAR_IS_STORE_LOADING
 } from '../actionTypes'
 
 export default (state = {
@@ -22,7 +23,7 @@ export default (state = {
         case SET_STORES:
             return { ...state, stores: action.payload, loading: false }
 
-        case ADD_STORE:
+        case CREATE_STORE:
             return { ...state, stores: [...state.stores, action.payload] }
 
         case STORE_ERRORS:
@@ -43,11 +44,14 @@ export default (state = {
                 }
                 return store
             })
-            return { ...state, stores: updatedStores }
+            return { ...state, stores: updatedStores, loading: false }
 
         case DELETE_STORE:
             const persistedStores = state.stores.filter(store => store.id !== action.payload.id)
             return { ...state, stores: persistedStores }
+
+        case CLEAR_IS_STORE_LOADING:
+            return { ...state, loading: false }
 
         default:
             return state

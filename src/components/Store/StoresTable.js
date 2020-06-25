@@ -60,6 +60,12 @@ const useStyles = makeStyles((theme) => ({
         color: "white",
         align: "left",
         cursor: 'pointer',
+        [theme.breakpoints.down('md')]: {
+            fontSize: "1.3rem"
+        },
+        [theme.breakpoints.down('sm')]: {
+            fontSize: "1.25rem"
+        },
         [theme.breakpoints.down('xs')]: {
             fontSize: "1rem"
         },
@@ -98,13 +104,13 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     itemRow: {
-        width: "18em",
+        width: "15em",
         cursor: "pointer",
         [theme.breakpoints.down('md')]: {
-            width: "16em"
+            width: "14em"
         },
         [theme.breakpoints.down('sm')]: {
-            width: "15em"
+            width: "13em"
         },
         [theme.breakpoints.down('xs')]: {
             width: "8em"

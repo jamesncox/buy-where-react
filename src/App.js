@@ -5,6 +5,7 @@ import {
   Route
 } from 'react-router-dom';
 import './stylesheets/App.css';
+import './stylesheets/responsive.css'
 import { connect } from 'react-redux';
 import { getToken } from './actions/sessions'
 import { setCurrentUser } from './actions/users'

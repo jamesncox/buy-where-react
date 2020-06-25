@@ -17,6 +17,7 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
+import CircularProgress from '@material-ui/core/CircularProgress'
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -51,6 +52,13 @@ const useStyles = makeStyles((theme) => ({
     submit: {
         margin: theme.spacing(3, 0, 2),
     },
+    spinner: {
+        margin: 'auto',
+        padding: '5em'
+    },
+    header: {
+        padding: '1em'
+    }
 }));
 
 function SignIn(props) {
@@ -96,6 +104,29 @@ function SignIn(props) {
                             Have an account? Sign in below
                         </Typography>
                         <Errors />
+                    </div>
+                </Grid>
+            </Grid>
+        )
+    } else if (props.loadingUser) {
+        return (
+            <Grid container component="main" className={classes.root}>
+                <CssBaseline />
+                <Grid item xs={12} sm={12} md={7} className={classes.image} />
+                <Grid item xs={12} sm={12} md={5} component={Paper} elevation={6} square>
+                    <div className={classes.paper}>
+                        <Avatar className={classes.avatar}>
+                            <LockOutlinedIcon />
+                        </Avatar>
+                        <Typography component="h1" variant="h5">
+                            Have an account? Sign in below
+                        </Typography>
+                        <div className={classes.spinner}>
+                            <Typography className={classes.header}>
+                                Logging in...
+                            </Typography>
+                            <CircularProgress color="secondary" size={100} thickness={6} />
+                        </div>
                     </div>
                 </Grid>
             </Grid>
@@ -174,7 +205,8 @@ function SignIn(props) {
 const mapStateToProps = state => ({
     user: state.users.user,
     errors: state.errors.errors,
-    loggedIn: state.users.loggedIn
+    loggedIn: state.users.loggedIn,
+    loadingUser: state.users.loadingUser
 })
 
 export default connect(mapStateToProps, { loginUser })(SignIn)

@@ -4,6 +4,7 @@ import {
     CLEAR_ERRORS,
     CLEAR_IS_ITEM_LOADING,
     CLEAR_IS_STORE_LOADING,
+    CLEAR_IS_USER_LOADING
 } from '../../actionTypes'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -42,6 +43,7 @@ function Errors(props) {
         props.clearErrors()
         props.clearIsItemLoading()
         props.clearIsStoreLoading()
+        props.clearIsUserLoading()
     }
 
     return (
@@ -83,7 +85,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     clearErrors: () => dispatch({ type: CLEAR_ERRORS }),
     clearIsItemLoading: () => dispatch({ type: CLEAR_IS_ITEM_LOADING }),
-    clearIsStoreLoading: () => dispatch({ type: CLEAR_IS_STORE_LOADING })
+    clearIsStoreLoading: () => dispatch({ type: CLEAR_IS_STORE_LOADING }),
+    clearIsUserLoading: () => dispatch({ type: CLEAR_IS_USER_LOADING })
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Errors)

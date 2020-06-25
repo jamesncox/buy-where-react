@@ -2,7 +2,8 @@ import {
     SET_USER,
     CLEAR_USER,
     SET_ERRORS,
-    CLEAR_ERRORS
+    CLEAR_ERRORS,
+    LOADING_USER
 } from '../actionTypes'
 
 export const clearUser = () => {
@@ -34,6 +35,7 @@ export function signupUser(token, user) {
         })
 
         const userObj = await res.json()
+
         if (userObj.errors) {
             dispatch({ type: SET_ERRORS, payload: userObj.errors })
         } else {
@@ -44,6 +46,9 @@ export function signupUser(token, user) {
 
 export function loginUser(user) {
     return async (dispatch, getState) => {
+
+        dispatch({ type: LOADING_USER })
+
         const formData = {
             user: {
                 username: user.username,

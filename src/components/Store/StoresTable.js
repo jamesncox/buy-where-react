@@ -25,6 +25,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import AddBoxIcon from '@material-ui/icons/AddBox';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import CircularProgress from '@material-ui/core/CircularProgress'
 
 const TAX_RATE = 0.085;
@@ -74,18 +75,15 @@ const useStyles = makeStyles((theme) => ({
             fontSize: ".75rem"
         },
     },
-    addIcon: {
+    icons: {
         color: "rgba(255, 255, 255, 0.9)",
         float: "left",
         cursor: "pointer",
         fontSize: "2rem",
+        marginRight: ".15em",
         [theme.breakpoints.down('xs')]: {
             fontSize: "1.25rem"
         },
-    },
-    editIcon: {
-        cursor: "pointer",
-        color: "rgba(0, 0, 0, 0.4)",
     },
     iconColumn: {
         width: 1
@@ -211,7 +209,8 @@ function Stores(props) {
                             <TableHead>
                                 <TableRow style={{ backgroundColor: `${store.color}` }}>
                                     <TableCell>
-                                        <AddBoxIcon className={classes.addIcon} onClick={() => handleShowNewItem(store.id)} />
+                                        <AddBoxIcon className={classes.icons} onClick={() => handleShowNewItem(store.id)} />
+                                        <DeleteForeverIcon className={classes.icons} />
                                     </TableCell>
                                     <TableCell onClick={() => handleShowEditStore(store.id)} className={classes.title} colSpan={2}>
                                         {(store.name).toUpperCase()}

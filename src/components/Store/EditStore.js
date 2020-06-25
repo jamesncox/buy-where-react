@@ -43,6 +43,10 @@ function EditStore(props) {
         submit: {
             margin: theme.spacing(5, 0, 2),
         },
+        delete: {
+            margin: theme.spacing(2),
+            width: "1em",
+        },
     }))
 
     const palette = {
@@ -161,7 +165,15 @@ function EditStore(props) {
                             className={classes.submit}
                         >
                             Submit Changes
-                    </Button>
+                        </Button>
+                        {/* <Button
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                            className={classes.delete}
+                        >
+                            <DeleteForeverIcon fontSize="small" />
+                        </Button> */}
                     </form>
                 </Grid>
             </Grid>

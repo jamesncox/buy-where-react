@@ -11,6 +11,7 @@ const ADD_STORE = 'ADD_STORE'
 const STORE_ERRORS = 'STORE_ERRORS'
 const SET_STORE_ID = 'SET_STORE_ID'
 const UPDATE_STORE = 'UPDATE_STORE'
+const DELETE_STORE = 'DELETE_STORE'
 
 // Item
 const SET_ITEMS = 'SET_ITEMS'
@@ -48,6 +49,7 @@ export {
     STORE_ERRORS,
     SET_STORE_ID,
     UPDATE_STORE,
+    DELETE_STORE,
 
     // Item
     SET_ITEMS,
@@ -69,5 +71,5 @@ export {
     EDIT_STORE_OPEN,
     EDIT_STORE_CLOSE,
     EDIT_ITEM_OPEN,
-    EDIT_ITEM_CLOSE
+    EDIT_ITEM_CLOSE,
 }

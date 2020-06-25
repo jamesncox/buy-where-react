@@ -4,6 +4,7 @@ import {
     SET_ERRORS,
     ADD_STORE,
     UPDATE_STORE,
+    DELETE_STORE
 } from '../actionTypes'
 
 const setStores = stores => {
@@ -87,5 +88,15 @@ export const editStore = (store) => {
         } else {
             dispatch({ type: UPDATE_STORE, payload: storeObj })
         }
+    }
+}
+
+export function deleteStore(id) {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/api/v1/stores/${id}`, {
+            method: "DELETE"
+        })
+            .then(res => res.json())
+            .then(store => dispatch({ type: DELETE_STORE, payload: store.id }))
     }
 }

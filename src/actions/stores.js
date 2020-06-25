@@ -5,11 +5,16 @@ import {
     CREATE_STORE,
     UPDATE_STORE,
     DELETE_STORE,
-    LOADING_SINGLE_STORE
+    LOADING_SINGLE_STORE,
+    CLEAR_IS_STORE_LOADING
 } from '../actionTypes'
 
 const setStores = stores => {
     return { type: SET_STORES, payload: stores }
+}
+
+export const clearIsStoreLoading = () => {
+    return { type: CLEAR_IS_STORE_LOADING }
 }
 
 export const getStores = (id) => {

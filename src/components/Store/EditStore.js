@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import { connect } from 'react-redux'
-import { editStore, deleteStore } from '../../actions/stores'
+import React, { useState, useEffect } from 'react'
+import { connect, useDispatch } from 'react-redux'
+import { editStore, deleteStore, clearIsStoreLoading } from '../../actions/stores'
 import Errors from '../Layout/Errors'
 
 import Grid from '@material-ui/core/Grid'
@@ -14,6 +14,11 @@ import { makeStyles } from '@material-ui/core/styles'
 import { ColorPalette } from 'material-ui-color';
 
 function EditStore(props) {
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(clearIsStoreLoading())
+    }, [dispatch])
 
     const selectedStore = props.stores.filter(store => store.id === props.storeId)
 
@@ -202,4 +207,4 @@ const mapStateToProps = state => ({
     loadingSingleStore: state.stores.loadingSingleStore
 })
 
-export default connect(mapStateToProps, { editStore, deleteStore })(EditStore)
+export default connect(mapStateToProps, { editStore, deleteStore, clearIsStoreLoading })(EditStore)

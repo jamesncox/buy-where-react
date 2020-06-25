@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { editStore } from '../../actions/stores'
+import { editStore, deleteStore } from '../../actions/stores'
 import Errors from '../Layout/Errors'
 
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
 import { ColorPalette } from 'material-ui-color';
@@ -44,7 +45,7 @@ function EditStore(props) {
             margin: theme.spacing(5, 0, 2),
         },
         delete: {
-            margin: theme.spacing(2),
+            // margin: theme.spacing(2),
             width: "1em",
         },
     }))
@@ -103,6 +104,10 @@ function EditStore(props) {
         setName("")
         setStoreType("")
         setColor("")
+    }
+
+    const handleDelete = (id) => {
+        props.deleteStore(id)
     }
 
     if (props.errors) {
@@ -166,14 +171,9 @@ function EditStore(props) {
                         >
                             Submit Changes
                         </Button>
-                        {/* <Button
-                            fullWidth
-                            variant="contained"
-                            color="primary"
-                            className={classes.delete}
-                        >
-                            <DeleteForeverIcon fontSize="small" />
-                        </Button> */}
+                        <Button color="primary">
+                            <DeleteForeverIcon fontSize="large" onClick={() => handleDelete(selectedStore[0].id)} />
+                        </Button>
                     </form>
                 </Grid>
             </Grid>
@@ -188,4 +188,4 @@ const mapStateToProps = state => ({
     storeId: state.stores.storeId,
 })
 
-export default connect(mapStateToProps, { editStore })(EditStore)
+export default connect(mapStateToProps, { editStore, deleteStore })(EditStore)

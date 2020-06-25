@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 
-import { CLEAR_ERRORS } from '../../actionTypes'
+import { CLEAR_ERRORS, CLEAR_IS_ITEM_LOADING } from '../../actionTypes'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -37,6 +37,7 @@ function Errors(props) {
 
     const handleClearErrors = () => {
         props.clearErrors()
+        props.clearIsItemLoading()
     }
 
     return (
@@ -76,7 +77,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    clearErrors: () => dispatch({ type: CLEAR_ERRORS })
+    clearErrors: () => dispatch({ type: CLEAR_ERRORS }),
+    clearIsItemLoading: () => dispatch({ type: CLEAR_IS_ITEM_LOADING })
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Errors)

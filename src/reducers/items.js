@@ -5,7 +5,8 @@ import {
     ITEM_ERRORS,
     SET_ITEM_ID,
     UPDATE_ITEM,
-    DELETE_ITEM
+    DELETE_ITEM,
+    CLEAR_IS_ITEM_LOADING
 } from '../actionTypes'
 
 export default (state = {
@@ -46,9 +47,11 @@ export default (state = {
             return { ...state, items: updatedItems }
 
         case DELETE_ITEM:
-
             const persistedItems = state.items.filter(item => item.id !== action.payload.id)
             return { ...state, items: persistedItems }
+
+        case CLEAR_IS_ITEM_LOADING:
+            return { ...state, loading: false }
 
         default:
             return state

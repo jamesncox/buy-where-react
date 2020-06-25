@@ -74,19 +74,22 @@ function NewItem(props) {
         setQuantity("")
     }
 
-    if (props.loading) {
-        return (
-            <div className={classes.spinner}>
-                <CircularProgress color="secondary" size={100} thickness={6} />
-            </div>
-        )
-    } else if (props.errors) {
+    if (props.errors) {
         return (
             <Errors />
         )
+    } else if (props.loading) {
+        return (
+            <div className={classes.spinner}>
+                <Typography className={classes.header}>
+                    Adding item to list...
+                    </Typography>
+                <CircularProgress color="secondary" size={100} thickness={6} />
+            </div>
+        )
     } else {
         return (
-            <Grid container className={classes.root}>
+            <Grid container className={classes.root} >
                 <Typography className={classes.paper}>
                     NEW {selectedStore[0].name.toUpperCase()} PURCHASE
                 </Typography>

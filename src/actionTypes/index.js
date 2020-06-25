@@ -26,6 +26,9 @@ const DELETE_ITEM = 'DELETE_ITEM'
 const SET_ERRORS = 'SET_ERRORS'
 const CLEAR_ERRORS = 'CLEAR_ERRORS'
 
+// Loading
+const CLEAR_IS_ITEM_LOADING = 'CLEAR_IS_ITEM_LOADING'
+
 // Is Open?
 const NEW_STORE_OPEN = 'NEW_STORE_OPEN'
 const NEW_STORE_CLOSE = 'NEW_STORE_CLOSE'
@@ -64,6 +67,9 @@ export {
     // Errors
     SET_ERRORS,
     CLEAR_ERRORS,
+
+    // Loading
+    CLEAR_IS_ITEM_LOADING,
 
     // Is Open?
     NEW_STORE_OPEN,

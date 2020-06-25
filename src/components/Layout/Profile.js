@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     },
     spinner: {
         margin: 'auto',
-        marginTop: '2em'
+        marginTop: '10em'
     },
     footer: {
         marginBottom: theme.spacing(2)
@@ -74,6 +74,9 @@ function Profile(props) {
     if (props.storesLoading === true) {
         return (
             <div className={classes.spinner}>
+                <Typography className={classes.header}>
+                    Loading your stores...
+                </Typography>
                 <CircularProgress color="secondary" size={100} thickness={6} />
             </div>
         )

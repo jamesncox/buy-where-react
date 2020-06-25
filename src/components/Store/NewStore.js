@@ -127,7 +127,6 @@ function NewStore(props) {
                     Creating store...
                 </Typography>
                 <LinearProgress className={classes.progressBar} color="secondary" />
-
             </div>
         )
     } else {

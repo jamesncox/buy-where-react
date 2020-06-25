@@ -19,7 +19,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-import CircularProgress from '@material-ui/core/CircularProgress'
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -40,12 +40,14 @@ const useStyles = makeStyles((theme) => ({
     button: {
         marginTop: theme.spacing(2),
     },
-    spinner: {
+    loader: {
         margin: 'auto',
-        marginTop: '10em'
+        padding: '5em',
     },
-    footer: {
-        marginBottom: theme.spacing(2)
+    progressBar: {
+        margin: 'auto',
+        height: '1em',
+        width: '20em'
     }
 }));
 
@@ -73,11 +75,11 @@ function Profile(props) {
 
     if (props.loadingStores) {
         return (
-            <div className={classes.spinner}>
-                <Typography className={classes.header}>
+            <div className={classes.loader}>
+                <Typography className={classes.paper}>
                     Loading your stores...
                 </Typography>
-                <CircularProgress color="secondary" size={100} thickness={6} />
+                <LinearProgress className={classes.progressBar} color="secondary" />
             </div>
         )
     } else {

@@ -25,7 +25,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import AddBoxIcon from '@material-ui/icons/AddBox';
-// import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import CircularProgress from '@material-ui/core/CircularProgress'
 
 const TAX_RATE = 0.085;

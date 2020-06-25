@@ -1,11 +1,15 @@
 # TO DO 
 
+[] Better background for "home / my stores" page
+
+[] Change opacity on all the new/edit forms
+
 [] Create an edit/delete component that gets opened when clicking on a specefic item
     [x] Create Edit Item component, working correctly. 
-        [] Add isEditItemOpen/Closed actions/reducers to only open one component
+        [x] Add isEditItemOpen/Closed actions/reducers to only open one component
     [] Create Delete Item functionality.
 
-[] Create delete store functionatlity / probably just refactor the EditStore component to include a delete button.
+[x] Create delete store functionatlity / probably just refactor the EditStore component to include a delete button.
 
 [x] When store is updated, not automatically rendering to the DOM. Need a reducer action to handle this.
     (refer to Memes vs Gifs delete actions/reducer for Gifs/Memes to see how specific item was removed)

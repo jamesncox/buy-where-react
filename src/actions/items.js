@@ -69,6 +69,8 @@ export const createItem = (item) => {
 export const editItem = (item) => {
     return async (dispatch) => {
 
+        dispatch({ type: LOADING_ITEMS })
+
         const formData = {
             name: item.name,
             price: item.price,

@@ -21,6 +21,14 @@ function EditItem(props) {
             margin: 'auto',
             color: theme.palette.text.secondary,
         },
+        header: {
+            padding: theme.spacing(1),
+            margin: 'auto',
+            textAlign: 'center',
+            color: `${selectedStore[0].color}`,
+            fontWeight: 'bold',
+            opacity: "90%"
+        },
         form: {
             margin: 'auto',
             width: '95%',
@@ -79,7 +87,7 @@ function EditItem(props) {
     } else {
         return (
             <Grid container className={classes.root}>
-                <Typography className={classes.paper}>
+                <Typography className={classes.header}>
                     Edit {itemFormat(selectedItem[0].name)} From {itemFormat(selectedStore[0].name)}
                 </Typography>
                 <form

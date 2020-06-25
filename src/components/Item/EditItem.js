@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import Errors from '../Layout/Errors'
 import { editItem, deleteItem } from '../../actions/items'
+import { editItemClose } from '../../actions/isOpen'
 
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
@@ -78,6 +79,7 @@ function EditItem(props) {
 
     const handleDelete = (id) => {
         props.deleteItem(id)
+        props.editItemClose()
     }
 
     function itemFormat(words) {
@@ -178,4 +180,4 @@ const mapStateToProps = state => ({
     itemId: state.items.itemId
 })
 
-export default connect(mapStateToProps, { editItem, deleteItem })(EditItem)
+export default connect(mapStateToProps, { editItem, deleteItem, editItemClose })(EditItem)

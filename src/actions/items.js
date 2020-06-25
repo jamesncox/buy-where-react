@@ -32,6 +32,8 @@ export const getItems = (id) => {
 export const createItem = (item) => {
     return async (dispatch) => {
 
+        dispatch({ type: LOADING_ITEMS })
+
         const formData = {
             name: item.name,
             price: item.price,

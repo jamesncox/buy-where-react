@@ -26,11 +26,6 @@ function EditItem(props) {
         root: {
             flexGrow: 1,
         },
-        // paper: {
-        //     padding: theme.spacing(1),
-        //     margin: 'auto',
-        //     color: theme.palette.text.secondary,
-        // },
         header: {
             padding: theme.spacing(1),
             margin: 'auto',

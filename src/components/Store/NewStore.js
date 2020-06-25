@@ -47,9 +47,6 @@ const useStyles = makeStyles((theme) => ({
         margin: 'auto',
         padding: '5em',
     },
-    header: {
-        padding: '1em'
-    },
     progressBar: {
         margin: 'auto',
         height: '.75em',
@@ -126,9 +123,9 @@ function NewStore(props) {
     } else if (props.loadingSingleStore) {
         return (
             <div className={classes.loader}>
-                <Typography className={classes.header}>
+                <Typography className={classes.paper}>
                     Creating store...
-                    </Typography>
+                </Typography>
                 <LinearProgress className={classes.progressBar} color="secondary" />
 
             </div>

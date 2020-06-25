@@ -8,7 +8,7 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import CircularProgress from '@material-ui/core/CircularProgress'
+import LinearProgress from '@material-ui/core/LinearProgress';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
 import { ColorPalette } from 'material-ui-color';
@@ -53,10 +53,13 @@ function EditStore(props) {
         delete: {
             width: "1em",
         },
-        spinner: {
+        loader: {
             margin: 'auto',
-            padding: '5em'
+            padding: '5em',
         },
+        progressBar: {
+            height: ".75em"
+        }
     }))
 
     const palette = {
@@ -125,11 +128,11 @@ function EditStore(props) {
         )
     } else if (props.loadingSingleStore) {
         return (
-            <div className={classes.spinner}>
+            <div className={classes.loader}>
                 <Typography className={classes.header}>
                     Updating store...
-                    </Typography>
-                <CircularProgress color="secondary" size={100} thickness={6} />
+                </Typography>
+                <LinearProgress className={classes.progressBar} color="secondary" />
             </div>
         )
     } else {

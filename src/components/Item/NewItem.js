@@ -93,7 +93,6 @@ function NewItem(props) {
                     Adding item to list...
                 </Typography>
                 <LinearProgress className={classes.progressBar} color="secondary" />
-
             </div>
         )
     } else {

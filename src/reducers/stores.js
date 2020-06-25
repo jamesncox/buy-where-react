@@ -4,7 +4,8 @@ import {
     ADD_STORE,
     STORE_ERRORS,
     SET_STORE_ID,
-    UPDATE_STORE
+    UPDATE_STORE,
+    DELETE_STORE
 } from '../actionTypes'
 
 export default (state = {
@@ -43,6 +44,10 @@ export default (state = {
                 return store
             })
             return { ...state, stores: updatedStores }
+
+        case DELETE_STORE:
+            const persistedStores = state.stores.filter(store => store.id !== action.payload.id)
+            return { ...state, stores: persistedStores }
 
         default:
             return state

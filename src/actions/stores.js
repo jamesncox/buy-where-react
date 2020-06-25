@@ -97,6 +97,6 @@ export function deleteStore(id) {
             method: "DELETE"
         })
             .then(res => res.json())
-            .then(store => dispatch({ type: DELETE_STORE, payload: store.id }))
+            .then(store => dispatch({ type: DELETE_STORE, payload: store }))
     }
 }

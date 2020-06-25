@@ -4,7 +4,8 @@ import {
     SET_ERRORS,
     CREATE_STORE,
     UPDATE_STORE,
-    DELETE_STORE
+    DELETE_STORE,
+    LOADING_SINGLE_STORE
 } from '../actionTypes'
 
 const setStores = stores => {
@@ -64,7 +65,7 @@ export const editStore = (store) => {
 
     return async (dispatch) => {
 
-        dispatch({ type: LOADING_STORES })
+        dispatch({ type: LOADING_SINGLE_STORE })
 
         const formData = {
             name: store.name,

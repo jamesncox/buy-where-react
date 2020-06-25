@@ -71,7 +71,7 @@ function Profile(props) {
         dispatch(getItems(props.user.id))
     }, [dispatch, props.user.id])
 
-    if (props.storesLoading === true) {
+    if (props.loadingStores) {
         return (
             <div className={classes.spinner}>
                 <Typography className={classes.header}>
@@ -104,7 +104,7 @@ function Profile(props) {
 
 const mapStateToProps = state => ({
     user: state.users.user,
-    storesLoading: state.stores.loading,
+    loadingStores: state.stores.loadingStores,
     isStoreOpen: state.isOpen.isStoreOpen
 })
 

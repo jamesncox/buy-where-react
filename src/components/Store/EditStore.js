@@ -8,6 +8,7 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import CircularProgress from '@material-ui/core/CircularProgress'
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
 import { ColorPalette } from 'material-ui-color';
@@ -45,8 +46,11 @@ function EditStore(props) {
             margin: theme.spacing(5, 0, 2),
         },
         delete: {
-            // margin: theme.spacing(2),
             width: "1em",
+        },
+        spinner: {
+            margin: 'auto',
+            padding: '5em'
         },
     }))
 
@@ -113,6 +117,15 @@ function EditStore(props) {
     if (props.errors) {
         return (
             <Errors />
+        )
+    } else if (props.loadingSingleStore) {
+        return (
+            <div className={classes.spinner}>
+                <Typography className={classes.header}>
+                    Updating store...
+                    </Typography>
+                <CircularProgress color="secondary" size={100} thickness={6} />
+            </div>
         )
     } else {
         return (
@@ -186,6 +199,7 @@ const mapStateToProps = state => ({
     errors: state.errors.errors,
     stores: state.stores.stores,
     storeId: state.stores.storeId,
+    loadingSingleStore: state.stores.loadingSingleStore
 })
 
 export default connect(mapStateToProps, { editStore, deleteStore })(EditStore)

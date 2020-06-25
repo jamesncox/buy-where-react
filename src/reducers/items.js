@@ -4,7 +4,8 @@ import {
     ADD_ITEM,
     ITEM_ERRORS,
     SET_ITEM_ID,
-    UPDATE_ITEM
+    UPDATE_ITEM,
+    DELETE_ITEM
 } from '../actionTypes'
 
 export default (state = {
@@ -43,6 +44,10 @@ export default (state = {
                 return item
             })
             return { ...state, items: updatedItems }
+
+        case DELETE_ITEM:
+            const persistedItems = state.items.filter(item => item.id !== action.payload.id)
+            return { ...state, stores: persistedItems }
 
         default:
             return state

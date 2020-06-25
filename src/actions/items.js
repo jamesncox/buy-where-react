@@ -3,7 +3,8 @@ import {
     LOADING_ITEMS,
     SET_ERRORS,
     ADD_ITEM,
-    UPDATE_ITEM
+    UPDATE_ITEM,
+    DELETE_ITEM
 } from '../actionTypes'
 
 const setItems = items => {
@@ -86,5 +87,15 @@ export const editItem = (item) => {
         } else {
             dispatch({ type: UPDATE_ITEM, payload: itemObj })
         }
+    }
+}
+
+export function deleteItem(id) {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/api/v1/items/${id}`, {
+            method: "DELETE"
+        })
+            .then(res => res.json())
+            .then(item => dispatch({ type: DELETE_ITEM, payload: item }))
     }
 }

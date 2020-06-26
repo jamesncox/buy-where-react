@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { connect, useDispatch } from 'react-redux'
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
 import {
     SET_STORE_ID,
     SET_ITEM_ID,
@@ -139,11 +139,6 @@ function subtotal(items) {
 }
 
 function Stores(props) {
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch({ type: CLEAR_EDIT_SUCCESS })
-    }, [dispatch])
     const classes = useStyles();
 
     const [showEditStore, setShowEditStore] = useState(false)
@@ -185,7 +180,6 @@ function Stores(props) {
     }
 
     const handleShowEditItem = (id, storeID) => {
-        props.clearEditSuccess()
         if (!showEditItem) {
             setShowEditItem(showEditItem === id ? true : id)
             props.setItemId(id)
@@ -195,12 +189,14 @@ function Stores(props) {
             props.newStoreClose()
             props.clearErrors()
             props.editItemOpen()
+            props.clearEditSuccess()
         } else {
             setShowEditItem(showEditItem === id ? false : id)
             props.setItemId(id)
             props.setStoreId(storeID)
             props.clearErrors()
             props.editItemOpen()
+            props.clearEditSuccess()
         }
     }
 
@@ -222,7 +218,6 @@ function Stores(props) {
                                 <TableRow style={{ backgroundColor: `${store.color}` }}>
                                     <TableCell>
                                         <AddBoxIcon className={classes.icons} onClick={() => handleShowNewItem(store.id)} />
-                                        {/* <DeleteForeverIcon className={classes.icons} /> */}
                                     </TableCell>
                                     <TableCell onClick={() => handleShowEditStore(store.id)} className={classes.title} colSpan={2}>
                                         {(store.name).toUpperCase()}

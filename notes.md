@@ -1,10 +1,14 @@
 # TO DO 
 
-[] Better background for "home / my stores" page
+[] Figure out how to close a form once it's successfully submitted (to database) and be able to re-open immediately
 
-[] Change opacity on all the new/edit forms
+[] Pre-populate the edit forms with the data props, and a user can edit it
 
-[] Add loading/spinner to user Sign In / Sign Up like I did with creating/editing stores/items
+[x] Better background for "home / my stores" page
+
+[x] Change opacity on all the new/edit forms
+
+[x] Add loading/spinner to user Sign In / Sign Up like I did with creating/editing stores/items
 
 [x] Create an edit/delete component that gets opened when clicking on a specefic item
     [x] Create Edit Item component, working correctly. 

@@ -11,7 +11,6 @@ import Paper from '@material-ui/core/Paper';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import RemoveIcon from '@material-ui/icons/Remove'
-// import CloseIcon from '@material-ui/icons/Close';
 import IconButton from '@material-ui/core/IconButton'
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
@@ -28,12 +27,7 @@ function EditStore(props) {
 
     const useStyles = makeStyles((theme) => ({
         root: {
-            width: "100%",
-            margin: 'auto',
-        },
-        newStore: {
-            margin: 'auto',
-            width: '95%',
+            flexGrow: 1,
         },
         paper: {
             padding: theme.spacing(1),
@@ -42,14 +36,15 @@ function EditStore(props) {
         },
         header: {
             padding: theme.spacing(1),
+            margin: 'auto',
             textAlign: 'center',
             color: `${selectedStore[0].color}`,
             fontWeight: 'bold',
             opacity: "90%"
         },
         form: {
-            width: '100%',
-            marginTop: theme.spacing(1)
+            margin: 'auto',
+            width: '95%',
         },
         submit: {
             margin: theme.spacing(5, 0, 2),
@@ -61,16 +56,8 @@ function EditStore(props) {
         progressBar: {
             height: ".75em"
         },
-        closeIcon: {
-            // fontSize: "2em",
-            // marginBottom: "-2em"
-        },
         deleteIcon: {
             float: "right",
-            // marginRight: "auto"
-            // marginRight: ".25em",
-            // marginBottom: "-2em",
-
         }
     }))
 
@@ -129,6 +116,7 @@ function EditStore(props) {
 
     const handleDelete = (id) => {
         props.deleteStore(id)
+        props.editStoreClose()
     }
 
     const handleClose = () => {
@@ -151,71 +139,70 @@ function EditStore(props) {
     } else {
         return (
             <Grid container component={Paper} className={classes.root} justify="space-between">
-                <IconButton className={classes.closeIcon} onClick={() => handleClose()}>
+                <IconButton onClick={() => handleClose()}>
                     <RemoveIcon color="primary" />
                 </IconButton>
-
+                <Typography className={classes.header}>
+                    EDIT {selectedStore[0].name.toUpperCase()}
+                </Typography>
                 <IconButton className={classes.deleteIcon} onClick={() => { if (window.confirm(`Are you sure you wish to delete ${selectedStore[0].name} and all of its items?`)) handleDelete(selectedStore[0].id) }}>
                     <DeleteForeverIcon color="primary" />
                 </IconButton>
-                <Grid className={classes.newStore}>
 
-                    <Typography className={classes.header}>
-                        EDIT {selectedStore[0].name.toUpperCase()}
-                    </Typography>
+                {/* how do I get the following on a new "line"? */}
+                {/* <Typography className={classes.paper}>
+                    update store name, type and color
+                    </Typography> */}
+
+                <form
+                    className={classes.form}
+                    noValidate
+                    onSubmit={e => handleSubmit(e)}
+                >
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        color="secondary"
+                        required
+                        fullWidth
+                        id="name"
+                        label={selectedStore[0].name}
+                        name="name"
+                        onChange={handleName}
+                        value={name}
+                        autoFocus
+                    />
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        color="secondary"
+                        required
+                        fullWidth
+                        id="storeType"
+                        label={selectedStore[0].store_type}
+                        name="storeType"
+                        onChange={handleStoreType}
+                        value={storeType}
+                    />
                     <Typography className={classes.paper}>
-                        update store name, type and color
-                    </Typography>
-                    <form
-                        className={classes.form}
-                        noValidate
-                        onSubmit={e => handleSubmit(e)}
-                    >
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            color="secondary"
-                            required
-                            fullWidth
-                            id="name"
-                            label={selectedStore[0].name}
-                            name="name"
-                            onChange={handleName}
-                            value={name}
-                            autoFocus
-                        />
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            color="secondary"
-                            required
-                            fullWidth
-                            id="storeType"
-                            label={selectedStore[0].store_type}
-                            name="storeType"
-                            onChange={handleStoreType}
-                            value={storeType}
-                        />
-                        <Typography className={classes.paper}>
-                            select color for store header
+                        select color for store header
                         </Typography>
-                        <ColorPalette
-                            palette={palette}
-                            onSelect={e => handleColor(e)}
-                            size={31}
-                        />
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            color="secondary"
-                            className={classes.submit}
-                        >
-                            Submit Changes
+                    <ColorPalette
+                        palette={palette}
+                        onSelect={e => handleColor(e)}
+                        size={31}
+                    />
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="secondary"
+                        className={classes.submit}
+                    >
+                        Submit Changes
                         </Button>
 
-                    </form>
-                </Grid>
+                </form>
             </Grid>
         )
     }

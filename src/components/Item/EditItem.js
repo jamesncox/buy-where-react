@@ -9,6 +9,8 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import RemoveIcon from '@material-ui/icons/Remove'
+import IconButton from '@material-ui/core/IconButton'
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -47,6 +49,9 @@ function EditItem(props) {
         },
         progressBar: {
             height: ".75em"
+        },
+        deleteIcon: {
+            float: "right",
         }
     }))
 
@@ -95,6 +100,10 @@ function EditItem(props) {
             .join(' ');
     }
 
+    const handleClose = () => {
+        props.editItemClose()
+    }
+
     if (props.errors) {
         return (
             <Errors />
@@ -111,10 +120,16 @@ function EditItem(props) {
         )
     } else {
         return (
-            <Grid container className={classes.root}>
+            <Grid container className={classes.root} justify="space-between" >
+                <IconButton onClick={() => handleClose()}>
+                    <RemoveIcon color="primary" />
+                </IconButton>
                 <Typography className={classes.header}>
                     Edit {itemFormat(selectedItem[0].name)} From {itemFormat(selectedStore[0].name)}
                 </Typography>
+                <IconButton className={classes.deleteIcon} onClick={() => { if (window.confirm(`Are you sure you wish to delete ${selectedStore[0].name} and all of its items?`)) handleDelete(selectedStore[0].id) }}>
+                    <DeleteForeverIcon color="primary" />
+                </IconButton>
                 <form
                     className={classes.form}
                     noValidate
@@ -171,9 +186,6 @@ function EditItem(props) {
                         className={classes.submit}
                     >
                         Edit Item
-                    </Button>
-                    <Button color="primary">
-                        <DeleteForeverIcon fontSize="large" onClick={() => { if (window.confirm(`Are you sure you wish to delete ${selectedItem[0].name}?`)) handleDelete(selectedItem[0].id) }} />
                     </Button>
                 </form>
             </Grid>

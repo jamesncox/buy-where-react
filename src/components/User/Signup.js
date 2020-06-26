@@ -4,6 +4,7 @@ import { connect, useDispatch } from 'react-redux'
 import { signupUser, clearIsUserLoading } from '../../actions/users'
 import { clearErrors } from '../../actions/errors'
 import { Redirect } from "react-router";
+import SignUpImage from '../../assets/images/sign up bike.jpg'
 
 import Copyright from '../Layout/Copyright'
 import Errors from '../Layout/Errors'
@@ -19,7 +20,6 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import LinearProgress from '@material-ui/core/LinearProgress';
-// import CircularProgress from '@material-ui/core/CircularProgress'
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -27,8 +27,6 @@ const useStyles = makeStyles((theme) => ({
         height: '100vh',
     },
     image: {
-        backgroundImage: 'url(https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80)',
-        backgroundRepeat: 'no-repeat',
         backgroundColor:
             theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
         backgroundSize: 'cover',
@@ -114,7 +112,7 @@ function SignUp(props) {
         return (
             <Grid container component="main" className={classes.root}>
                 <CssBaseline />
-                <Grid item xs={12} sm={12} md={7} className={classes.image} />
+                <Grid item xs={12} sm={12} md={7} className={classes.image} style={{ backgroundImage: `url("${SignUpImage}")` }} />
                 <Grid item xs={12} sm={12} md={5} component={Paper} elevation={6} square>
                     <div className={classes.paper}>
                         <Avatar className={classes.avatar}>
@@ -132,7 +130,7 @@ function SignUp(props) {
         return (
             <Grid container component="main" className={classes.root}>
                 <CssBaseline />
-                <Grid item xs={12} sm={12} md={7} className={classes.image} />
+                <Grid item xs={12} sm={12} md={7} className={classes.image} style={{ backgroundImage: `url("${SignUpImage}")` }} />
                 <Grid item xs={12} sm={12} md={5} component={Paper} elevation={6} square>
                     <div className={classes.paper}>
                         <Avatar className={classes.avatar}>
@@ -155,7 +153,7 @@ function SignUp(props) {
         return (
             <Grid container component="main" className={classes.root}>
                 <CssBaseline />
-                <Grid item xs={12} sm={12} md={7} className={classes.image} />
+                <Grid item xs={12} sm={12} md={7} className={classes.image} style={{ backgroundImage: `url("${SignUpImage}")` }} />
                 <Grid item xs={12} sm={12} md={5} component={Paper} elevation={6} square>
                     <div className={classes.paper}>
                         <Avatar className={classes.avatar}>

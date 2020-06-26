@@ -1,4 +1,5 @@
 import React from 'react';
+import StartImage from '../../assets/images/start road.jpg'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -25,7 +26,7 @@ function NoStoreYet(props) {
         <Card className={classes.root}>
             <CardMedia
                 className={classes.media}
-                image="https://assets.dockyard.com/images/White%20arrow%20pointed%20up%20painted%20on%20blue%20concrete.jpg"
+                image={StartImage}
                 title="Painted arrow pointing up"
             />
             <CardContent>

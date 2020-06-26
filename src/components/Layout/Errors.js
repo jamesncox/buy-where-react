@@ -6,6 +6,8 @@ import {
     CLEAR_IS_STORE_LOADING,
     CLEAR_IS_USER_LOADING
 } from '../../actionTypes'
+import ErrorImage from "../../assets/images/error.png"
+
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -51,7 +53,7 @@ function Errors(props) {
             <CardActionArea onClick={handleClearErrors}>
                 <CardMedia
                     className={classes.media}
-                    image="https://miro.medium.com/max/978/1*pUEZd8z__1p-7ICIO1NZFA.png"
+                    image={ErrorImage}
                     title="Error"
                 />
                 <CardContent>

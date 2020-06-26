@@ -61,7 +61,7 @@ const palette = {
     maroon: 'maroon',
     orangeRed: 'orangeRed',
     darkOrange: 'darkOrange',
-    orange: 'orange',
+    goldenRod: 'goldenRod',
     limeGreen: 'limeGreen',
     seaGreen: 'seaGreen',
     mediumSeaGreen: 'mediumSeaGreen',

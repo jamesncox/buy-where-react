@@ -67,7 +67,6 @@ export const createItem = (item) => {
             dispatch({ type: SET_ERRORS, payload: itemObj.errors })
         } else {
             dispatch({ type: CREATE_ITEM, payload: itemObj })
-            setTimeout(dispatch({ type: CLEAR_EDIT_SUCCESS }), 500)
         }
     }
 }

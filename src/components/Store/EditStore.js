@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { editStore, deleteStore, clearIsStoreLoading } from '../../actions/stores'
+import { editStoreClose } from '../../actions/isOpen'
 import Errors from '../Layout/Errors'
 
 import Grid from '@material-ui/core/Grid'
@@ -9,7 +10,9 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import CloseIcon from '@material-ui/icons/Close';
+import RemoveIcon from '@material-ui/icons/Remove'
+// import CloseIcon from '@material-ui/icons/Close';
+import IconButton from '@material-ui/core/IconButton'
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
 import { ColorPalette } from 'material-ui-color';
@@ -51,15 +54,23 @@ function EditStore(props) {
         submit: {
             margin: theme.spacing(5, 0, 2),
         },
-        delete: {
-            width: "1em",
-        },
         loader: {
             margin: 'auto',
             padding: '5em',
         },
         progressBar: {
             height: ".75em"
+        },
+        closeIcon: {
+            // fontSize: "2em",
+            // marginBottom: "-2em"
+        },
+        deleteIcon: {
+            float: "right",
+            // marginRight: "auto"
+            // marginRight: ".25em",
+            // marginBottom: "-2em",
+
         }
     }))
 
@@ -120,6 +131,10 @@ function EditStore(props) {
         props.deleteStore(id)
     }
 
+    const handleClose = () => {
+        props.editStoreClose()
+    }
+
     if (props.errors) {
         return (
             <Errors />
@@ -135,8 +150,16 @@ function EditStore(props) {
         )
     } else {
         return (
-            <Grid container component={Paper} className={classes.root}>
+            <Grid container component={Paper} className={classes.root} justify="space-between">
+                <IconButton className={classes.closeIcon} onClick={() => handleClose()}>
+                    <RemoveIcon color="primary" />
+                </IconButton>
+
+                <IconButton className={classes.deleteIcon} onClick={() => { if (window.confirm(`Are you sure you wish to delete ${selectedStore[0].name} and all of its items?`)) handleDelete(selectedStore[0].id) }}>
+                    <DeleteForeverIcon color="primary" />
+                </IconButton>
                 <Grid className={classes.newStore}>
+
                     <Typography className={classes.header}>
                         EDIT {selectedStore[0].name.toUpperCase()}
                     </Typography>
@@ -190,9 +213,7 @@ function EditStore(props) {
                         >
                             Submit Changes
                         </Button>
-                        <Button color="primary">
-                            <DeleteForeverIcon fontSize="large" onClick={() => { if (window.confirm(`Are you sure you wish to delete ${selectedStore[0].name} and all of its items?`)) handleDelete(selectedStore[0].id) }} />
-                        </Button>
+
                     </form>
                 </Grid>
             </Grid>
@@ -208,4 +229,4 @@ const mapStateToProps = state => ({
     loadingSingleStore: state.stores.loadingSingleStore
 })
 
-export default connect(mapStateToProps, { editStore, deleteStore, clearIsStoreLoading })(EditStore)
+export default connect(mapStateToProps, { editStore, deleteStore, clearIsStoreLoading, editStoreClose })(EditStore)

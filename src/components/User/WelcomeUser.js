@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link as RouterLink } from 'react-router-dom';
 import Copyright from '../Layout/Copyright'
+import WelcomeImage from '../../assets/images/welcome sign.jpeg'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -44,7 +45,7 @@ function WelcomeUser(props) {
                     <CardActionArea component={RouterLink} to="/SignIn">
                         <CardMedia
                             classes={wideCardMediaStyles}
-                            image="https://images.pexels.com/photos/4473400/pexels-photo-4473400.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                            image={WelcomeImage}
                             title="Welcome sign"
                         />
                         <CardContent>

@@ -85,9 +85,9 @@ function EditStore(props) {
 
     const classes = useStyles()
 
-    const [name, setName] = useState("")
-    const [storeType, setStoreType] = useState("")
-    const [color, setColor] = useState("")
+    const [name, setName] = useState(selectedStore[0].name)
+    const [storeType, setStoreType] = useState(selectedStore[0].store_type)
+    const [color, setColor] = useState(selectedStore[0].color)
 
     const handleName = (e) => {
         setName(e.target.value)
@@ -113,9 +113,6 @@ function EditStore(props) {
         }
 
         props.editStore(store)
-        setName("")
-        setStoreType("")
-        setColor("")
     }
 
     const handleDelete = (id) => {

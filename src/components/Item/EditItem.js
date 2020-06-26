@@ -52,9 +52,9 @@ function EditItem(props) {
 
     const classes = useStyles()
 
-    const [name, setName] = useState("")
-    const [price, setPrice] = useState("")
-    const [quantity, setQuantity] = useState("")
+    const [name, setName] = useState(selectedItem[0].name)
+    const [price, setPrice] = useState(selectedItem[0].price)
+    const [quantity, setQuantity] = useState(selectedItem[0].quantity)
 
     const handleName = (e) => {
         setName(e.target.value)
@@ -80,9 +80,6 @@ function EditItem(props) {
         }
 
         props.editItem(item)
-        setName("")
-        setPrice("")
-        setQuantity("")
     }
 
     const handleDelete = (id) => {

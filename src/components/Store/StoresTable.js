@@ -210,9 +210,9 @@ function Stores(props) {
                 const invoiceTotal = invoiceTaxes + invoiceSubtotal;
                 return (
                     <TableContainer key={store.id} className={classes.container} component={Paper}>
-                        {showEditStore === store.id && props.isEditStoreOpen ? <EditStore /> : null}
-                        {showNewItem === store.id && props.isNewItemOpen ? <NewItem /> : null}
-                        {showEditItem === props.itemId && props.storeId === store.id && props.isEditItemOpen && !props.editSuccess ? <EditItem /> : null}
+                        {showEditStore === store.id && props.isEditStoreOpen ? <EditStore key={store.id} /> : null}
+                        {showNewItem === store.id && props.isNewItemOpen ? <NewItem key={store.id} /> : null}
+                        {showEditItem === props.itemId && props.storeId === store.id && props.isEditItemOpen && !props.editSuccess ? <EditItem key={props.itemId} /> : null}
                         <Table className={classes.table} aria-label="spanning table">
                             <TableHead>
                                 <TableRow style={{ backgroundColor: `${store.color}` }}>

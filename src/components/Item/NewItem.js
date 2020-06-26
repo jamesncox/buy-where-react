@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { createItem, clearIsItemLoading } from '../../actions/items'
+import { newItemClose } from '../../actions/isOpen'
 import Errors from '../Layout/Errors'
 
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import RemoveIcon from '@material-ui/icons/Remove'
+import IconButton from '@material-ui/core/IconButton'
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -82,6 +85,10 @@ function NewItem(props) {
         setQuantity("")
     }
 
+    const handleClose = () => {
+        props.newItemClose()
+    }
+
     if (props.errors) {
         return (
             <Errors />
@@ -98,6 +105,9 @@ function NewItem(props) {
     } else {
         return (
             <Grid container className={classes.root} >
+                <IconButton onClick={() => handleClose()}>
+                    <RemoveIcon color="primary" />
+                </IconButton>
                 <Typography className={classes.header}>
                     NEW {selectedStore[0].name.toUpperCase()} PURCHASE
                 </Typography>
@@ -170,4 +180,4 @@ const mapStateToProps = state => ({
     loading: state.items.loading
 })
 
-export default connect(mapStateToProps, { createItem, clearIsItemLoading })(NewItem)
+export default connect(mapStateToProps, { createItem, clearIsItemLoading, newItemClose })(NewItem)

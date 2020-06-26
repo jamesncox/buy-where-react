@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { connect } from 'react-redux'
+import React, { useState, useEffect } from 'react'
+import { connect, useDispatch } from 'react-redux'
 import {
     SET_STORE_ID,
     SET_ITEM_ID,
@@ -9,7 +9,8 @@ import {
     NEW_ITEM_OPEN,
     EDIT_STORE_OPEN,
     EDIT_STORE_CLOSE,
-    EDIT_ITEM_OPEN
+    EDIT_ITEM_OPEN,
+    CLEAR_EDIT_SUCCESS
 } from '../../actionTypes'
 import NewItem from '../Item/NewItem'
 import NoStoresYet from '../Layout/NoStoreYet'
@@ -138,6 +139,11 @@ function subtotal(items) {
 }
 
 function Stores(props) {
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch({ type: CLEAR_EDIT_SUCCESS })
+    }, [dispatch])
     const classes = useStyles();
 
     const [showEditStore, setShowEditStore] = useState(false)
@@ -179,6 +185,7 @@ function Stores(props) {
     }
 
     const handleShowEditItem = (id, storeID) => {
+        props.clearEditSuccess()
         if (!showEditItem) {
             setShowEditItem(showEditItem === id ? true : id)
             props.setItemId(id)
@@ -209,7 +216,7 @@ function Stores(props) {
                     <TableContainer key={store.id} className={classes.container} component={Paper}>
                         {showEditStore === store.id && props.isEditStoreOpen ? <EditStore /> : null}
                         {showNewItem === store.id && props.isNewItemOpen ? <NewItem /> : null}
-                        {showEditItem === props.itemId && props.storeId === store.id && props.isEditItemOpen ? <EditItem /> : null}
+                        {showEditItem === props.itemId && props.storeId === store.id && props.isEditItemOpen && !props.editSuccess ? <EditItem /> : null}
                         <Table className={classes.table} aria-label="spanning table">
                             <TableHead>
                                 <TableRow style={{ backgroundColor: `${store.color}` }}>
@@ -285,7 +292,8 @@ const mapStateToProps = state => ({
     isEditStoreOpen: state.isOpen.isEditStoreOpen,
     isEditItemOpen: state.isOpen.isEditItemOpen,
     itemId: state.items.itemId,
-    storeId: state.stores.storeId
+    storeId: state.stores.storeId,
+    editSuccess: state.items.editSuccess
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -297,7 +305,8 @@ const mapDispatchToProps = dispatch => ({
     newItemOpen: () => dispatch({ type: NEW_ITEM_OPEN }),
     editStoreOpen: () => dispatch({ type: EDIT_STORE_OPEN }),
     editStoreClose: () => dispatch({ type: EDIT_STORE_CLOSE }),
-    editItemOpen: () => dispatch({ type: EDIT_ITEM_OPEN })
+    editItemOpen: () => dispatch({ type: EDIT_ITEM_OPEN }),
+    clearEditSuccess: () => dispatch({ type: CLEAR_EDIT_SUCCESS })
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Stores)

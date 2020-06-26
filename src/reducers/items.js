@@ -6,14 +6,16 @@ import {
     SET_ITEM_ID,
     UPDATE_ITEM,
     DELETE_ITEM,
-    CLEAR_IS_ITEM_LOADING
+    CLEAR_IS_ITEM_LOADING,
+    CLEAR_EDIT_SUCCESS
 } from '../actionTypes'
 
 export default (state = {
     items: [],
     loading: false,
     errors: null,
-    itemId: null
+    itemId: null,
+    editSuccess: false
 }, action) => {
     switch (action.type) {
 
@@ -44,7 +46,7 @@ export default (state = {
                 }
                 return item
             })
-            return { ...state, items: updatedItems, loading: false }
+            return { ...state, items: updatedItems, loading: false, editSuccess: true }
 
         case DELETE_ITEM:
             const persistedItems = state.items.filter(item => item.id !== action.payload.id)
@@ -52,6 +54,9 @@ export default (state = {
 
         case CLEAR_IS_ITEM_LOADING:
             return { ...state, loading: false }
+
+        case CLEAR_EDIT_SUCCESS:
+            return { ...state, editSuccess: false }
 
         default:
             return state

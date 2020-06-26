@@ -5,7 +5,8 @@ import {
     CREATE_ITEM,
     UPDATE_ITEM,
     DELETE_ITEM,
-    CLEAR_IS_ITEM_LOADING
+    CLEAR_IS_ITEM_LOADING,
+    CLEAR_EDIT_SUCCESS
 } from '../actionTypes'
 
 const setItems = items => {
@@ -14,6 +15,10 @@ const setItems = items => {
 
 export const clearIsItemLoading = () => {
     return { type: CLEAR_IS_ITEM_LOADING }
+}
+
+export const clearEditSuccess = () => {
+    return { type: CLEAR_EDIT_SUCCESS }
 }
 
 export const getItems = (id) => {

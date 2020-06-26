@@ -127,7 +127,7 @@ function EditItem(props) {
                 <Typography className={classes.header}>
                     Edit {itemFormat(selectedItem[0].name)} From {itemFormat(selectedStore[0].name)}
                 </Typography>
-                <IconButton className={classes.deleteIcon} onClick={() => { if (window.confirm(`Are you sure you wish to delete ${selectedStore[0].name} and all of its items?`)) handleDelete(selectedStore[0].id) }}>
+                <IconButton className={classes.deleteIcon} onClick={() => { if (window.confirm(`Are you sure you wish to delete ${selectedItem[0].name.toUpperCase()} from ${selectedStore[0].name}`)) handleDelete(selectedStore[0].id) }}>
                     <DeleteForeverIcon color="primary" />
                 </IconButton>
                 <form

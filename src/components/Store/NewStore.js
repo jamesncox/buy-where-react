@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { createStore, clearIsStoreLoading } from '../../actions/stores'
+import { newStoreClose } from '../../actions/isOpen'
 import Errors from '../Layout/Errors'
 
 import Grid from '@material-ui/core/Grid'
@@ -8,12 +9,15 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import RemoveIcon from '@material-ui/icons/Remove'
+import IconButton from '@material-ui/core/IconButton'
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
 import { ColorPalette } from 'material-ui-color';
 
 const useStyles = makeStyles((theme) => ({
     root: {
+        flexGrow: 1,
         width: "40%",
         margin: 'auto',
         marginTop: '2em',
@@ -27,17 +31,15 @@ const useStyles = makeStyles((theme) => ({
             width: "98%",
         },
     },
-    newStore: {
-        margin: 'auto',
-        width: '95%',
-    },
     paper: {
         padding: theme.spacing(1),
+        margin: 'auto',
         textAlign: 'center',
         color: theme.palette.text.secondary,
     },
     form: {
-        width: '100%',
+        width: '95%',
+        margin: 'auto',
         marginTop: theme.spacing(1)
     },
     submit: {
@@ -116,6 +118,10 @@ function NewStore(props) {
         setColor("")
     }
 
+    const handleClose = () => {
+        props.newStoreClose()
+    }
+
     if (props.errors) {
         return (
             <Errors />
@@ -131,59 +137,60 @@ function NewStore(props) {
         )
     } else {
         return (
-            <Grid container component={Paper} className={classes.root}>
-                <Grid className={classes.newStore}>
-                    <Typography className={classes.paper}>
-                        Add New Store
+            <Grid container component={Paper} className={classes.root} justify="space-between">
+                <IconButton onClick={() => handleClose()}>
+                    <RemoveIcon color="primary" />
+                </IconButton>
+                <Typography className={classes.paper}>
+                    Add New Store
                     </Typography>
-                    <form
-                        className={classes.form}
-                        noValidate
-                        onSubmit={e => handleSubmit(e)}
-                    >
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="name"
-                            label="Store Name"
-                            name="name"
-                            autoComplete="name"
-                            onChange={handleName}
-                            value={name}
-                            autoFocus
-                        />
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="storeType"
-                            label="Store Type (e.g. grocery)"
-                            name="storeType"
-                            onChange={handleStoreType}
-                            value={storeType}
-                        />
-                        <Typography className={classes.paper}>
-                            select color for store header
+                <form
+                    className={classes.form}
+                    noValidate
+                    onSubmit={e => handleSubmit(e)}
+                >
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="name"
+                        label="Store Name"
+                        name="name"
+                        autoComplete="name"
+                        onChange={handleName}
+                        value={name}
+                        autoFocus
+                    />
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="storeType"
+                        label="Store Type (e.g. grocery)"
+                        name="storeType"
+                        onChange={handleStoreType}
+                        value={storeType}
+                    />
+                    <Typography className={classes.paper}>
+                        select color for store header
                         </Typography>
-                        <ColorPalette
-                            palette={palette}
-                            onSelect={e => handleColor(e)}
-                            size={31}
-                        />
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            color="primary"
-                            className={classes.submit}
-                        >
-                            Create Store
+                    <ColorPalette
+                        palette={palette}
+                        onSelect={e => handleColor(e)}
+                        size={31}
+                    />
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        className={classes.submit}
+                    >
+                        Create Store
                     </Button>
-                    </form>
-                </Grid>
+                </form>
             </Grid>
         )
     }
@@ -195,4 +202,4 @@ const mapStateToProps = state => ({
     loadingSingleStore: state.stores.loadingSingleStore
 })
 
-export default connect(mapStateToProps, { createStore, clearIsStoreLoading })(NewStore)
+export default connect(mapStateToProps, { createStore, clearIsStoreLoading, newStoreClose })(NewStore)

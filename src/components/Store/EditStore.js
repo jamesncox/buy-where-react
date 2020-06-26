@@ -68,7 +68,7 @@ function EditStore(props) {
         orangeRed: 'orangeRed',
         darkOrange: 'darkOrange',
         orange: 'orange',
-        darkGoldenRod: 'DarkGoldenRod',
+        limeGreen: 'limeGreen',
         seaGreen: 'seaGreen',
         mediumSeaGreen: 'mediumSeaGreen',
         darkTurquoise: 'darkTurquoise',

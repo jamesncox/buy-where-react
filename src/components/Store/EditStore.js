@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import CloseIcon from '@material-ui/icons/Close';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
 import { ColorPalette } from 'material-ui-color';

@@ -189,14 +189,12 @@ function Stores(props) {
             props.newStoreClose()
             props.clearErrors()
             props.editItemOpen()
-            props.clearEditSuccess()
         } else {
             setShowEditItem(showEditItem === id ? false : id)
             props.setItemId(id)
             props.setStoreId(storeID)
             props.clearErrors()
             props.editItemOpen()
-            props.clearEditSuccess()
         }
     }
 
@@ -212,7 +210,7 @@ function Stores(props) {
                     <TableContainer key={store.id} className={classes.container} component={Paper}>
                         {showEditStore === store.id && props.isEditStoreOpen ? <EditStore key={store.id} /> : null}
                         {showNewItem === store.id && props.isNewItemOpen ? <NewItem key={store.id} /> : null}
-                        {showEditItem === props.itemId && props.storeId === store.id && props.isEditItemOpen && !props.editSuccess ? <EditItem key={props.itemId} /> : null}
+                        {showEditItem === props.itemId && props.storeId === store.id && props.isEditItemOpen ? <EditItem key={props.itemId} /> : null}
                         <Table className={classes.table} aria-label="spanning table">
                             <TableHead>
                                 <TableRow style={{ backgroundColor: `${store.color}` }}>

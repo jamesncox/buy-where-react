@@ -2,7 +2,9 @@
 
 [] Figure out how to close a form once it's successfully submitted (to database) and be able to re-open immediately
 
-[] Pre-populate the edit forms with the data props, and a user can edit it
+[] Add a "close" icon to each form so user can manually close it
+
+[x] Pre-populate the edit forms with the data props, and a user can edit it
 
 [x] Better background for "home / my stores" page
 

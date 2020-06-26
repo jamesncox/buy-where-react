@@ -46,7 +46,7 @@ export default (state = {
                 }
                 return item
             })
-            return { ...state, items: updatedItems, loading: false, editSuccess: true }
+            return { ...state, items: updatedItems, loading: false }
 
         case DELETE_ITEM:
             const persistedItems = state.items.filter(item => item.id !== action.payload.id)

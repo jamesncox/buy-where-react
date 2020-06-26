@@ -4,9 +4,9 @@ import { connect, useDispatch } from 'react-redux'
 import { loginUser, clearIsUserLoading } from '../../actions/users'
 import { clearErrors } from '../../actions/errors'
 import { Redirect } from "react-router";
-
 import Copyright from '../Layout/Copyright'
 import Errors from '../Layout/Errors'
+import SignInImage from '../../assets/images/sign in open.jpeg'
 
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -26,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
         height: '100vh',
     },
     image: {
-        backgroundImage: 'url(https://images.pexels.com/photos/929245/pexels-photo-929245.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)',
         backgroundRepeat: 'no-repeat',
         backgroundColor:
             theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
@@ -73,7 +72,8 @@ function SignIn(props) {
         dispatch(clearErrors())
         dispatch(clearIsUserLoading())
     }, [dispatch])
-    const classes = useStyles();
+
+    const classes = useStyles()
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -146,7 +146,7 @@ function SignIn(props) {
         return (
             <Grid container component="main" className={classes.root}>
                 <CssBaseline />
-                <Grid item xs={12} sm={12} md={7} className={classes.image} />
+                <Grid item xs={12} sm={12} md={7} className={classes.image} style={{ backgroundImage: `url("${SignInImage}")` }} />
                 <Grid item xs={12} sm={12} md={5} component={Paper} elevation={6} square>
                     <div className={classes.paper}>
                         <Avatar className={classes.avatar}>

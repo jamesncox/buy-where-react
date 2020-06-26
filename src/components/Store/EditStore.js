@@ -193,7 +193,7 @@ function EditStore(props) {
                             Submit Changes
                         </Button>
                         <Button color="primary">
-                            <DeleteForeverIcon fontSize="large" onClick={() => { if (window.confirm(`Are you sure you wish to delete ${selectedStore[0].name} and all it's items?`)) handleDelete(selectedStore[0].id) }} />
+                            <DeleteForeverIcon fontSize="large" onClick={() => { if (window.confirm(`Are you sure you wish to delete ${selectedStore[0].name} and all of its items?`)) handleDelete(selectedStore[0].id) }} />
                         </Button>
                     </form>
                 </Grid>

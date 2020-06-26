@@ -92,7 +92,7 @@ function Profile(props) {
                     Track your spending. Create stores. Add items.
                 </Typography>
                 <Grid item xs={12}>
-                    <Button className={classes.button} variant="contained" onClick={handleShow}>New Store</Button>
+                    <Button className={classes.button} variant="contained" color="primary" onClick={handleShow}>New Store</Button>
                     {props.isStoreOpen ? <NewStore /> : null}
                     <StoresTable />
                 </Grid>

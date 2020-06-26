@@ -61,7 +61,10 @@ const useStyles = makeStyles((theme) => ({
     },
     progressBar: {
         width: "15em",
-        height: "1em"
+        height: "1em",
+        [theme.breakpoints.down('xs')]: {
+            width: "10em"
+        },
     }
 }));
 

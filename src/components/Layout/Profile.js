@@ -47,7 +47,13 @@ const useStyles = makeStyles((theme) => ({
     progressBar: {
         margin: 'auto',
         height: '1em',
-        width: '20em'
+        width: '20em',
+        [theme.breakpoints.down('sm')]: {
+            width: "50%"
+        },
+        [theme.breakpoints.down('xs')]: {
+            width: "75%"
+        },
     }
 }));
 

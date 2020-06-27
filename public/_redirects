@@ -1,1 +1,2 @@
-/api/* https://buy-where.herokuapp.com/api/v1/:splat 200
+/api/v1/* https://buy-where.herokuapp.com/api/v1/:splat 200
+/*  /index.html  200

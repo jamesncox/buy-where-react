@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
         height: '100vh',
     },
     image: {
+        backgroundRepeat: 'no-repeat',
         backgroundColor:
             theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
         backgroundSize: 'cover',
@@ -141,9 +142,9 @@ function SignUp(props) {
                             <LockOutlinedIcon />
                         </Avatar>
                         <Typography component="h1" variant="h5">
-                            Have an account? Sign in below
+                            Create an account
                         </Typography>
-                        <div className={classes.spinner}>
+                        <div className={classes.loader}>
                             <Typography className={classes.header}>
                                 Creating account...
                             </Typography>
@@ -165,7 +166,7 @@ function SignUp(props) {
                         </Avatar>
                         <Typography component="h1" variant="h5">
                             Create an account
-                    </Typography>
+                        </Typography>
                         <form
                             className={classes.form}
                             noValidate

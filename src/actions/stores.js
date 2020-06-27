@@ -23,7 +23,7 @@ export const getStores = (id) => {
         dispatch({ type: LOADING_STORES })
 
         try {
-            const res = await fetch(`https://buy-where.herokuapp.com/api/v1/user_stores/${id}`)
+            const res = await fetch(`https://cors-anywhere.herokuapp.com/https://buy-where.herokuapp.com/api/v1/user_stores/${id}`)
             if (!res.ok) {
                 throw res
             }
@@ -48,7 +48,7 @@ export const createStore = (store) => {
             user_id: store.userId
         }
 
-        const res = await fetch("https://buy-where.herokuapp.com/api/v1/stores", {
+        const res = await fetch("https://cors-anywhere.herokuapp.com/https://buy-where.herokuapp.com/api/v1/stores", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ export const editStore = (store) => {
             user_id: store.userId
         }
 
-        const res = await fetch(`https://buy-where.herokuapp.com/api/v1/stores/${store.storeId}`, {
+        const res = await fetch(`https://cors-anywhere.herokuapp.com/https://buy-where.herokuapp.com/api/v1/stores/${store.storeId}`, {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',
@@ -103,7 +103,7 @@ export const editStore = (store) => {
 
 export function deleteStore(id) {
     return (dispatch) => {
-        fetch(`https://buy-where.herokuapp.com/api/v1/stores/${id}`, {
+        fetch(`https://cors-anywhere.herokuapp.com/https://buy-where.herokuapp.com/api/v1/stores/${id}`, {
             method: "DELETE"
         })
             .then(res => res.json())

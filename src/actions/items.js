@@ -27,7 +27,7 @@ export const getItems = (id) => {
         dispatch({ type: LOADING_ITEMS })
 
         try {
-            const res = await fetch(`https://buy-where.herokuapp.com/api/v1/user_items/${id}`)
+            const res = await fetch(`https://cors-anywhere.herokuapp.com/https://buy-where.herokuapp.com/api/v1/user_items/${id}`)
             if (!res.ok) {
                 throw res
             }
@@ -51,7 +51,7 @@ export const createItem = (item) => {
             store_id: item.storeId
         }
 
-        const res = await fetch("https://buy-where.herokuapp.com/api/v1/items", {
+        const res = await fetch("https://cors-anywhere.herokuapp.com/https://buy-where.herokuapp.com/api/v1/items", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -83,7 +83,7 @@ export const editItem = (item) => {
             store_id: item.storeId,
         }
 
-        const res = await fetch(`https://buy-where.herokuapp.com/api/v1/items/${item.itemId}`, {
+        const res = await fetch(`https://cors-anywhere.herokuapp.com/https://buy-where.herokuapp.com/api/v1/items/${item.itemId}`, {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',
@@ -105,7 +105,7 @@ export const editItem = (item) => {
 
 export function deleteItem(id) {
     return (dispatch) => {
-        fetch(`https://buy-where.herokuapp.com/api/v1/items/${id}`, {
+        fetch(`https://cors-anywhere.herokuapp.com/https://buy-where.herokuapp.com/api/v1/items/${id}`, {
             method: "DELETE"
         })
             .then(res => res.json())

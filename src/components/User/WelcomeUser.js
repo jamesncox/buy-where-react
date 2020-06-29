@@ -76,7 +76,7 @@ function WelcomeUser(props) {
                             </Typography>
                     <Typography className={classes.topMargin} variant="body2" color="textSecondary" component="p">
                         Want to explore without signing up? Try as a guest!
-                        </Typography>
+                    </Typography>
                 </CardContent>
                 <CardActions >
                     <Button
@@ -86,7 +86,7 @@ function WelcomeUser(props) {
                         to="/SignIn"
                     >
                         Sign In
-                        </Button>
+                    </Button>
                     <Button
                         size="small"
                         color="primary"
@@ -94,14 +94,14 @@ function WelcomeUser(props) {
                         to="/SignUp"
                     >
                         Sign Up
-                        </Button>
+                    </Button>
                     <Button
                         size="small"
                         color="primary"
                         onClick={handleGuestSignUp}
                     >
                         Try As Guest
-                        </Button>
+                    </Button>
                 </CardActions>
             </Card>
             <Box mt={5}>
@@ -112,9 +112,7 @@ function WelcomeUser(props) {
 }
 
 const mapStateToProps = state => ({
-    user: state.users.user,
-    errors: state.users.errors,
-    loggedIn: state.users.loggedIn
+    token: state.sessions.token,
 })
 
 export default connect(mapStateToProps, { signupUser })(WelcomeUser)

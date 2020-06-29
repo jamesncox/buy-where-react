@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import { connect } from 'react-redux'
 import { Link as RouterLink } from 'react-router-dom';
-import { clearCurrentUser } from '../../actions/users'
+import { clearCurrentUser, signupUser } from '../../actions/users'
 import { getToken } from '../../actions/sessions'
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -104,6 +104,32 @@ function Header(props) {
         handleClose()
     }
 
+    const randomNumber = () => {
+        const rand = Math.floor((Math.random() * 10000) + 1)
+        return rand.toString()
+    }
+
+    const handleGuestSignUp = e => {
+        e.preventDefault()
+        const user = {
+            username: "Guest" + randomNumber(),
+            password: "guest",
+            password_confirmation: "guest"
+        }
+        props.signupUser(props.token, user)
+    }
+
+    const handleCloseAndGuestSignUp = e => {
+        e.preventDefault()
+        const user = {
+            username: "Guest" + randomNumber(),
+            password: "guest",
+            password_confirmation: "guest"
+        }
+        props.signupUser(props.token, user)
+        setAnchorEl(null);
+    }
+
     if (props.loggedIn === false) {
         return (
             <>
@@ -149,6 +175,11 @@ function Header(props) {
                             >
                                 Sign Up
                             </MenuItem>
+                            <MenuItem
+                                onClick={handleCloseAndGuestSignUp}
+                            >
+                                Guest
+                            </MenuItem>
                         </Menu>
                         <Typography variant="h6" className={classes.title}>
                             BUY / WHERE
@@ -176,6 +207,13 @@ function Header(props) {
                             to="/SignUp"
                         >
                             Sign Up
+                        </Button>
+                        <Button
+                            className={classes.userActions}
+                            color="inherit"
+                            onClick={handleGuestSignUp}
+                        >
+                            Try as Guest
                         </Button>
                     </Toolbar>
                 </AppBar>
@@ -261,7 +299,8 @@ function Header(props) {
 }
 
 const mapStateToProps = state => ({
-    loggedIn: state.users.loggedIn
+    loggedIn: state.users.loggedIn,
+    token: state.sessions.token,
 })
 
-export default connect(mapStateToProps, { clearCurrentUser, getToken })(Header)
+export default connect(mapStateToProps, { clearCurrentUser, getToken, signupUser })(Header)

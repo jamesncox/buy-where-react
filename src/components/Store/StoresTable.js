@@ -202,7 +202,7 @@ function Stores(props) {
         const userStores = props.stores.filter(store => store.user_id === id).reverse()
         return (
             userStores.map(store => {
-                const userItems = props.items.filter(item => item.store_id === store.id).reverse()
+                const userItems = props.items.filter(item => item.store_id === store.id)
                 const invoiceSubtotal = subtotal(userItems);
                 const invoiceTaxes = TAX_RATE * invoiceSubtotal;
                 const invoiceTotal = invoiceTaxes + invoiceSubtotal;

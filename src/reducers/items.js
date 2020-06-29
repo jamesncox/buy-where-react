@@ -23,7 +23,15 @@ export default (state = {
             return { ...state, items: [...state.items], loading: true }
 
         case SET_ITEMS:
-            return { ...state, items: action.payload, loading: false }
+            const sortedItems = action.payload.sort((function (a, b) {
+                let itemA = a.name.toLowerCase(), itemB = b.name.toLowerCase()
+                if (itemA < itemB)
+                    return -1
+                if (itemA > itemB)
+                    return 1
+                return 0
+            }))
+            return { ...state, items: sortedItems, loading: false }
 
         case CREATE_ITEM:
             return { ...state, items: [...state.items, action.payload], loading: false }

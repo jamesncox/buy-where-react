@@ -31,7 +31,10 @@ const useStyles = makeStyles((theme) => ({
     },
     topMargin: {
         marginTop: theme.spacing(2)
-    }
+    },
+    floatRight: {
+        // spacing: "10em"
+    },
 }));
 
 function WelcomeUser(props) {
@@ -48,32 +51,44 @@ function WelcomeUser(props) {
                             image={WelcomeImage}
                             title="Welcome sign"
                         />
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="h2">
-                                Buy / Where
-                            </Typography>
-                            <Typography variant="body2" color="textSecondary" component="p">
-                                Track your spending at the stores you love
-                            </Typography>
-                            <Typography className={classes.topMargin} variant="body2" color="textSecondary" component="p">
-                                Sign In to your account or Sign Up to create an account
-                            </Typography>
-                        </CardContent>
                     </CardActionArea>
-                    <CardActions>
+                    <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                            Buy / Where
+                            </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                            Track your spending at the stores you love
+                            </Typography>
+                        <Typography className={classes.topMargin} variant="body2" color="textSecondary" component="p">
+                            Sign in to your account or sign up to create an account
+                            </Typography>
+                        <Typography className={classes.topMargin} variant="body2" color="textSecondary" component="p">
+                            Want to explore without signing up? Try Buy / Where as a guest!
+                        </Typography>
+                    </CardContent>
+                    <CardActions >
                         <Button
                             size="small"
                             color="primary"
                             component={RouterLink}
-                            to="/SignIn">
+                            to="/SignIn"
+                        >
                             Sign In
                         </Button>
                         <Button
                             size="small"
                             color="primary"
                             component={RouterLink}
-                            to="/SignUp">
+                            to="/SignUp"
+                        >
                             Sign Up
+                        </Button>
+                        <Button
+                            size="small"
+                            color="primary"
+                        // className={classes.floatRight}
+                        >
+                            Try As Guest
                         </Button>
                     </CardActions>
                 </Card>

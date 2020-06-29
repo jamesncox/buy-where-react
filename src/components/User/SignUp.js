@@ -183,7 +183,7 @@ function SignUp(props) {
                                 autoComplete="username"
                                 onChange={handleUsername}
                                 value={username}
-                                autoFocus
+                            // autoFocus
                             />
                             <TextField
                                 variant="outlined"

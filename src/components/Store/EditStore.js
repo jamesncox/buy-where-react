@@ -170,7 +170,7 @@ function EditStore(props) {
                         name="name"
                         onChange={handleName}
                         value={name}
-                        autoFocus
+                    // autoFocus
                     />
                     <TextField
                         variant="outlined"

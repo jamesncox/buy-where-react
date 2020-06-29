@@ -127,7 +127,7 @@ function NewItem(props) {
                             name="name"
                             onChange={handleName}
                             value={name}
-                            autoFocus
+                        // autoFocus
                         />
                     </Grid>
                     <Grid item xs={12}>

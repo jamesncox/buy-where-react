@@ -29,6 +29,9 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(1),
         textAlign: 'center',
         color: theme.palette.text.secondary,
+        [theme.breakpoints.down('xs')]: {
+            fontSize: "1em"
+        },
     },
     header: {
         fontSize: "3em",
@@ -36,6 +39,12 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(1),
         textAlign: 'center',
         color: theme.palette.text.secondary,
+        [theme.breakpoints.down('sm')]: {
+            fontSize: "2em"
+        },
+        [theme.breakpoints.down('xs')]: {
+            fontSize: "1.75em"
+        },
     },
     button: {
         marginTop: theme.spacing(2),

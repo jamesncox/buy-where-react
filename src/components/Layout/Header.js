@@ -36,11 +36,18 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
         flexGrow: 1,
-        marginLeft: "12rem",
+        marginLeft: "23rem",
         [theme.breakpoints.down('sm')]: {
             marginLeft: "0rem",
         }
 
+    },
+    loggedInTitle: {
+        flexGrow: 1,
+        marginLeft: "12rem",
+        [theme.breakpoints.down('sm')]: {
+            marginLeft: "0rem",
+        }
     },
     userActions: {
         display: "block",
@@ -269,7 +276,7 @@ function Header(props) {
                     </MenuItem>
 
                         </Menu>
-                        <Typography variant="h6" className={classes.title}>
+                        <Typography variant="h6" className={classes.loggedInTitle}>
                             BUY / WHERE
                     </Typography>
                         <Button

@@ -176,6 +176,8 @@ function Header(props) {
                                 Sign Up
                             </MenuItem>
                             <MenuItem
+                                component={RouterLink}
+                                to="/"
                                 onClick={handleCloseAndGuestSignUp}
                             >
                                 Guest
@@ -212,6 +214,8 @@ function Header(props) {
                             className={classes.userActions}
                             color="inherit"
                             onClick={handleGuestSignUp}
+                            component={RouterLink}
+                            to="/"
                         >
                             Try as Guest
                         </Button>

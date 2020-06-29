@@ -40,7 +40,7 @@ function WelcomeUser(props) {
     const wideCardMediaStyles = useWideCardMediaStyles();
 
     const randomNumber = () => {
-        const rand = Math.floor((Math.random() * 10000) + 1)
+        const rand = Math.floor((Math.random() * 1000000) + 1)
         return rand.toString()
     }
 

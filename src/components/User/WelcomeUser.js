@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link as RouterLink } from 'react-router-dom';
+import { signupUser } from '../../actions/users'
 import Copyright from '../Layout/Copyright'
 import WelcomeImage from '../../assets/images/welcome sign.jpeg'
 
@@ -32,72 +33,82 @@ const useStyles = makeStyles((theme) => ({
     topMargin: {
         marginTop: theme.spacing(2)
     },
-    floatRight: {
-        // spacing: "10em"
-    },
 }));
 
 function WelcomeUser(props) {
     const classes = useStyles();
     const wideCardMediaStyles = useWideCardMediaStyles();
 
-    if (props.user) {
-        return (
-            <Grid className={classes.grid} item s={3}>
-                <Card className={classes.root}>
-                    <CardActionArea component={RouterLink} to="/SignIn">
-                        <CardMedia
-                            classes={wideCardMediaStyles}
-                            image={WelcomeImage}
-                            title="Welcome sign"
-                        />
-                    </CardActionArea>
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
-                            Buy / Where
-                            </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                            Track your spending at the stores you love
-                            </Typography>
-                        <Typography className={classes.topMargin} variant="body2" color="textSecondary" component="p">
-                            Sign in to your account or sign up to create an account
-                            </Typography>
-                        <Typography className={classes.topMargin} variant="body2" color="textSecondary" component="p">
-                            Want to explore without signing up? Try Buy / Where as a guest!
-                        </Typography>
-                    </CardContent>
-                    <CardActions >
-                        <Button
-                            size="small"
-                            color="primary"
-                            component={RouterLink}
-                            to="/SignIn"
-                        >
-                            Sign In
-                        </Button>
-                        <Button
-                            size="small"
-                            color="primary"
-                            component={RouterLink}
-                            to="/SignUp"
-                        >
-                            Sign Up
-                        </Button>
-                        <Button
-                            size="small"
-                            color="primary"
-                        // className={classes.floatRight}
-                        >
-                            Try As Guest
-                        </Button>
-                    </CardActions>
-                </Card>
-                <Box mt={5}>
-                    <Copyright />
-                </Box>
-            </Grid>
-        );
+    const randomNumber = () => {
+        const rand = Math.floor((Math.random() * 10000) + 1)
+        return rand.toString()
     }
+
+    const handleGuestSignUp = e => {
+        e.preventDefault()
+        const user = {
+            username: "Guest" + randomNumber(),
+            password: "guest",
+            password_confirmation: "guest"
+        }
+        props.signupUser(props.token, user)
+    }
+
+    return (
+        <Grid className={classes.grid} item s={3}>
+            <Card className={classes.root}>
+                <CardActionArea component={RouterLink} to="/SignIn">
+                    <CardMedia
+                        classes={wideCardMediaStyles}
+                        image={WelcomeImage}
+                        title="Welcome sign"
+                    />
+                </CardActionArea>
+                <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                        Buy / Where
+                            </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        Track your spending at the stores you love
+                            </Typography>
+                    <Typography className={classes.topMargin} variant="body2" color="textSecondary" component="p">
+                        Sign in to your account or sign up to create an account
+                            </Typography>
+                    <Typography className={classes.topMargin} variant="body2" color="textSecondary" component="p">
+                        Want to explore without signing up? Try as a guest!
+                        </Typography>
+                </CardContent>
+                <CardActions >
+                    <Button
+                        size="small"
+                        color="primary"
+                        component={RouterLink}
+                        to="/SignIn"
+                    >
+                        Sign In
+                        </Button>
+                    <Button
+                        size="small"
+                        color="primary"
+                        component={RouterLink}
+                        to="/SignUp"
+                    >
+                        Sign Up
+                        </Button>
+                    <Button
+                        size="small"
+                        color="primary"
+                        onClick={handleGuestSignUp}
+                    >
+                        Try As Guest
+                        </Button>
+                </CardActions>
+            </Card>
+            <Box mt={5}>
+                <Copyright />
+            </Box>
+        </Grid>
+    );
 }
 
 const mapStateToProps = state => ({
@@ -106,4 +117,4 @@ const mapStateToProps = state => ({
     loggedIn: state.users.loggedIn
 })
 
-export default connect(mapStateToProps)(WelcomeUser)
+export default connect(mapStateToProps, { signupUser })(WelcomeUser)

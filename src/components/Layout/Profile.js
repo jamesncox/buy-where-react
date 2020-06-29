@@ -88,6 +88,25 @@ function Profile(props) {
                 <LinearProgress className={classes.progressBar} color="secondary" />
             </div>
         )
+    } else if (props.user.username.slice(0, 5) === "Guest") {
+        return (
+            <div className={classes.root}>
+                <Typography className={classes.header}>
+                    Welcome, Mysterious Traveller
+                </Typography>
+                <Typography className={classes.paper}>
+                    Track your spending. Create stores. Add items.
+                </Typography>
+                <Grid item xs={12}>
+                    <Button className={classes.button} variant="contained" color="primary" onClick={handleShow}>New Store</Button>
+                    {props.isStoreOpen ? <NewStore /> : null}
+                    <StoresTable />
+                </Grid>
+                <Box mt={5} className={classes.footer}>
+                    <Copyright />
+                </Box>
+            </div>
+        )
     } else {
         return (
             <div className={classes.root}>

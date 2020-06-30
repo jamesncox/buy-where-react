@@ -266,14 +266,21 @@ function Header(props) {
                                 onClick={handleClose}
                             >
                                 My Stores
-                    </MenuItem>
+                            </MenuItem>
+                            <MenuItem
+                                component={RouterLink}
+                                to="/MyStats"
+                                onClick={handleClose}
+                            >
+                                My Stats
+                            </MenuItem>
                             <MenuItem
                                 component={RouterLink}
                                 to="/LogOut"
                                 onClick={handleBoth}
                             >
                                 Log Out
-                    </MenuItem>
+                            </MenuItem>
 
                         </Menu>
                         <Typography variant="h6" className={classes.loggedInTitle}>
@@ -286,7 +293,15 @@ function Header(props) {
                             to="/"
                         >
                             My Stores
-                    </Button>
+                        </Button>
+                        <Button
+                            className={classes.userActions}
+                            color="inherit"
+                            component={RouterLink}
+                            to="/MyStats"
+                        >
+                            My Stats
+                        </Button>
                         <Button
                             className={classes.userActions}
                             onClick={handleLogout}

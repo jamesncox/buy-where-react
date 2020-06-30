@@ -15,6 +15,7 @@ import Home from './components/Layout/Home'
 import SignIn from './components/User/SignIn'
 import SignUp from './components/User/SignUp'
 import LogOut from './components/User/LogOut'
+import MyStats from './components/Layout/MyStats'
 
 class App extends Component {
 
@@ -40,6 +41,9 @@ class App extends Component {
             </Route>
             <Route exact path="/LogOut">
               <LogOut />
+            </Route>
+            <Route exact path="/MyStats">
+              <MyStats />
             </Route>
           </Switch>
         </div>

@@ -26,7 +26,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import AddBoxIcon from '@material-ui/icons/AddBox';
-import CircularProgress from '@material-ui/core/CircularProgress'
 
 const TAX_RATE = 0.085;
 
@@ -261,13 +260,7 @@ function Stores(props) {
     }
 
     const hasStores = props.stores.filter(store => store.user_id === props.user.id)
-    if (props.loadingStores) {
-        return (
-            <div className={classes.spinner}>
-                <CircularProgress />
-            </div>
-        )
-    } else if (hasStores.length === 0) {
+    if (hasStores.length === 0) {
         return <NoStoresYet />
     } else {
         return renderStoreTable(props.user.id)
@@ -278,7 +271,6 @@ const mapStateToProps = state => ({
     user: state.users.user,
     stores: state.stores.stores,
     items: state.items.items,
-    loadingStores: state.stores.loading,
     loadingItems: state.items.loading,
     isStoreOpen: state.isOpen.isStoreOpen,
     isNewItemOpen: state.isOpen.isNewItemOpen,

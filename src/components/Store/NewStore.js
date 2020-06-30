@@ -163,7 +163,6 @@ function NewStore(props) {
                         autoComplete="name"
                         onChange={handleName}
                         value={name}
-                    // autoFocus
                     />
                     <TextField
                         variant="outlined"

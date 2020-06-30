@@ -151,12 +151,6 @@ function EditStore(props) {
                 <IconButton className={classes.deleteIcon} onClick={() => { if (window.confirm(`Are you sure you wish to delete ${selectedStore[0].name} and all of its items?`)) handleDelete(selectedStore[0].id) }}>
                     <DeleteForeverIcon color="primary" />
                 </IconButton>
-
-                {/* how do I get the following on a new "line"? */}
-                {/* <Typography className={classes.paper}>
-                    update store name, type and color
-                    </Typography> */}
-
                 <form
                     className={classes.form}
                     noValidate
@@ -173,7 +167,6 @@ function EditStore(props) {
                         name="name"
                         onChange={handleName}
                         value={name}
-                    // autoFocus
                     />
                     <TextField
                         variant="outlined"

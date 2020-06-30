@@ -117,7 +117,6 @@ function EditItem(props) {
                     Updating item...
                 </Typography>
                 <LinearProgress className={classes.progressBar} color="secondary" />
-
             </div>
         )
     } else {
@@ -149,7 +148,6 @@ function EditItem(props) {
                             name="name"
                             onChange={handleName}
                             value={name}
-                        // autoFocus
                         />
                     </Grid>
                     <Grid item xs={12}>

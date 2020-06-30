@@ -1,9 +1,10 @@
 import React from 'react'
+import PieChart from '../Stats/PieChart'
 
 function MyStats(props) {
 
     return (
-        <div> My Stats </div>
+        <PieChart />
     )
 }
 

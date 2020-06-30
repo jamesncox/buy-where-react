@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     },
     loggedInTitle: {
         flexGrow: 1,
-        marginLeft: "12rem",
+        marginLeft: "18rem",
         [theme.breakpoints.down('sm')]: {
             marginLeft: "0rem",
         }

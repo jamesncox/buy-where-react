@@ -54,7 +54,10 @@ function EditStore(props) {
             padding: '5em',
         },
         progressBar: {
-            height: ".75em"
+            height: "1.5em",
+            backgroundColor: theme.palette.primary.main,
+            borderRadius: "20px",
+
         },
         deleteIcon: {
             float: "right",

@@ -51,8 +51,11 @@ const useStyles = makeStyles((theme) => ({
     },
     progressBar: {
         margin: 'auto',
-        height: '.75em',
-        width: '20em'
+        marginTop: theme.spacing(2),
+        width: '20em',
+        height: "1.5em",
+        backgroundColor: theme.palette.primary.main,
+        borderRadius: "20px",
     }
 }))
 

@@ -12,7 +12,7 @@ import {
 } from '../../actions/isOpen'
 import StoresTable from '../Store/StoresTable'
 import NewStore from '../Store/NewStore'
-import Copyright from '../Layout/Copyright'
+import Copyright from './Copyright'
 
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -69,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function Profile(props) {
+function MyStores(props) {
     const dispatch = useDispatch()
     const classes = useStyles();
 
@@ -156,4 +156,4 @@ export default connect(mapStateToProps, {
     newItemClose,
     editStoreClose,
     editItemClose
-})(Profile)
+})(MyStores)

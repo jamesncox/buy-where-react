@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import WelcomeUser from '../User/WelcomeUser'
-import Profile from './Profile'
+import MyStores from './MyStores'
 
 function Home(props) {
 
@@ -11,7 +11,7 @@ function Home(props) {
         )
     } else {
         return (
-            <Profile />
+            <MyStores />
         )
     }
 }

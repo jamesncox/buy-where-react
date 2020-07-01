@@ -18,24 +18,22 @@ class PieChart extends React.PureComponent {
             userStores.map(store => {
                 const userItems = this.props.items.filter(item => item.store_id === store.id)
                 return (
-                    userItems.map(item => {
-                        return (
-                            <Paper>
-                                <Chart
-                                    data={userItems}
-                                >
-                                    <PieSeries
-                                        valueField={item.price}
-                                        argumentField={item.name}
-                                    />
-                                    <Title
-                                        text={store.name}
-                                    />
-                                    <Animation />
-                                </Chart>
-                            </Paper>
-                        )
-                    })
+                    <Paper>
+                        <Chart
+                            data={userStores}
+                        >
+                            {userItems.map((item) => (
+                                <PieSeries
+                                    valueField={item.price}
+                                    argumentField={item.name}
+                                />
+                            ))}
+                            <Title
+                                text={store.name}
+                            />
+                            <Animation />
+                        </Chart>
+                    </Paper>
                 )
             })
         )

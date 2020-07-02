@@ -28,16 +28,6 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-// const data = [
-//     { country: 'Russia', area: 12 },
-//     { country: 'Canada', area: 7 },
-//     { country: 'USA', area: 7 },
-//     { country: 'China', area: 7 },
-//     { country: 'Brazil', area: 6 },
-//     { country: 'Australia', area: 5 },
-//     { country: 'India', area: 2 },
-//     { country: 'Others', area: 55 },
-// ];
 function PracticePieChart(props) {
     const classes = useStyles();
     const [chartData, setChartData] = useState({
@@ -45,27 +35,32 @@ function PracticePieChart(props) {
         price: ""
     })
 
-    const fillChartData = () => {
+    const fillChartData = (id) => {
         const userStores = props.stores.filter(store => store.user_id === id)
         userStores.map(store => {
             const userItems = props.items.filter(item => item.store_id === store.id)
-            userItems.map(item => {
-                setChartData({
-                    name: item.name,
-                    price: item.price
+            return (
+                userItems.map(item => {
+                    return (
+                        setChartData({
+                            name: item.name,
+                            price: item.price
+                        })
+                    )
                 })
-            })
+            )
         })
     }
 
     const renderPieChart = (id) => {
-        fillChartData()
-        const userStores = this.props.stores.filter(store => store.user_id === this.props.user.id).reverse()
+        fillChartData(props.user.id)
+        const userStores = props.stores.filter(store => store.user_id === id)
+
         return (
             userStores.map(store => {
-                const userItems = this.props.items.filter(item => item.store_id === store.id)
+                const userItems = props.items.filter(item => item.store_id === store.id)
                 return (
-                    <Paper>
+                    <Paper className={classes.container}>
                         <Chart
                             data={chartData}
                         >

@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
         width: "40%",
         margin: 'auto',
         marginTop: '2em',
+        // display: "flex",
         [theme.breakpoints.down('md')]: {
             width: "60%",
         },
@@ -26,6 +27,13 @@ const useStyles = makeStyles((theme) => ({
             width: "98%",
         },
     },
+    pieChart: {
+        width: "25%",
+        // display: "flex-wrap"
+    },
+    title: {
+        marginBottom: "-20em"
+    }
 }))
 
 function PracticePieChart(props) {
@@ -52,13 +60,15 @@ function PracticePieChart(props) {
         console.log(chartData)
 
         return (
-            userStores.map(store => {
-                const userItems = props.items.filter(item => item.store_id === store.id)
-                return (
-                    <Paper className={classes.container}>
+            <Paper className={classes.container}>
+                {userStores.map(store => {
+                    const userItems = props.items.filter(item => item.store_id === store.id)
+                    return (
+
                         <Chart
                             data={chartData}
                             key={store.id}
+                            className={classes.pieChart}
                         >
                             {userItems.map((item) => (
                                 <PieSeries
@@ -68,12 +78,14 @@ function PracticePieChart(props) {
                             ))}
                             <Title
                                 text={store.name}
+                                className={classes.title}
                             />
                             <Animation />
                         </Chart>
-                    </Paper>
-                )
-            })
+
+                    )
+                })}
+            </Paper>
         )
     }
 

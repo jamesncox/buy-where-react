@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux'
 import NoStatsYet from '../Layout/NoStatsYet'
 import Paper from '@material-ui/core/Paper';
@@ -30,10 +30,7 @@ const useStyles = makeStyles((theme) => ({
 
 function PracticePieChart(props) {
     const classes = useStyles();
-    const [chartData, setChartData] = useState({
-        name: "",
-        price: ""
-    })
+    const chartData = []
 
     const fillChartData = (id) => {
         const userStores = props.stores.filter(store => store.user_id === id)
@@ -42,10 +39,7 @@ function PracticePieChart(props) {
             return (
                 userItems.map(item => {
                     return (
-                        setChartData({
-                            name: item.name,
-                            price: item.price
-                        })
+                        chartData.push({ name: item.name, price: item.price })
                     )
                 })
             )
@@ -55,6 +49,7 @@ function PracticePieChart(props) {
     const renderPieChart = (id) => {
         fillChartData(props.user.id)
         const userStores = props.stores.filter(store => store.user_id === id)
+        console.log(chartData)
 
         return (
             userStores.map(store => {
@@ -63,6 +58,7 @@ function PracticePieChart(props) {
                     <Paper className={classes.container}>
                         <Chart
                             data={chartData}
+                            key={store.id}
                         >
                             {userItems.map((item) => (
                                 <PieSeries

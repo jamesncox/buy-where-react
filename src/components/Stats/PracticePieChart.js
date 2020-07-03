@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
         width: "40%",
         margin: 'auto',
         marginTop: '2em',
-        // display: "flex",
         [theme.breakpoints.down('md')]: {
             width: "60%",
         },
@@ -29,7 +28,6 @@ const useStyles = makeStyles((theme) => ({
     },
     pieChart: {
         width: "25%",
-        // display: "flex-wrap"
     },
     title: {
         marginBottom: "-20em"

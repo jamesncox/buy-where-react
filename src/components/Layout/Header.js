@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     },
     loggedInTitle: {
         flexGrow: 1,
-        marginLeft: "18rem",
+        marginLeft: "14rem",
         [theme.breakpoints.down('sm')]: {
             marginLeft: "0rem",
         }
@@ -267,13 +267,13 @@ function Header(props) {
                             >
                                 My Stores
                             </MenuItem>
-                            <MenuItem
+                            {/* <MenuItem
                                 component={RouterLink}
                                 to="/MyStats"
                                 onClick={handleClose}
                             >
                                 My Stats
-                            </MenuItem>
+                            </MenuItem> */}
                             <MenuItem
                                 component={RouterLink}
                                 to="/LogOut"
@@ -294,14 +294,14 @@ function Header(props) {
                         >
                             My Stores
                         </Button>
-                        <Button
+                        {/* <Button
                             className={classes.userActions}
                             color="inherit"
                             component={RouterLink}
                             to="/MyStats"
                         >
                             My Stats
-                        </Button>
+                        </Button> */}
                         <Button
                             className={classes.userActions}
                             onClick={handleLogout}

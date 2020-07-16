@@ -1,8 +1,8 @@
 # TO DO 
 
-[] Figure out how to close a form once it's successfully submitted (to database) and be able to re-open immediately
+[x] Figure out how to close a form once it's successfully submitted (to database) and be able to re-open immediately
 
-[] Add a "close" icon to each form so user can manually close it
+[x] Add a "close" icon to each form so user can manually close it
 
 [x] Pre-populate the edit forms with the data props, and a user can edit it
 

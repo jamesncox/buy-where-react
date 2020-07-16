@@ -8,7 +8,7 @@ Featuring a React frontend that showcases Redux for state management, functional
 
 Designed with the Material UI library almost exclusively, delivering a clean aesthetic, responsiveness on all devices and improved accessibility.
 
-Data is managed by a Rails API backend hosted on Heroku, that handles model relationships and keeps the data logic separate from the front end.
+Data is managed by a Rails API backend hosted on Heroku, that handles model relationships and keeps the data logic separate from the front end. 
 
 ### Routes
 
@@ -37,3 +37,13 @@ https://buy-where.herokuapp.com/api/v1/items/${item.itemId} - PATCH request to I
 https://buy-where.herokuapp.com/api/v1/items/${id} - DELETE request to Items controller destroy action to delte a specific item from the database.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+### Rails
+
+https://github.com/jamesncox/what-where-api
+
+Buy / Where Rails API features my first custom rake task, to clean up guest users with a single rake command.
+
+https://github.com/jamesncox/what-where-api/blob/master/lib/tasks/delete_guest_users.rake
+
+Just run "rake delete_guest_users" and all the frontend randomly generated guest users, stores and items will be deleted from the database.

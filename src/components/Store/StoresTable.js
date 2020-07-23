@@ -198,9 +198,17 @@ function Stores(props) {
     }
 
     const renderStoreTable = (id) => {
-        const userStores = props.stores.filter(store => store.user_id === id).reverse()
+        const userStores = props.stores.filter(store => store.user_id === id)
+        const sortedUserStores = userStores.sort((function (a, b) {
+            let storeA = a.name.toLowerCase(), storeB = b.name.toLowerCase()
+            if (storeA < storeB)
+                return -1
+            if (storeA > storeB)
+                return 1
+            return 0
+        }))
         return (
-            userStores.map(store => {
+            sortedUserStores.map(store => {
                 const userItems = props.items.filter(item => item.store_id === store.id)
                 const sortedUserItems = userItems.sort((function (a, b) {
                     let itemA = a.name.toLowerCase(), itemB = b.name.toLowerCase()

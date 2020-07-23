@@ -26,15 +26,7 @@ export default (state = {
             return { ...state, stores: [...state.stores], loadingSingleStore: true }
 
         case SET_STORES:
-            const sortedStores = action.payload.sort((function (a, b) {
-                let storeA = a.name.toLowerCase(), storeB = b.name.toLowerCase()
-                if (storeA < storeB)
-                    return 1
-                if (storeA > storeB)
-                    return -1
-                return 0
-            }))
-            return { ...state, stores: sortedStores, loadingStores: false }
+            return { ...state, stores: action.payload, loadingStores: false }
 
         case CREATE_STORE:
             return { ...state, stores: [...state.stores, action.payload], loadingSingleStore: false }

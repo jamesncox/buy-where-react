@@ -202,6 +202,14 @@ function Stores(props) {
         return (
             userStores.map(store => {
                 const userItems = props.items.filter(item => item.store_id === store.id)
+                const sortedUserItems = userItems.sort((function (a, b) {
+                    let itemA = a.name.toLowerCase(), itemB = b.name.toLowerCase()
+                    if (itemA < itemB)
+                        return -1
+                    if (itemA > itemB)
+                        return 1
+                    return 0
+                }))
                 const invoiceSubtotal = subtotal(userItems);
                 const invoiceTaxes = TAX_RATE * invoiceSubtotal;
                 const invoiceTotal = invoiceTaxes + invoiceSubtotal;
@@ -229,7 +237,7 @@ function Stores(props) {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {userItems.map((item) => (
+                                {sortedUserItems.map((item) => (
                                     <TableRow hover={true} className={classes.cursorPointer} key={item.id} onClick={() => handleShowEditItem(item.id, store.id)}>
                                         <TableCell className={classes.itemRow}>{itemFormat(item.name)}</TableCell>
                                         <TableCell align="right">{item.quantity}</TableCell>
